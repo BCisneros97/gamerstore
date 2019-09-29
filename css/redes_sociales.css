@@ -1,0 +1,46 @@
+.social h1{
+  text-align: center;
+}
+
+.fab{
+    width: 20px;
+    text-align: center;
+    font-size: 24px;
+}
+.social{
+    position: fixed;
+    top: 250px;
+    left: -25px;
+}
+.social ul{
+    list-style: none;
+}
+.social a{
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 35px;
+    z-index: 0;
+    transition: 0.1s ease;
+}
+.fa-facebook-f{
+    background: #3b5998;
+}
+.fa-twitter{
+    background: #00abf0;
+}
+.fa-get-pocket{
+    background: #ae181f;
+}
+.fa-facebook-messenger{
+    background: #0084ff;
+}
+.fa-whatsapp{
+    background: #25d366;
+}
+.fa-google-plus-g{
+    background: #d95232;
+}
+.social a:hover{
+    padding: 10px 45px;
+}
