@@ -1,8 +1,11 @@
+#banner {
+	margin-top: 60px;
+}
+
 .slider {
 	width: 100%;
 	overflow: hidden;
 }
-
 
 .slider ul{
 	display: flex;
@@ -15,16 +18,16 @@
 	animation-timing-function: ease-in;
 }
 
-.slider li{
-	width: 100;
+.slider li {
 	list-style: none;
 }
 
-.slider img{
+.slider img {
 	width: 100%;
+	height: 100%;
 }
 
-@keyframes cambio{
+@keyframes cambio {
 	0% { margin-left: 0; }
 	25% { margin-left: -100%;}
 
