@@ -1,59 +1,164 @@
 
 body {
-	background-color: #999999;
+	background-color: #aaaaaa;
 }
 
 .principal {
 	background-color: #ffffff;
 	margin-left: 10%;
 	margin-right: 10%;
+	height: 1200px;
 }
 
-.logo {
-	background: #cc0066 url(imagenes/logo.png) no-repeat;
+.menu {
+	background: #005ea8;
 	padding-top: 5px;
 	padding-bottom: 5px;
-	padding-left: 20px;
-	height: 300px;
+	padding-left: 5px;
+	height: 60px;
 }
 
-.logo h1 {
-	color: #fff;
-	margin-right: 20px;
-	text-align: right;
-	font-family: Viner Hand ITC, Verdana;
-	font-size: 60px;
-	text-shadow: 0px 5px 8px #000;
+.logo{
+    float: left;
+}
+
+.buscador{
+    float: left;
+    padding-top: 20px;
+    padding-left: 40px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+
+.icono{
+    float: right;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.icono img {
+	margin-top: 10px;
+	margin-right: 6px;
+}
+
+.destacados {
+	margin: 15px;
+}
+
+.producto img {
+	height: 140px;
 }
 
 .menuprincipal {
-	background-color: #333333;
+	background-color: #e3e3e3;
+	width: 100%;
+	height: 45px;
 }
 
 .menuprincipal ul {
-	background-color: #333333;
+	background-color: #e3e3e3;
+	width: 100%;
+	margin: 0px;
 }
 
 .menuprincipal li {
 	float: left;
-	background-color: #333;
+	background-color: #e3e3e3;
 	padding-top: 10px;
 	list-style: none;
-	margin-left: 2px;
-	margin-top: 2px;
 	height: 35px;
-	width: 150px;
+	width: 145px;
 	font-family: Verdana, Geneva, sans-serif;
 	font-size: 14px;
 	text-align: center;
 }
 
 .menuprincipal li a {
-	color: #fff;
+	color: #000;
 	text-decoration: none;
 }
 
-.menuprincipal li a:hover {
-	color: #666;
+.menuprincipal li:hover {
+	background-color: #f09420;
+	color: #000;
 	text-decoration: none;
+}
+
+.contenido {
+	float: none;
+}
+
+/* seccion Bienvenidos*/
+
+h1,h2,h4,h5,h6{
+	text-transform: uppercase;
+	color: #444;
+	font-family: Verdana;
+}
+
+
+h2{
+	font-size: 26px;
+	color: #333;
+}
+
+
+h3{
+	font-family: 'Lato', sans-serif;
+	font-size: 20px;
+	line-height: 1.5;
+	padding-top: 20px;
+	font-weight: normal;
+
+	color: #777;
+}
+
+
+h4{
+	margin-top: 15px;
+	font-size: 16px;
+}
+
+h5{
+	font-size: Lato, sans-serif;
+	line-height: 1.5;
+	font-weight: normal;
+	padding: 10px 0;
+	font-size: 12px;
+}
+
+p{
+	color: #888;
+	font-family: Lato,sans-serif;
+	font-size: 15px;
+}
+
+.wap{
+	width: 90%;
+	margin: auto;
+}
+
+.Bienvenidos{
+	margin-top: 50px;
+	text-align: center;
+}
+
+/* seccion productos */
+
+.contenedor-columnas{
+	width: 100%;
+	margin: auto;
+	float: left;
+}
+
+.columnasx3{
+	width: 33.333%;
+	float: left;
+	padding: 20px 20px;
+	box-sizing: border-box;
+	margin: auto;
+}
+
+.columnasx3 img{
+	width: 85%;
 }
