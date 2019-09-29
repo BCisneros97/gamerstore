@@ -1,5 +1,6 @@
-#destacados h3, h4 {
-    text-align: center;
+#destacados h3 {
+    margin-left: 10px;
+    width: 100%;
 }
 
 #destacados .contenedor {
@@ -8,11 +9,27 @@
     flex-wrap: wrap;
 }
 
-#destacados article {
+.producto {
     margin: 15px;
 }
 
-#destacados img {
-    width: 100%;
-    max-width: 280px;
+.producto h4 {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.producto .precio {
+    text-align: center;
+    color: #005ea8;
+}
+
+.img-wrapper {
+    display: flex;
+    align-items: center;
+    width: 190px;
+    height: 190px;
+}
+
+.producto img {
+    max-width: 100%;
 }

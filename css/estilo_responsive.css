@@ -9,6 +9,10 @@
     box-sizing: border-box;
 }
 
+a {
+    text-decoration: none;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
 }
@@ -25,7 +29,8 @@ header {
 
 header img {
     width: auto;
-    height: 60px;
+    height: 55px;
+    margin: 2.5px 0;
     float: left;
 }
 
@@ -45,4 +50,51 @@ section {
 
 #bienvenida {
     text-align: center;
+    margin-bottom: 25px;
+}
+
+footer {
+    background: #242f38;
+}
+
+footer .contenedor {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: #fff;
+    padding: 25px 0;
+}
+
+.creditos {
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.creditos p {
+    width: 30%;
+}
+
+.copyright {
+    font-size: 20px;
+}
+
+h3, h2 {
+    font-weight: bold;
+    color: #ea6209;
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+@media (min-width: 1024px) {
+    .contenedor {
+        width: 1000px;
+    }
+
+
 }

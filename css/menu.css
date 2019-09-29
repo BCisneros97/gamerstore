@@ -7,6 +7,11 @@ header label {
     font-size: 28px;
     margin: 14px 0;
     cursor: pointer;
+    color: #fff;
+}
+
+.icon-usuario p {
+    display: none;
 }
 
 .menu {
@@ -24,15 +29,83 @@ header label {
     display: block;
     color: #fff;
     height: 50px;
-    text-decoration: none;
     padding: 15px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .menu a:hover {
-    background: rgba(240, 148, 32, 0.97);
+    background: rgba(234, 98, 9, 0.97);
 }
 
 #menu-bar:checked ~ .menu {
     transform: translateX(0%);
+}
+
+#busqueda {
+    position: absolute;
+    display: flex;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: #e3e3e3;
+    justify-content: center;
+    padding: 8px;
+}
+
+#busqueda input {
+    border-radius: 8px 0 0 8px;
+    border: 1px solid #e3e3e3;
+    height: 35px;
+    width: 90%;
+    padding: 5px;
+    font-size: 13pt;
+}
+
+#busqueda .icon-buscar {
+    color: #fff;
+    background: #ea6209;
+    padding: 8px;
+    border-radius: 0px 8px 8px 0px;
+}
+
+@media (min-width: 800px) {
+    .menu {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        height: auto;
+        transform: translateX(0%);
+        display: flex;
+        transition: none;
+        background: #e3e3e3;
+        justify-content: center;
+    }
+
+    .menu a {
+        border: none;
+        height: 60px;
+        padding: 16px;
+        color: #000;
+    }
+
+    label.icon-menu {
+        display: none;
+    }
+
+    .icon-usuario p {
+        display: inline-block;
+        font-size: 17px;
+        color: #fff;
+        padding-left: 0px;
+    }
+
+    #busqueda {
+        position: static;
+        float: left;
+        width: 50%;
+        background: none;
+        margin-top: 8px;
+        margin-left: 55px;
+    }
 }

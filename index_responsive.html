@@ -14,15 +14,29 @@
 <body>
     <header>
         <div class="contenedor">
-            <img src="css/imagenes/Gamer Store Logo solo.png" alt="logo">
+            <a href="/">
+                <img src="css/imagenes/Gamer Store Logo solo.png" alt="logo">
+            </a>
+            <div id="busqueda">
+                <input type="text" placeholder="Buscar producto">
+                <a class="icon-buscar" href="#"></a>
+            </div>
             <input type="checkbox" id="menu-bar">
             <label class="icon-menu" for="menu-bar"></label>
+
+            <a href="#">
+                <label class="icon-usuario">
+                    <p>Iniciar sesión</p>
+                </label>
+            </a>
+            <label class="icon-carrito"></label>
             <nav class="menu">
                 <a href="">Inicio</a>
                 <a href="">Nosotros</a>
-                <a href="">Inicio</a>
-                <a href="">Inicio</a>
-                <a href="">Inicio</a>
+                <a href="">Categorías</a>
+                <a href="">Destacados</a>
+                <a href="">Sucursales</a>
+                <a href="">Modelo de negocio</a>
             </nav>
         </div>
     </header>
@@ -47,32 +61,53 @@
             </div>
         </section>
 
-        <section id="bienvenida">
+        <section id="bienvenida" class="contenedor">
             <h2>Bienvenido a Gamer Store!!</h2>
             <p>Un gamer es aquel que juega con gran dedicación e interés a videojuegos y tiene un conocimiento extenso
-                sobre estos. Si eres un gamer, en esta comunidad podrás compartir los diseños de tus videojuegos favoritos y
+                sobre estos. Si eres un gamer, en esta comunidad podrás compartir los diseños de tus videojuegos
+                favoritos y
                 adquirir accesorios personalizados.
             </p>
         </section>
 
         <section id="destacados">
-            <h3>Destacados</h3>
             <div class="contenedor">
-                <article>
-                    <img src="images/p-1.png">
+                <h3>Destacados</h3>
+                <article class="producto">
+                    <div class="img-wrapper">
+                        <img src="images/p-1.png">
+                    </div>
                     <h4>Joystick</h4>
+                    <p class="precio">S/. 50.00</p>
                 </article>
-                <article>
-                    <img src="images/p-2.jpg">
+                <article class="producto">
+                    <div class="img-wrapper">
+                        <img src="images/p-2.jpg">
+                    </div>
                     <h4>Mouse inalámbrico</h4>
+                    <p class="precio">S/. 50.00</p>
                 </article>
-                <article>
-                    <img src="images/p-3.png">
+                <article class="producto">
+                    <div class="img-wrapper">
+                        <img src="images/p-3.png">
+                    </div>
                     <h4>Teclado mecánico</h4>
+                    <p class="precio">S/. 50.00</p>
                 </article>
             </div>
         </section>
     </main>
+
+    <footer>
+        <div class="contenedor">
+            <div class="creditos">
+                <p>&lt;Ruben Castillo Graus&gt;</p>
+                <p>&lt;Benny Cisneros Baca&gt;</p>
+                <p>&lt;Francisco López Zapata&gt;</p>
+            </div>
+            <p class="copyright">Gamer Store &copy; 2019</p>
+        </div>
+    </footer>
 </body>
 
 </html>
