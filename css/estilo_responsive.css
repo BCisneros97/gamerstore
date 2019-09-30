@@ -71,12 +71,14 @@ footer .contenedor {
     text-align: center;
     font-size: 18px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     padding: 10px;
 }
 
 .creditos p {
-    width: 30%;
+    width: 100%;
+    margin-bottom: 3px;
 }
 
 .copyright {
@@ -96,5 +98,10 @@ h2 {
     .contenedor {
         width: 1000px;
     }
+}
 
+@media (min-width: 800px) {
+    .creditos p {
+        width: 30%;
+    }
 }
