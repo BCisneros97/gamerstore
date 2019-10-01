@@ -11,6 +11,7 @@
 
 .producto {
     margin: 15px;
+    padding: 5px;
 }
 
 .producto h4 {
@@ -21,6 +22,25 @@
 .producto .precio {
     text-align: center;
     color: #005ea8;
+    margin-bottom: 3px;
+}
+
+.producto label {
+    font-size: 15px;
+    color: #ea6209;
+}
+
+.producto a {
+    color: #000;
+}
+
+.producto a:hover {
+    color: #ea6209;
+}
+
+.producto .ventas {
+    float: right;
+    color: #777676;
 }
 
 .img-wrapper {

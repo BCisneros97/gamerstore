@@ -89,7 +89,7 @@ header label {
         color: #000;
     }
 
-    label.icon-menu {
+    header label.icon-menu {
         display: none;
     }
 
