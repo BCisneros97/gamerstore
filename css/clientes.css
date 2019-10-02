@@ -1,0 +1,40 @@
+#clientes {
+    margin-top: 120px;
+}
+
+.table-wrapper {
+    overflow: auto;
+}
+
+thead {
+    background: #005ea8;
+    color: #fff;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td, th {
+    padding: 8px;
+    border: 2px solid #c2bfbf;
+}
+
+tr:hover, tr:nth-child(even):hover {
+    background: #ea630988;
+}
+
+tr:nth-child(even) {
+    background: #e3e3e3;
+}
+
+table img {
+    width: 100px;
+    border-radius: 10px;
+}
+
+@media (min-width: 768px) {
+    table {
+        width: 100%;
+    }
+}

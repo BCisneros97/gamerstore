@@ -19,7 +19,7 @@
     <header>
         <div class="contenedor">
             <a href="index.html">
-                <img src="css/imagenes/Gamer Store Logo solo.png" alt="logo">
+                <img src="css/imagenes/gamer-store-logo.png" alt="logo">
             </a>
             <div id="busqueda">
                 <input type="text" placeholder="Buscar producto">
@@ -28,17 +28,16 @@
             <input type="checkbox" id="menu-bar">
             <label class="icon-menu" for="menu-bar"></label>
 
-            <a href="login.html">
-                <label class="icon-usuario">
-                    <p>Iniciar sesión</p>
-                </label>
-            </a>
-            <a href="carrito.html">
-                <label class="icon-carrito"></label>
-            </a>
+            <label class="icon-usuario">
+                <a href="login.html">Iniciar sesión</a>
+            </label>
+            <label class="icon-carrito">
+                <a href="carrito.html"></a>
+            </label>
             <nav class="menu">
                 <a href="index.html">Inicio</a>
                 <a href="nosotros.html">Nosotros</a>
+                <a href="clientes.html">Clientes</a>
                 <a href="categorias.html">Categorías</a>
                 <a href="destacados.html">Destacados</a>
                 <a href="ubicanos.html">Ubícanos</a>
@@ -48,68 +47,71 @@
     </header>
 
     <main>
-        <div class="contenedor-cat">
-            <nav class="jmenu">
-                <label for="btn-cat" class="jm-icon-menu jm-menu-btn">Categorias </label>
-                <input type="checkbox" id="btn-cat" class="jm-menu-btn">
-                <ul class="jm-collapse">
-                    <li> <a href="categorias.html">Teclado</a></li>
-                    <li> <a href="categoria_m.html">Mouse</a></li>
-                    <li> <a href="categoria_mp.html">Mouse Pad</a></li>
-                    <li> <a href="categoria_j.html">Joysticks</a></li>
-                    <li> <a href="">Por Juegos</a></li>
-                    <li> <a href="">Protector de Celulares</a></li>
+        <section>
+            <div class="contenedor-cat">
+                <nav class="jmenu">
+                    <label for="btn-cat" class="jm-icon-menu jm-menu-btn">Categorias </label>
+                    <input type="checkbox" id="btn-cat" class="jm-menu-btn">
+                    <ul class="jm-collapse">
+                        <li> <a href="categorias.html">Teclado</a></li>
+                        <li> <a href="categoria_m.html">Mouse</a></li>
+                        <li> <a href="categoria_mp.html">Mouse Pad</a></li>
+                        <li> <a href="categoria_j.html">Joysticks</a></li>
+                        <li> <a href="">Por Juegos</a></li>
+                        <li> <a href="">Protector de Celulares</a></li>
 
-                </ul>
-            </nav>
+                    </ul>
+                </nav>
 
-        </div>
-        <div class="productos">
-            <section id="destacados">
-                <div class="contenedor">
-                    <h3>Mouse</h3>
+            </div>
+            <div class="productos">
+                <section id="destacados">
+                    <div class="contenedor">
+                        <h3>Mouse</h3>
 
-                    <article class="producto">
-                        <div class="img-wrapper">
-                            <img src="images/mouse-2.jpg">
-                        </div>
-                        <h4>Mouse Gamer</h4>
-                        <p class="User">Francisco1997</p>
+                        <article class="producto">
+                            <div class="img-wrapper">
+                                <img src="images/mouse-2.jpg">
+                            </div>
+                            <h4>Mouse Gamer</h4>
+                            <p class="User">Francisco1997</p>
 
-                        <label class="icon-estrella"></label>4.8
-                        <p class="ventas">50 vendidos</p>
-                    </article>
-
-
-                    <article class="producto">
-                        <div class="img-wrapper">
-                            <img src="images/mouse-3.jpg">
-                        </div>
-                        <h4>Mouse </h4>
-                        <p class="User">Benny97</p>
-                        <label class="icon-estrella"></label>4.3
-                        <p class="ventas">62 vendidos</p>
-                    </article>
+                            <label class="icon-estrella"></label>4.8
+                            <p class="ventas">50 vendidos</p>
+                        </article>
 
 
-                    <article class="producto">
-                        <div class="img-wrapper">
-                            <img src="images/mouse-4.jpg">
-                        </div>
-                        <h4>Mouse Inhalambrico</h4>
-                        <p class="User">Ruben97</p>
-
-                        <label class="icon-estrella"></label>3.8
-                        <p class="ventas">78 vendidos</p>
-                    </article>
-
+                        <article class="producto">
+                            <div class="img-wrapper">
+                                <img src="images/mouse-3.jpg">
+                            </div>
+                            <h4>Mouse </h4>
+                            <p class="User">Benny97</p>
+                            <label class="icon-estrella"></label>4.3
+                            <p class="ventas">62 vendidos</p>
+                        </article>
 
 
+                        <article class="producto">
+                            <div class="img-wrapper">
+                                <img src="images/mouse-4.jpg">
+                            </div>
+                            <h4>Mouse Inhalambrico</h4>
+                            <p class="User">Ruben97</p>
+
+                            <label class="icon-estrella"></label>3.8
+                            <p class="ventas">78 vendidos</p>
+                        </article>
 
 
-                </div>
-            </section>
-        </div>
+
+
+
+                    </div>
+                </section>
+            </div>
+        </section>
+
     </main>
 
     <footer>
