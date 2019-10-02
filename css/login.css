@@ -77,6 +77,11 @@ body{
   margin: 12px 0;
 }
 
+::placeholder{
+    color: white;
+    opacity: 0.6;
+}
+
 @media (min-width:800px){
     .login-box{
         width: 280px;
