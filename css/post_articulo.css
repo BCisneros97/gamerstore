@@ -1,0 +1,9 @@
+#detalle-producto {
+    margin-top: 112px;
+    display: flex;
+    justify-content: center;
+}
+
+.post-producto img {
+    max-width: 100%;
+}

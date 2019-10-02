@@ -1,0 +1,13 @@
+#canvas {
+    margin-top: 115px;
+}
+
+#canvas .slide {
+    overflow: auto;
+}
+
+#canvas img {
+    width: 600px;
+    height: auto;
+    margin: 10px;
+}
