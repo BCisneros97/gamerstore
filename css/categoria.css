@@ -1,0 +1,283 @@
+.contenedor-cat{
+    margin-top: 120px;;
+}
+
+main{
+}
+
+.productos{
+
+}
+
+.jmenu {
+  background: white;
+    width: 100%;
+  box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, .5);
+  box-sizing: border-box;
+  line-height: 1;
+    
+}
+
+input.jm-menu-btn {
+  display: none; 
+}
+
+input[type='checkbox'].jm-menu-btn ~ .jm-collapse {
+  display: none; 
+}
+
+input[type='checkbox']:checked.jm-menu-btn ~ .jm-collapse {
+  display: block; 
+}
+
+label.jm-menu-btn {
+  color: black; 
+  cursor: pointer;
+  display: block;
+  padding: 20px 10%;
+    font-size: 20px
+}
+
+
+
+.jm-collapse {
+  border-top: 2px #959595 solid; 
+}
+
+
+
+.jmenu ul,
+.jmenu li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.jmenu a {
+  color: black; 
+  display: inline-block;
+  padding: 16px 32px;
+  text-decoration: none;
+}
+.jmenu a:hover {
+    color: rgba(00, 94, 168, 0.9);
+    width: 100%;
+    font-weight:bold;
+    border-style: solid;
+}
+
+
+
+.jmenu ul ul {
+  display: none; 
+}
+
+
+
+.jm-dropdown:hover ul {
+  display: block;
+}
+
+
+
+.jm-dropdown ul {
+  background: #fff;
+  padding: 0;
+}
+
+
+
+.jm-dropdown ul ul {
+  border-bottom: 1px #ccc solid; 
+  border-top: 1px #ccc solid;
+  box-shadow: none;
+  margin-bottom: 16px;
+  max-width: 100%;
+  position: relative;
+}
+
+
+.jm-icon-dropdown {
+    border: solid #959595; 
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    margin: 0 0 3px 8px;
+    padding: 3px;
+    transform: rotate(45deg);
+} 
+
+li:hover .jm-icon-dropdown {
+    border-color: #fff; 
+}
+.jm-icon-menu::before {
+  content: '\2630';
+}
+
+@media (min-width:800px) {
+    main{
+        width: 100%;
+        margin: 0;
+        overflow: hidden;
+    }
+    
+    
+    .productos{
+        margin-left: 2%;
+        width: 75%;
+        float: left;
+    }
+    
+    .contenedor-cat{
+        margin-top: 9%;
+        margin-left: 2%;;
+    }
+  
+    .jmenu{
+        width: 20%;
+        float: left;
+    }
+  
+  .jmenu a {
+    padding: 16px;
+      color: black;
+  }
+  
+
+  .jm-dropdown {
+    position: relative;
+  }
+  
+  .jm-dropdown li a {
+    display: block;
+    padding: 8px 16px;
+    white-space: nowrap;
+  }
+  
+  .jm-dropdown ul {
+    box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, .5);
+    padding: 8px 0;
+    position: absolute;
+    min-width: 100%;
+  }
+  
+  input.jm-menu-btn,
+  label.jm-menu-btn {
+    padding: 20px 10px;
+  }
+  
+  input[type='checkbox'].jm-menu-btn ~ .jm-collapse,
+  .jm-collapse {
+    display: block; 
+  }
+    
+    .creditos p {
+        width: 30%;
+    }
+}
+
+
+
+#destacados h3 {
+    width: 100%;
+    margin-top: 2%;
+}
+
+
+#destacados .contenedor {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.producto {
+    margin: 35px;
+    padding: 5px;
+}
+
+.producto h4 {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.producto .precio {
+    text-align: center;
+    color: #005ea8;
+    margin-bottom: 3px;
+}
+
+.producto .User {
+    text-align: center;
+    color: #005ea8;
+    margin-bottom: 3px;
+}
+
+.producto label {
+    font-size: 15px;
+    color: #ea6209;
+}
+
+.producto a {
+    color: #000;
+}
+
+.producto a:hover {
+    color: #ea6209;
+}
+
+.producto .ventas {
+    float: right;
+    color: #777676;
+}
+
+.img-wrapper {
+    display: flex;
+    align-items: center;
+    width: 190px;
+    height: 190px;
+}
+
+.producto img {
+    max-width: 100%;
+}
+
+
+
+/*Estilos html Nosotros*/
+#Nosotros h2 {
+    padding-top: 150px;
+    width: 50%;
+}
+
+.caja-1{
+    display: flex;
+    /*background: #E99F5E ;*/
+}
+
+.caja-1 div{
+    width: 60%;
+    padding: 20px;
+    margin-left: 70px;
+}
+
+.caja-1 div p{
+    padding: 5px ;
+    text-align: justify;
+}
+
+
+
+.caja-1 img{
+    width: 100%;
+    height:180px; 
+}
+
+@media (min-width: 1024px) {
+    .contenedor {
+        width: 1000px;
+    }
+}
+
+@media (min-width: 800px) {
+    
+}
+
