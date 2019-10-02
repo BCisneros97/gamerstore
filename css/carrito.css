@@ -1,0 +1,105 @@
+#carrito {
+    margin-top: 120px;
+}
+
+.item-compra {
+    height: 125px;
+    margin-bottom: 10px;
+}
+
+.opciones {
+    margin-bottom: 15px;
+}
+
+.opciones label{
+    float: right;
+    font-size: 18px;
+}
+
+#carrito input[type='checkbox'] {
+    margin-right: 5px;
+    color: #fff;
+    border: 1px solid #e3e3e3;
+}
+
+.item-compra .seleccionar {
+    float: left;
+    margin-top: 35px;
+}
+
+.item-compra img {
+    float: left;
+    width: 80px;
+    height: 80px;
+    margin-right: 8px;
+}
+
+.item-compra .detalle {
+    float: left;
+    width: 65%;
+}
+
+.item-compra h4 {
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.item-compra .precio, .item-compra .envio {
+    color: #005ea8;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.cantidad button {
+    height: 20px;
+    width: 20px;
+    background: #e0e0e0;
+    border-radius: 10px;
+    border: none;
+}
+
+.cantidad input {
+    width: 30px;
+    height: 20px;
+    border: none;
+    text-align: center;
+}
+
+.resumen {
+    margin-bottom: 10px;
+    text-align: right;
+}
+
+.resumen span {
+    font-size: 16px;
+}
+
+.resumen .total {
+    margin-right: 8px;
+}
+
+.resumen .monto {
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 18px;
+}
+
+.resumen .btn-pagar {
+    background: #e44300;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    height: 30px;
+    width: 90px;
+    font-size: 18px;
+}
+
+@media(min-width: 768px) {
+    .resumen {
+        margin-right: 20px;
+    }
+
+    .item-compra img {
+        margin-right: 10px;
+    }
+}

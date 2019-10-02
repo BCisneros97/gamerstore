@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <link rel="stylesheet" href="css/fontello.css">
     <link rel="stylesheet" href="css/estilo_responsive.css">
-    <link rel="stylesheet" href="css/canvas.css">
+    <link rel="stylesheet" href="css/carrito.css">
 </head>
 
 <body>
@@ -46,10 +46,51 @@
     </header>
 
     <main>
-        <section id="canvas" class="contenedor">
-            <h2>Modelo de Negocio</h2>
-            <div class="slide">
-                <img src="images/canvas.png" alt="Modelo canvas">
+        <section id="carrito" class="contenedor">
+            <h2>Carrito de compras</h2>
+            <div>
+                <div class="opciones">
+                    <input type="checkbox" id="seleccionar-todo">
+                    <span>Seleccionar todo</span>
+                    <label class="icon-eliminar"></label>
+                </div>
+                <article class="item-compra">
+                    <span class="seleccionar">
+                        <input type="checkbox">
+                    </span>
+                    <img src="images/mouse-3.jpg">
+                    <div class="detalle">
+                        <h4>Microsoft Mouse Wireless Mobile 3500 Halo Limited Edition: The Master Chief Inalámbrico</h4>
+                        <p class="precio">S/.&nbsp;30.00</p>
+                        <p class="envio">Envío: S/.&nbsp;10.00</p>
+                        <div class="cantidad">
+                            <button>-</button>
+                            <input type="number" min="1" value="1">
+                            <button>+</button>
+                        </div>
+                    </div>
+                </article>
+                <article class="item-compra">
+                    <span class="seleccionar">
+                        <input type="checkbox">
+                    </span>
+                    <img src="images/p-4.jpg">
+                    <div class="detalle">
+                        <h4>Joystick Fornite</h4>
+                        <p class="precio">S/.&nbsp;25.00</p>
+                        <p class="envio">Envío: S/.&nbsp;8.00</p>
+                        <div class="cantidad">
+                            <button>-</button>
+                            <input type="number" min="1" value="1">
+                            <button>+</button>
+                        </div>
+                    </div>
+                </article>
+                <div class="resumen">
+                    <span class="total">Total:</span>
+                    <span class="monto">S/.&nbsp;73.00</span>
+                    <button class="btn-pagar">Pagar</button>
+                </div>
             </div>
         </section>
     </main>
