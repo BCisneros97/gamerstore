@@ -11,3 +11,22 @@
     height: auto;
     margin: 10px;
 }
+
+@media (min-width: 768px) {
+    #canvas img {
+        width: 100%;
+        height: auto;
+        margin: 0px;
+    }
+
+    #canvas .slide {
+        overflow: initial;
+    }
+}
+
+@media (min-width: 800px) {
+    #canvas img {
+        width: 100%;
+        height: auto;
+    }
+}

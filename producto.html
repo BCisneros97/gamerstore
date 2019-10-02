@@ -16,7 +16,7 @@
 <body>
     <header>
         <div class="contenedor">
-            <a href="/">
+            <a href="index_responsive.html">
                 <img src="css/imagenes/Gamer Store Logo solo.png" alt="logo">
             </a>
             <div id="busqueda">
@@ -26,19 +26,19 @@
             <input type="checkbox" id="menu-bar">
             <label class="icon-menu" for="menu-bar"></label>
 
-            <a href="#">
+            <a href="login.html">
                 <label class="icon-usuario">
                     <p>Iniciar sesión</p>
                 </label>
             </a>
             <label class="icon-carrito"></label>
             <nav class="menu">
-                <a href="">Inicio</a>
-                <a href="">Nosotros</a>
-                <a href="">Categorías</a>
-                <a href="">Destacados</a>
-                <a href="">Ubícanos</a>
-                <a href="">Modelo de negocio</a>
+                <a href="index_responsive.html">Inicio</a>
+                <a href="nosotros.html">Nosotros</a>
+                <a href="categorias.html">Categorías</a>
+                <a href="destacados.html">Destacados</a>
+                <a href="ubicanos.html">Ubícanos</a>
+                <a href="canvas.html">Modelo de negocio</a>
             </nav>
         </div>
     </header>
@@ -46,13 +46,59 @@
     <main>
         <section id="detalle-producto" class="contenedor">
             <article class="post-producto">
-                <h3>Mouse inalámbrico</h3>
-                <div class="img-wrapper">
-                    <img src="images/p-2.jpg">
+                <div class="titulo">
+                    <h3>Microsoft Mouse Wireless Mobile 3500 Halo Limited Edition: The Master Chief Inalámbrico</h3>
+                    <label class="icon-estrella calificacion"></label>3.8
+                    <p class="ventas">(78 vendidos)</p>
                 </div>
-                <p class="precio">S/. 50.00</p>
-                <label class="icon-estrella"></label>4.8
-                <p class="ventas">50 vendidos</p>
+                <div class="img-wrapper">
+                    <img src="images/mouse-3.jpg">
+                </div>
+                <h4>¿Qué te parece el diseño?</h4>
+                <div class="calificar">
+                    <label class="icon-estrella"></label>
+                    <label class="icon-estrella"></label>
+                    <label class="icon-estrella"></label>
+                    <label class="icon-estrella"></label>
+                    <label class="icon-estrella"></label>
+                </div>
+                <h4>Características</h4>
+                <ul class="caracteristicas">
+                    <li>BlueTrack Technology</li>
+                    <li>Plug and Play</li>
+                    <li>Facto de Forma: Ambidiestro</li>
+                    <li>Frecuencia Wireless: 2.4GHz</li>
+                    <li>Botones: (3) izquierda, derecha y botón de rueda</li>
+                </ul>
+                <div class="envio">
+                    <h3>OPCIONES DE ENVIO</h3>
+                    <div>
+                        <img src="images/icono-envio-chimbote.png" alt="Envío a Chimbote">
+                        <p>Envío en Chimbote</p>
+                    </div>
+                    <div>
+                        <img src="images/icono-envio-ciudades.png" alt="Envío a otras ciudades">
+                        <p>Envío a otras ciudades</p>
+                    </div>
+                    <div>
+                        <img src="images/icono-envio-tienda.png" alt="Recepción en tienda">
+                        <p>Recepción en tienda</p>
+                    </div>
+                </div>
+                <div id="caja-compra">
+                    <div id="caja-precio">
+                        <span class="precio">S/.&nbsp;30.00</span>
+                        <span class="igv">Incluye IGV</span>
+                    </div>
+                    <div id="caja-cantidad">
+                        <span class="cantidad">Cantidad:</span>
+                        <input id="input-cantidad" type="number" value="1" min="1">
+                    </div>
+                    <button type="button" class="btn-comprar">
+                        <label class="icon-carrito"></label>
+                        <span>COMPRAR AHORA</span>
+                    </button>
+                </div>
             </article>
         </section>
     </main>
