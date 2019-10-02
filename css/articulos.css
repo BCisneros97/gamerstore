@@ -43,7 +43,7 @@
     color: #777676;
 }
 
-.img-wrapper {
+.producto .img-wrapper {
     display: flex;
     align-items: center;
     width: 190px;
