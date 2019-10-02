@@ -1,89 +1,152 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
-	<meta charset="utf-8">
-	<title>Gamer Store</title>
-	<link rel="stylesheet" type="text/css" href="css/mi_estilo.css">
-	<link rel="stylesheet" type="text/css" href="css/banner.css">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gamer Store</title>
+    <link rel="icon" href="css/imagenes/favicon.png" type="image/png">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <link rel="stylesheet" href="css/fontello.css">
+    <link rel="stylesheet" href="css/estilo_principal.css">
 </head>
 
 <body>
-	<div class="principal">
-		<div class="menu">
-			<div class="logo">
-				<img src="css/imagenes/Gamer Store Logo solo.png" height="60px">
-			</div>
+    <header>
+        <div class="contenedor">
+            <a href="/index.html">
+                <img src="css/imagenes/Gamer Store Logo solo.png" alt="logo">
+            </a>
+            <div id="busqueda">
+                <input type="text" placeholder="Buscar producto">
+                <a class="icon-buscar" href="#"></a>
+            </div>
+            <input type="checkbox" id="menu-bar">
+            <label class="icon-menu" for="menu-bar"></label>
 
-			<div class="buscador">
-				<input type="text" size="100" height="50px" placeholder="Buscar producto">
-			</div>
-			<div class="icono">
-				<img src="images/carrito-de-compras.png" height="35px">
-				<img src="images/usuario.png" height="35px">
-			</div>
-		</div>
-		<div class="menuprincipal">
-			<ul>
-				<li><a href="index.html">Inicio</a></li>
-				<li><a href="nosotros.html">Nosotros</a></li>
-				<li><a href="servicios.html">Categorías</a></li>
-				<li><a href="destacados.html">Destacados</a></li>
-				<li><a href="sucursales.html">Sucursales</a></li>
-				<li><a href="contacto.html">Contacto</a></li>
-			</ul>
-		</div>
-		<div class="slider">
-			<ul>
-				<li>
-					<img src="css/imagenes/imagen1.jpg" height="350px">
-				</li>
-				<li>
-					<img src="css/imagenes/imagen2.jpg" height="350px">
-				</li>
-				<li>
-					<img src="css/imagenes/imagen3.jpg" height="350px">
-				</li>
-				<li>
-					<img src="css/imagenes/imagen4.jpg" height="350px">
-				</li>
-			</ul>
-		</div>
-		<div class="contenido">
+            <a href="login.html">
+                <label class="icon-usuario">
+                    <p>Iniciar sesión</p>
+                </label>
+            </a>
+            <a href="carrito.html">
+                <label class="icon-carrito"></label>
+            </a>
+            <nav class="menu">
+                <a href="index.html">Inicio</a>
+                <a href="nosotros.html">Nosotros</a>
+                <a href="categorias.html">Categorías</a>
+                <a href="destacados.html">Destacados</a>
+                <a href="ubicanos.html">Ubícanos</a>
+                <a href="canvas.html">Modelo de negocio</a>
+            </nav>
+        </div>
+    </header>
 
-			<section class="wap">
+    <main>
+        <section id="banner">
+            <div class="slider">
+                <ul>
+                    <li>
+                        <img src="css/imagenes/imagen1.jpg">
+                    </li>
+                    <li>
+                        <img src="css/imagenes/imagen2.jpg">
+                    </li>
+                    <li>
+                        <img src="css/imagenes/imagen3.jpg">
+                    </li>
+                    <li>
+                        <img src="css/imagenes/imagen4.jpg">
+                    </li>
+                </ul>
+            </div>
+        </section>
 
-				<section class="Bienvenidos">
-					<h2>Bienvenidos a GamerStore</h2>
-					<h3>Un gamer es aquel que juega con gran dedicación e interés a videojuegos y tiene un conocimiento extenso sobre
-						estos. Si eres un gamer, en esta comunidad podrás compartir los diseños de tus videojuegos favoritos y adquirir accesorios personalizados.</h3>
-				</section>
+        <section id="bienvenida" class="contenedor">
+            <h2>Bienvenido a Gamer Store!!</h2>
+            <p>Un gamer es aquel que juega con gran dedicación e interés a videojuegos y tiene un conocimiento extenso
+                sobre estos. Si eres un gamer, en esta comunidad podrás compartir los diseños de tus videojuegos
+                favoritos y
+                adquirir accesorios personalizados.
+            </p>
+        </section>
 
-				<!--Columnas para mostrar algunos productos -->
+        <section id="destacados">
+            <div class="contenedor">
+                <h3>Los más vendidos</h3>
 
-				<section class="contenedor-columnas">
+                <article class="producto">
+                    <div class="img-wrapper">
+                        <img src="images/mouse-3.jpg">
+                    </div>
+                    <a href="producto.html">
+                        <h4>Microsoft Mouse Wireless...</h4>
+                    </a>
+                    <p class="precio">S/. 50.00</p>
+                    <label class="icon-estrella"></label>3.8
+                    <p class="ventas">78 vendidos</p>
+                </article>
+                <article class="producto">
+                    <div class="img-wrapper">
+                        <img src="images/p-1.png">
+                    </div>
+                    <a href="#">
+                        <h4>Joystick</h4>
+                    </a>
+                    <p class="precio">S/. 50.00</p>
+                    <label class="icon-estrella"></label>4.8
+                    <p class="ventas">50 vendidos</p>
+                </article>
 
-					<div class="columnasx3">
-						<img src="images/p-1.png" alt="" height="175px">
-						<h4>Joystick</h4>
-						<h5>Controles</h5>
-					</div>
 
-					<div class="columnasx3">
-						<img src="images/p-2.jpg" alt="" height="175px">
-						<h4>Mouse inalámbrico</h4>
-						<h5>Periféricos</h5>
-					</div>
+                <article class="producto">
+                    <div class="img-wrapper">
+                        <img src="images/p-2.jpg">
+                    </div>
+                    <a href="#">
+                        <h4>Mouse inalámbrico</h4>
+                    </a>
+                    <p class="precio">S/. 50.00</p>
+                    <label class="icon-estrella"></label>4.3
+                    <p class="ventas">62 vendidos</p>
+                </article>
+                <article class="producto">
+                    <div class="img-wrapper">
+                        <img src="images/p-3.png">
+                    </div>
+                    <a href="#">
+                        <h4>Teclado mecánico</h4>
+                    </a>
+                    <p class="precio">S/. 50.00</p>
+                    <label class="icon-estrella"></label>3.8
+                    <p class="ventas">78 vendidos</p>
+                </article>
+            </div>
+        </section>
+    </main>
 
-					<div class="columnasx3">
-						<img src="images/p-3.png" alt="" height="175px">
-						<h4>Teclado mecánico</h4>
-						<h5>Periféricos</h5>
-					</div>
+    <footer>
+        <div class="contenedor">
+            <div class="creditos">
+                <p>&lt;Ruben Castillo Graus&gt;</p>
+                <p>&lt;Benny Cisneros Baca&gt;</p>
+                <p>&lt;Francisco López Zapata&gt;</p>
+            </div>
+            <p class="copyright">Gamer Store &copy; 2019</p>
+        </div>
+    </footer>
 
-				</section>
-			</section>
-		</div>
-	</div>
+    <div class="social">
+        <ul>
+            <li> <a href="" class="fab fa-facebook-f"></a></li>
+            <li><a href="" class="fab fa-facebook-messenger"></a></li>
+            <li> <a href="https://api.whatsapp.com/send?phone=51947256885&text=Hola%20como%20Estas" target="_blank"
+                    class="fab fa-whatsapp"></a></li>
+        </ul>
+    </div>
 </body>
+
 </html>
