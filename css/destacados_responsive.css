@@ -94,25 +94,15 @@
     height:180px; 
 }
 
-@media(max-width: 850px){
-    .caja-1{
-        display: block;
-    }
-    .caja-1 div{
-        width: 75%;
-        padding: 10px;
-    }
-
-    #Nosotros h2{
-        margin-left: 40px;
-    }
-
-}
-
 @media (min-width: 1024px) {
     .contenedor {
         width: 1000px;
-        margin-right: 100px;
+    }
+}
+
+@media (min-width: 800px) {
+    .creditos p {
+        width: 30%;
     }
 }
 
