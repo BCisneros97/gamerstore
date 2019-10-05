@@ -28,7 +28,7 @@
             <label class="icon-menu" for="menu-bar"></label>
 
             <label class="icon-usuario">
-                <a href="login.html">Iniciar sesión</a>
+                <a href="login.html" id="login">Iniciar sesión</a>
             </label>
             <label class="icon-carrito">
                 <a href="carrito.html"></a>
@@ -49,15 +49,20 @@
         <section id="clientes">
             <div class="contenedor">
                 <h2>Listado de clientes</h2>
+                <div class="cajita">
+                    <input type="text" id="buscador" placeholder="Buscar cliente">
+                </div>
                 <div class="table-wrapper">
-                    <table>
+                    <table id="tabla">
                         <thead>
-                            <th>N°</th>
-                            <th>Código</th>
-                            <th>Apellido paterno</th>
-                            <th>Apellido materno</th>
-                            <th>Nombres</th>
-                            <th>Foto</th>
+                            <tr>
+                                <th>N°</th>
+                                <th>Código</th>
+                                <th>Apellido paterno</th>
+                                <th>Apellido materno</th>
+                                <th>Nombres</th>
+                                <th>Foto</th>
+                            </tr>
                         </thead>
                         <tbody>
                             <tr>
@@ -206,6 +211,24 @@
                     class="fab fa-whatsapp"></a></li>
         </ul>
     </div>
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#buscador').keyup(function () {
+                _this = this;
+                $.each($('#tabla tbody tr'), function () {
+                    if ($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) === -1) {
+                        $(this).hide();
+                    }
+                    else {
+                        $(this).show();
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
