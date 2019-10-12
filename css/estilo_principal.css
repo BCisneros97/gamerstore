@@ -85,6 +85,9 @@ footer .contenedor {
 
 .copyright {
     font-size: 18px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
 }
 
 h3, h2 {
