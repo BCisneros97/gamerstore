@@ -117,6 +117,16 @@
 .calificar {
     text-align: center;
 }
+
+.calificar input {
+    display: none;
+}
+
+#i-estrella1, #i-estrella2, #i-estrella3,
+#i-estrella4, #i-estrella5 {
+    cursor: pointer;
+}
+
 .calificar label {
     margin-bottom: 8px;
     display: inline-block;
