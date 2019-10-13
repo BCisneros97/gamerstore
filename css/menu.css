@@ -2,7 +2,7 @@
     display: none;
 }
 
-header label, header .icon-carrito {
+header label, header span {
     float: right;
     font-size: 28px;
     margin: 14px 0;
