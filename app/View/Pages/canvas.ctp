@@ -1,4 +1,4 @@
-<?php echo $this->Html->css('canvas'); ?>
+<?php echo $this->Html->css('canvas', array('inline' => false)); ?>
 
 <section id="canvas" class="contenedor">
     <h2>Modelo de Negocio</h2>
