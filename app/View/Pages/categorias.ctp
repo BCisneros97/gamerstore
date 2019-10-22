@@ -1,5 +1,5 @@
 
-<?php echo $this->Html->css('categoria');
+<?php echo $this->Html->css('categoria',array('inline'=>false));
 echo $this->element('categoria')?>
             <div class="productos">
                 <section id="destacados">
