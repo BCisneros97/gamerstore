@@ -19,12 +19,7 @@
 <body>
 <div class="login-box">
     <?php
-    $options = array(
-        'type' => 'submit',
-        'class' => 'btn',
-        'label' => 'Iniciar Sesión'
-    );
-    echo $this->Form->create('Login', array(
+        echo $this->Form->create('Login', array(
             'url'=>array('controller'=>'pages','action'=>'home'), 'type' => 'get'));
     echo $this->Html->image('gamer-store-logo.png', array('alt' => 'Logo Gamer Store', 'class' => 'img'));
     ?>
@@ -47,6 +42,11 @@
             'class' => 'textbox'
         )
     ));
+    $options = array(
+        'type' => 'submit',
+        'class' => 'btn',
+        'label' => 'Iniciar Sesión'
+    );
     echo $this->Form->end($options);
     ?>
 </div>
