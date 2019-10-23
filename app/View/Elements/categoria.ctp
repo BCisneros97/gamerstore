@@ -11,5 +11,4 @@
             <li> <?php echo $this->Html->link('Protector para Celulares', 'categoria_pc'); ?></li>
         </ul>
     </nav>
-
 </div>
