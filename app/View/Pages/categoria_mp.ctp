@@ -1,83 +1,18 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Categorias</title>
-    <link rel="icon" href="css/imagenes/favicon.png" type="image/png">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
-    <link rel="stylesheet" href="css/fontello.css">
-    <link rel="stylesheet" href="css/estilo_principal.css">
-    <link rel="stylesheet" href="css/categoria.css">
-
-</head>
-
-<body>
-    <header>
-        <div class="contenedor">
-            <a href="index.html">
-                <img src="css/imagenes/gamer-store-logo.png" alt="logo">
-            </a>
-            <div id="busqueda">
-                <input type="text" placeholder="Buscar producto">
-                <a class="icon-buscar" href="#"></a>
-            </div>
-            <input type="checkbox" id="menu-bar">
-            <label class="icon-menu" for="menu-bar"></label>
-
-            <a href="login.html">
-                <p class="icon-usuario">
-                    <span id="login">Iniciar sesión</span>
-                </p>
-            </a>
-            <a href="carrito.html">
-                <span class="icon-carrito"></span>
-            </a>
-            <nav class="menu">
-                <a href="index.html">Inicio</a>
-                <a href="nosotros.html">Nosotros</a>
-                <a href="clientes.html">Clientes</a>
-                <a href="categorias.html">Categorías</a>
-                <a href="destacados.html">Destacados</a>
-                <a href="ubicanos.html">Ubícanos</a>
-                <a href="canvas.html">Modelo de negocio</a>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-        <section>
-            <div class="contenedor-cat">
-                <nav class="jmenu">
-                    <label for="btn-cat" class="jm-icon-menu jm-menu-btn">Categorias </label>
-                    <input type="checkbox" id="btn-cat" class="jm-menu-btn">
-                    <ul class="jm-collapse">
-                        <li> <a href="categorias.html">Teclado</a></li>
-                        <li> <a href="categoria_m.html">Mouse</a></li>
-                        <li> <a href="categoria_mp.html">Mouse Pad</a></li>
-                        <li> <a href="categoria_j.html">Joysticks</a></li>
-                        <li> <a href="categoria_pj.html">Por Juegos</a></li>
-                        <li> <a href="categoria_pc.html">Protector de Celulares</a></li>
-
-                    </ul>
-                </nav>
-
-            </div>
+<?php echo $this->Html->css('categoria',array('inline'=>false));
+echo $this->element('categoria')?>
             <div class="productos">
                 <section id="destacados">
                     <div class="contenedor">
-                        <h3>Mouse</h3>
+                        <h3>Mouse Pad</h3>
 
                         <article class="producto">
                             <div class="img-wrapper">
-                                <img src="images/mouse-2.jpg" alt="imagen">
+                                <?php echo  $this->Html->image('mp-1.jpg',array('alt'=>'imagen'));?>
                             </div>
-                            <a href="producto.html">
-                                <h4>Mouse Gamer</h4>
+                            <a href="producto">
+                                <h4>Mouse Pad GoF</h4>
                             </a>
+
                             <p class="User">Francisco1997</p>
 
                             <label class="icon-estrella"></label>4.8
@@ -87,10 +22,10 @@
 
                         <article class="producto">
                             <div class="img-wrapper">
-                                <img src="images/mouse-3.jpg" alt="imagen">
+                                <?php echo  $this->Html->image('mp-3.jpg',array('alt'=>'imagen'));?>
                             </div>
-                            <a href="producto.html">
-                                <h4>Mouse </h4>
+                            <a href="producto">
+                                <h4>Mouse Pad </h4>
                             </a>
                             <p class="User">Benny97</p>
                             <label class="icon-estrella"></label>4.3
@@ -100,20 +35,28 @@
 
                         <article class="producto">
                             <div class="img-wrapper">
-                                <img src="images/mouse-4.jpg" alt="imagen">
+                                <?php echo  $this->Html->image('mp-2.jpg',array('alt'=>'imagen'));?>
+
                             </div>
-                            <a href="producto.html">
-                                <h4>Mouse Inhalambrico</h4>
+                            <a href="producto">
+                                <h4>Mouse Pad </h4>
                             </a>
                             <p class="User">Ruben97</p>
 
                             <label class="icon-estrella"></label>3.8
                             <p class="ventas">78 vendidos</p>
                         </article>
+
+
+
+
+
                     </div>
                 </section>
             </div>
+
         </section>
+
     </main>
 
     <footer>

@@ -1,5 +1,5 @@
 
-<?php echo $this->Html->css('categoria');
+<?php echo $this->Html->css('categoria',array('inline'=>false));
 echo $this->element('categoria')?>
             <div class="productos">
                 <section id="destacados">
@@ -10,7 +10,7 @@ echo $this->element('categoria')?>
                             <div class="img-wrapper">
                                 <?php echo  $this->Html->image('t-1.jpg',array('alt'=>'t-1'));?>
                             </div>
-                            <a href="producto.html">
+                            <a href="producto">
                                 <h4>Teclado</h4>
                             </a>
                             <p class="User">Francisco1997</p>
@@ -24,7 +24,7 @@ echo $this->element('categoria')?>
                             <div class="img-wrapper">
                                 <?php echo  $this->Html->image('t-2.jpg',array('alt'=>'t-2'));?>
                             </div>
-                            <a href="producto.html">
+                            <a href="producto">
                                 <h4>Teclado </h4>
                             </a>
                             <p class="User">Benny97</p>
@@ -37,7 +37,7 @@ echo $this->element('categoria')?>
                             <div class="img-wrapper">
                                 <?php echo  $this->Html->image('t-3.jpg',array('alt'=>'t-3'));?>
                             </div>
-                            <a href="producto.html">
+                            <a href="producto">
                                 <h4>Teclado mecánico</h4>
                             </a>
                             <p class="User">Ruben97</p>
@@ -52,7 +52,7 @@ echo $this->element('categoria')?>
                             <div class="img-wrapper">
                                 <?php echo  $this->Html->image('t-4.jpg',array('alt'=>'t-4'));?>
                             </div>
-                            <a href="producto.html">
+                            <a href="producto">
                                 <h4>Teclado League of Leguends</h4>
                             </a>
                             <p class="User">Diego98</p>
@@ -66,7 +66,7 @@ echo $this->element('categoria')?>
                             <div class="img-wrapper">
                                 <?php echo  $this->Html->image('t-5.jpg',array('alt'=>'t-5'));?>
                             </div>
-                            <a href="producto.html">
+                            <a href="producto">
                                 <h4>Stickers para Teclado</h4>
                             </a>
                             <p class="User">Castañeda98</p>
@@ -80,7 +80,7 @@ echo $this->element('categoria')?>
                             <div class="img-wrapper">
                                 <?php echo  $this->Html->image('p-6.jpg',array('alt'=>'p-6'));?>
                             </div>
-                            <a href="producto.html">
+                            <a href="producto">
                                 <h4>Teclado Inhalambrico</h4>
                             </a>
                             <p class="User">Medina97</p>
@@ -95,7 +95,7 @@ echo $this->element('categoria')?>
                             <div class="img-wrapper">
                                 <?php echo  $this->Html->image('t-6.jpg',array('alt'=>'t-6'));?>
                             </div>
-                            <a href="producto.html">
+                            <a href="producto">
                                 <h4>Stickers para Teclado</h4>
                             </a>
                             <p class="User">DeivyRA</p>
@@ -103,9 +103,6 @@ echo $this->element('categoria')?>
                             <label class="icon-estrella"></label>3.6
                             <p class="ventas">71 vendidos</p>
                         </article>
-
-
-
                     </div>
                 </section>
             </div>

@@ -4,12 +4,11 @@
         <input type="checkbox" id="btn-cat" class="jm-menu-btn" checked>
         <ul class="jm-collapse">
             <li><?php echo $this->Html->link('Teclado', 'categorias'); ?></li>
-            <li> <a href="categoria_m.html">Mouse</a></li>
-            <li> <a href="categoria_mp.html">Mouse Pad</a></li>
-            <li> <a href="categoria_j.html">Joysticks</a></li>
-            <li> <a href="categoria_pj.html">Por Juegos</a></li>
-            <li> <a href="categoria_pc.html">Protector de Celulares</a></li>
-
+            <li> <?php echo $this->Html->link('Mouse', 'categoria_m'); ?></li>
+            <li> <?php echo $this->Html->link('Mouse Pad', 'categoria_mp'); ?></li>
+            <li> <?php echo $this->Html->link('Joysticks', 'categoria_j'); ?></li>
+            <li> <?php echo $this->Html->link('Juegos', 'categoria_pj'); ?></li>
+            <li> <?php echo $this->Html->link('Protector para Celulares', 'categoria_pc'); ?></li>
         </ul>
     </nav>
 
