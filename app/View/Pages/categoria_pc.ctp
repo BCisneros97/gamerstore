@@ -9,7 +9,11 @@ echo $this->element('categoria')?>
                             <div class="img-wrapper">
                                 <?php echo  $this->Html->image('pc-1.jpg',array('alt'=>'imagen'));?>
                             </div>
+<<<<<<< HEAD
                             <a href="producto">
+=======
+                            <a href="producto.html">
+>>>>>>> origin/master
                                 <h4>Protector</h4>
                             </a>
                             <p class="User">Francisco1997</p>
@@ -23,7 +27,11 @@ echo $this->element('categoria')?>
                             <div class="img-wrapper">
                                 <?php echo  $this->Html->image('pc-2.jpg',array('alt'=>'imagen'));?>
                             </div>
+<<<<<<< HEAD
                             <a href="producto">
+=======
+                            <a href="producto.html">
+>>>>>>> origin/master
                                 <h4>Protector</h4>
                             </a>
                             <p class="User">Benny97</p>
@@ -36,7 +44,11 @@ echo $this->element('categoria')?>
                             <div class="img-wrapper">
                                 <?php echo  $this->Html->image('pc-3.jpg',array('alt'=>'imagen'));?>
                             </div>
+<<<<<<< HEAD
                             <a href="producto">
+=======
+                            <a href="producto.html">
+>>>>>>> origin/master
                                 <h4>Protector</h4>
                             </a>
                             <p class="User">Ruben97</p>
