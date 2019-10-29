@@ -25,7 +25,8 @@
 		<div class="contenedor">
 			<?php echo $this->Html->link(
 				$this->Html->image('gamer-store-logo.png', array('alt' => 'Logo Gamer Store')),
-				'home', array('target' => '_blank', 'escape' => false)
+				'home',
+				array('escape' => false)
 			);
 			?>
 			<div id="busqueda">
@@ -35,14 +36,21 @@
 			<input type="checkbox" id="menu-bar">
 			<label class="icon-menu" for="menu-bar"></label>
 
-			<a href="login">
-				<p class="icon-usuario">
-					<span id="login">Iniciar sesión</span>
-				</p>
-			</a>
-			<a href="carrito">
-				<span class="icon-carrito"></span>
-			</a>
+			<?php echo $this->Html->link(
+				$this->Html->tag(
+					'p',
+					$this->Html->tag('span', 'Iniciar sesión', array('id'=>'login')),
+					array('class' => 'icon-usuario', 'escape' => false)
+				),
+				'login',
+				array('escape' => false)
+			); ?>
+			
+			<?php echo $this->Html->link(
+				$this->Html->tag('span', '', array('class' => 'icon-carrito')),
+				'carrito',
+				array('escape' => false)
+			); ?>
 			
 			<?php echo $this->element('menu_principal'); ?>
 			
