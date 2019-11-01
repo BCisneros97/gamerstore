@@ -13,7 +13,8 @@ class CategoriasController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator');
+	public $components = array('Paginator', 'Session');
+	public $layout = 'admin';
 
 /**
  * index method
@@ -34,7 +35,7 @@ class CategoriasController extends AppController {
  */
 	public function view($id = null) {
 		if (!$this->Categoria->exists($id)) {
-			throw new NotFoundException(__('Invalid categoria'));
+			throw new NotFoundException(__('No existe la categoría.'));
 		}
 		$options = array('conditions' => array('Categoria.' . $this->Categoria->primaryKey => $id));
 		$this->set('categoria', $this->Categoria->find('first', $options));
@@ -49,10 +50,10 @@ class CategoriasController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Categoria->create();
 			if ($this->Categoria->save($this->request->data)) {
-				$this->Session->setFlash(__('The categoria has been saved.'));
+				$this->Session->setFlash(__('La categoría ha sido guardada.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The categoria could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('La categoría no se pudo guardar. Intente otra vez.'));
 			}
 		}
 		$descuentos = $this->Categoria->Descuento->find('list');
@@ -68,14 +69,14 @@ class CategoriasController extends AppController {
  */
 	public function edit($id = null) {
 		if (!$this->Categoria->exists($id)) {
-			throw new NotFoundException(__('Invalid categoria'));
+			throw new NotFoundException(__('No existe categoria'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Categoria->save($this->request->data)) {
-				$this->Session->setFlash(__('The categoria has been saved.'));
+				$this->Session->setFlash(__('La categoría ha sido guardada.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The categoria could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('La categoría no se pudo guardar. Intente otra vez.'));
 			}
 		} else {
 			$options = array('conditions' => array('Categoria.' . $this->Categoria->primaryKey => $id));
@@ -95,13 +96,13 @@ class CategoriasController extends AppController {
 	public function delete($id = null) {
 		$this->Categoria->id = $id;
 		if (!$this->Categoria->exists()) {
-			throw new NotFoundException(__('Invalid categoria'));
+			throw new NotFoundException(__('La categoría no existe'));
 		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Categoria->delete()) {
-			$this->Session->setFlash(__('The categoria has been deleted.'));
+			$this->Session->setFlash(__('Se ha eliminado la categoría.'));
 		} else {
-			$this->Session->setFlash(__('The categoria could not be deleted. Please, try again.'));
+			$this->Session->setFlash(__('No se pudo eliminar la categoría. Intente otra vez.'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
