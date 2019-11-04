@@ -13,7 +13,8 @@ class UsersController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator');
+	public $components = array('Paginator', 'Session');
+	public $layout = 'admin';
 
 /**
  * index method
@@ -34,7 +35,7 @@ class UsersController extends AppController {
  */
 	public function view($id = null) {
 		if (!$this->User->exists($id)) {
-			throw new NotFoundException(__('Invalid user'));
+			throw new NotFoundException(__('Usuario no existe'));
 		}
 		$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
 		$this->set('user', $this->User->find('first', $options));
@@ -48,14 +49,16 @@ class UsersController extends AppController {
 	public function add() {
 		if ($this->request->is('post')) {
 			$this->User->create();
-			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash(__('The user has been saved.'));
+			$this->request->data['User']['password'] = password_hash($this->request->data['User']['password'], PASSWORD_BCRYPT);
+			if ($this->User->save($this->request->data, array('deep'=>'true'))) {
+				$this->Session->setFlash(__('Usuario guardado correctamente'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('No se pudo guardar el usuario'));
 			}
 		}
-		$permisos = $this->User->Permiso->find('list');
+		$this->loadModel('Permiso');
+		$permisos = $this->Permiso->find('all');
 		$this->set(compact('permisos'));
 	}
 
@@ -71,17 +74,24 @@ class UsersController extends AppController {
 			throw new NotFoundException(__('Invalid user'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
-			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash(__('The user has been saved.'));
+			if (strlen($this->request->data['User']['password']) > 0) {
+				$this->request->data['User']['password'] = password_hash($this->request->data['User']['password'], PASSWORD_BCRYPT);
+			}
+			else {
+				unset($this->request->data['User']['password']);
+			}
+			if ($this->User->save($this->request->data, array('deep'=>'true'))) {
+				$this->Session->setFlash(__('Usuario guardado correctamente'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('No se pudo guardar el usuario'));
 			}
 		} else {
 			$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
 			$this->request->data = $this->User->find('first', $options);
+			unset($this->request->data['User']['password']);
 		}
-		$permisos = $this->User->Permiso->find('list');
+		$permisos = $this->User->Permiso->find('all');
 		$this->set(compact('permisos'));
 	}
 
@@ -99,10 +109,30 @@ class UsersController extends AppController {
 		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->User->delete()) {
-			$this->Session->setFlash(__('The user has been deleted.'));
+			$this->Session->setFlash(__('Usuario dado de baja correctamente'));
 		} else {
-			$this->Session->setFlash(__('The user could not be deleted. Please, try again.'));
+			$this->Session->setFlash(__('No se pudo dar de baja al usuario'));
 		}
 		return $this->redirect(array('action' => 'index'));
+	}
+
+	public function registrar() {
+		if ($this->request->is('post')) {
+			$this->User->create();
+			$this->request->data['User']['password'] = password_hash($this->request->data['User']['password'], PASSWORD_BCRYPT);
+			$this->request->data['User']['tipo'] = 'Cliente';
+			if ($this->User->save($this->request->data)) {
+				$this->loadModel('Cliente');
+				$this->Cliente->create();
+				$this->request->data['Cliente']['user_id'] = $this->User->id;
+				$this->request->data['Cliente']['tipo'] = '';
+				$this->Cliente->save($this->request->data);
+				return $this->redirect(array('controller'=>'pages'));
+			} else {
+				$this->Session->setFlash(__('No se pudo guardar el usuario.'));
+			}
+		}
+
+		$this->layout = 'login';
 	}
 }

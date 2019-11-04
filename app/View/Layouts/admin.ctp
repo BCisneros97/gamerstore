@@ -51,7 +51,7 @@
       <?php echo $this->Html->link(
         $this->Html->image(
           'favicon.png',
-          array('alt' => "Gamer Store Logo", 'class' => "brand-image img-circle elevation-3", 'style' => "opacity: .8")
+          array('alt' => "Gamer Store Logo", 'class' => "brand-image img-circle elevation-3")
         ) .
           $this->Html->tag('span', 'Gamer Store', array('class' => "brand-text font-weight-light")),
         'index',

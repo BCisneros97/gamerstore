@@ -1,26 +1,86 @@
-<div class="users form">
-<?php echo $this->Form->create('User'); ?>
-	<fieldset>
-		<legend><?php echo __('Add User'); ?></legend>
-	<?php
-		echo $this->Form->input('nombre');
-		echo $this->Form->input('email');
-		echo $this->Form->input('password');
-		echo $this->Form->input('foto');
-		echo $this->Form->input('tipo');
-		echo $this->Form->input('Permiso');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Registrar usuario</h1>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
 
-		<li><?php echo $this->Html->link(__('List Users'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Clientes'), array('controller' => 'clientes', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Cliente'), array('controller' => 'clientes', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Permisos'), array('controller' => 'permisos', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Permiso'), array('controller' => 'permisos', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
+<section class="content">
+    <div class="row">
+        <div class="col-12">
+            <div class="card card-info">
+                <div class="card-header">
+                    <h3 class="card-title"></h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <?php echo $this->Form->create('User', array('class' => 'form-horizontal', 'enctype' => 'multipart/form-data')); ?>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label for="UserNombre" class="col-sm-2 col-form-label">Nombre</label>
+                        <div class="col-sm-10">
+                            <?php echo $this->Form->input('nombre', array('div' => false, 'label' => false, 'class' => 'form-control')); ?>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="UserEmail" class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-10">
+                            <?php echo $this->Form->input('email', array('div' => false, 'label' => false, 'class' => 'form-control')); ?>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="UserPassword" class="col-sm-2 col-form-label">Password</label>
+                        <div class="col-sm-10">
+                            <?php echo $this->Form->input('password', array('div' => false, 'label' => false, 'class' => 'form-control')); ?>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="UserPassword2" class="col-sm-2 col-form-label">Confirmar Password</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" id="UserPassword2" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="UserFoto" class="col-sm-2 col-form-label">Foto</label>
+                        <div class="col-sm-10">
+                            <input type="file" class="form-control-file" id="UserFoto" name="data[foto]">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="UserTipo" class="col-sm-2 col-form-label">Tipo</label>
+                        <div class="col-sm-10">
+                            <select name="data[User][tipo]" class="form-control" id="UserTipo">
+                                <option value="Admin">Administrador</option>
+                                <option value="Vendedor">Atención al cliente</option>
+                                <option value="Repartidor">Repartidor</option>
+                                <option value="Cliente">Cliente</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="UserPermiso" class="col-sm-2 col-form-label">Permisos</label>
+                        <div class="col-sm-10">
+                            <?php foreach ($permisos as $permiso) : ?>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="data[Permiso][Permiso][]" value="<?= $permiso['Permiso']['id'] ?>" id="permiso<?= $permiso['Permiso']['id'] ?>">
+                                    <label class="form-check-label" for="permiso<?= $permiso['Permiso']['id'] ?>">
+                                        <?= $permiso['Permiso']['descripcion'] ?>
+                                    </label>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-info">Guardar</button>
+                </div>
+                <!-- /.card-footer -->
+                <?php echo $this->Form->end(); ?>
+            </div>
+        </div>
+    </div>
+</section>
