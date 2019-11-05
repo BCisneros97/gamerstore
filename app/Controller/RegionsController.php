@@ -13,7 +13,8 @@ class RegionsController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator');
+	public $components = array('Paginator', 'Session');
+    public $layout = 'admin';
 
 /**
  * index method
@@ -23,6 +24,7 @@ class RegionsController extends AppController {
 	public function index() {
 		$this->Region->recursive = 0;
 		$this->set('regions', $this->Paginator->paginate());
+
 	}
 
 /**

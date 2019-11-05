@@ -1,33 +1,65 @@
-<div class="clientes form">
-<?php echo $this->Form->create('Cliente'); ?>
-	<fieldset>
-		<legend><?php echo __('Edit Cliente'); ?></legend>
-	<?php
-		echo $this->Form->input('id');
-		echo $this->Form->input('tipo');
-		echo $this->Form->input('sexo');
-		echo $this->Form->input('user_id');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Editar Cliente</h1>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
 
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Cliente.id')), array(), __('Are you sure you want to delete # %s?', $this->Form->value('Cliente.id'))); ?></li>
-		<li><?php echo $this->Html->link(__('List Clientes'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Calificacions'), array('controller' => 'calificacions', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Calificacion'), array('controller' => 'calificacions', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Direccions'), array('controller' => 'direccions', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Direccion'), array('controller' => 'direccions', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Disenios'), array('controller' => 'disenios', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Disenio'), array('controller' => 'disenios', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Tarjetas'), array('controller' => 'tarjetas', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Tarjeta'), array('controller' => 'tarjetas', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Ventas'), array('controller' => 'ventas', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Venta'), array('controller' => 'ventas', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
+<section class="content">
+    <div class="row">
+        <div class="col-12">
+            <div class="card card-info">
+                <div class="card-header">
+                    <h3 class="card-title"></h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <?php echo $this->Form->create('Cliente', array('class' => 'form-horizontal')); ?>
+                <div class="card-body">
+                    <?php echo $this->Form->input('id'); ?>
+                    <div class="form-group row">
+                        <label for="CategoriaNombre" class="col-sm-2 col-form-label">Tipo</label>
+                        <div class="col-sm-10">
+                            <?php echo $this->Form->input('tipo', array('div' => false, 'label' => false, 'class' => 'form-control')); ?>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="ClienteSexo" class="col-sm-2 col-form-label">Sexo</label>
+                        <div class="col-sm-10">
+                            <?php
+                            echo $this->Form->select('sexo',array(
+                                'M'=>'Masculino',
+                                'F'=>'Femenino'
+                            ),array(
+                                'class'=>'form-control',
+                                'empty'=>false
+                            ));
+                            ?>
+
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="RegionNombre" class="col-sm-2 col-form-label">Nombre:</label>
+                        <div class="col-sm-10">
+                            <select name="data[Ciudad][region_id]" class="form-control" id="CiudadRegionId">
+                                <?php foreach ($users as $user) : ?>
+                                    <option value="<?php echo $user['User']['id'] ?>"><?php echo $user['User']['nombre'] ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-info">Guardar</button>
+                </div>
+                <!-- /.card-footer -->
+                <?php echo $this->Form->end(); ?>
+            </div>
+        </div>
+    </div>
+</section>

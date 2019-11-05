@@ -13,7 +13,7 @@ class CiudadsController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator');
+	public $components = array('Paginator', 'Session');
 	public $layout = 'admin';
 
 /**
@@ -56,7 +56,7 @@ class CiudadsController extends AppController {
 				$this->Session->setFlash(__('The ciudad could not be saved. Please, try again.'));
 			}
 		}
-		$regions = $this->Ciudad->Region->find('list');
+		$regions = $this->Ciudad->Region->find('all');
 		$this->set(compact('regions'));
 	}
 
@@ -82,7 +82,7 @@ class CiudadsController extends AppController {
 			$options = array('conditions' => array('Ciudad.' . $this->Ciudad->primaryKey => $id));
 			$this->request->data = $this->Ciudad->find('first', $options);
 		}
-		$regions = $this->Ciudad->Region->find('list');
+		$regions = $this->Ciudad->Region->find('all');
 		$this->set(compact('regions'));
 	}
 

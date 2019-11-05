@@ -13,7 +13,8 @@ class ClientesController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator');
+	public $components = array('Paginator', 'Session');
+    public $layout = 'admin';
 
 /**
  * index method
@@ -55,7 +56,7 @@ class ClientesController extends AppController {
 				$this->Session->setFlash(__('The cliente could not be saved. Please, try again.'));
 			}
 		}
-		$users = $this->Cliente->User->find('list');
+		$users = $this->Cliente->User->find('all');
 		$this->set(compact('users'));
 	}
 
@@ -81,7 +82,7 @@ class ClientesController extends AppController {
 			$options = array('conditions' => array('Cliente.' . $this->Cliente->primaryKey => $id));
 			$this->request->data = $this->Cliente->find('first', $options);
 		}
-		$users = $this->Cliente->User->find('list');
+		$users = $this->Cliente->User->find('all');
 		$this->set(compact('users'));
 	}
 
