@@ -6,4 +6,5 @@
     <?php echo $this->Html->link('Destacados', 'destacados'); ?>
     <?php echo $this->Html->link('Ubícanos', 'ubicanos'); ?>
     <?php echo $this->Html->link('Modelo de negocio', 'canvas'); ?>
+    <?php echo $this->Html->link('Metodo de Pago', 'paymethod'); ?>
 </nav>

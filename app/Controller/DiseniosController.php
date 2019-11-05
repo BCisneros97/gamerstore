@@ -13,7 +13,8 @@ class DiseniosController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator');
+	public $components = array('Paginator', 'Session');
+    public $layout = 'admin';
 
 /**
  * index method
