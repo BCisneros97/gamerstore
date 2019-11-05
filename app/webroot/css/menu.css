@@ -26,16 +26,18 @@ header label, header span, header p {
     transform: translateX(-100%);
 }
 
-.menu a {
+nav.menu a {
     display: block;
     color: #fff;
     height: 50px;
     padding: 15px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    text-decoration: none;
 }
 
-.menu a:hover {
+nav.menu a:hover {
     background: rgba(234, 98, 9, 0.97);
+    text-decoration: none;
 }
 
 #menu-bar:checked ~ .menu {
@@ -83,11 +85,17 @@ header label, header span, header p {
         justify-content: center;
     }
 
-    .menu a {
+    nav.menu a {
         border: none;
         height: 45px;
         padding: 14px;
         color: #000;
+        text-decoration: none;
+    }
+
+    nav.menu a:hover {
+        background: rgba(234, 98, 9, 0.97);
+        text-decoration: none;
     }
 
     header label.icon-menu {

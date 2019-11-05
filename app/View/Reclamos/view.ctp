@@ -56,7 +56,7 @@
                     <div class="form-group row">
                         <label for="ReclamoPrueba" class="col-sm-2 col-form-label">Prueba:</label>
                         <div class="col-sm-10">
-                            <?= $this->Html->image('p-1.png', array('width' => '50%', 'heigth' => 'auto')) ?>
+                        <img src="data:image/jpg;base64,<?= base64_encode($reclamo['Reclamo']['prueba']) ?>" width="50%" height="auto">
                         </div>
                     </div>
                     <div class="form-group row">

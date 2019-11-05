@@ -17,7 +17,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <?php echo $this->Form->create('User', array('class' => 'form-horizontal', 'enctype' => 'multipart/form-data')); ?>
+                <?php echo $this->Form->create('User', array('class' => 'form-horizontal', 'type' => 'file')); ?>
                 <div class="card-body">
                     <div class="form-group row">
                         <label for="UserNombre" class="col-sm-2 col-form-label">Nombre</label>
@@ -46,7 +46,7 @@
                     <div class="form-group row">
                         <label for="UserFoto" class="col-sm-2 col-form-label">Foto</label>
                         <div class="col-sm-10">
-                            <input type="file" class="form-control-file" id="UserFoto" name="data[foto]">
+                            <input type="file" class="form-control-file" id="UserFoto" name="foto">
                         </div>
                     </div>
                     <div class="form-group row">

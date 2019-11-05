@@ -17,7 +17,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <?php echo $this->Form->create('User', array('class' => 'form-horizontal')); ?>
+                <?php echo $this->Form->create('User', array('class' => 'form-horizontal', 'type' => 'file')); ?>
                 <div class="card-body">
                     <?php echo $this->Form->input('id'); ?>
                     <div class="form-group row">
@@ -40,20 +40,22 @@
                                 'label' => false,
                                 'class' => 'form-control',
                                 'value' => '',
-                                'placeholder' => '(Sin cambios)'
+                                'placeholder' => '(Sin cambios)',
+                                'required' => false
                             )); ?>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="UserPassword2" class="col-sm-2 col-form-label">Confirmar Password</label>
                         <div class="col-sm-10">
-                            <input type="password" class="form-control" id="UserPassword2" required>
+                            <input type="password" class="form-control" id="UserPassword2">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="UserFoto" class="col-sm-2 col-form-label">Foto</label>
                         <div class="col-sm-10">
-                            <?php echo $this->Form->input('foto', array('div' => false, 'label' => false, 'class' => 'form-control-file')); ?>
+                            <img src="data:image/jpg;base64,<?= base64_encode($this->request->data['User']['foto']) ?>" width="30%" height="auto">
+                            <input type="file" class="form-control-file" id="UserFoto" name="foto">
                         </div>
                     </div>
                     <div class="form-group row">

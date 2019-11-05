@@ -68,19 +68,27 @@ class ReclamosController extends AppController
 	 *
 	 * @return void
 	 */
-	public function add()
+	public function add($disenioventa_id = null)
 	{
+		if (!$this->Reclamo->DiseniosVenta->exists($disenioventa_id)) {
+			throw new NotFoundException(__('No se puede crear reclamo'));
+		}
 		if ($this->request->is('post')) {
 			$this->Reclamo->create();
+			$this->request->data['Reclamo']['prueba'] = file_get_contents($_FILES['prueba']['tmp_name']);
+			$this->request->data['Reclamo']['fecha'] = date("Y-m-d");
+			$this->request->data['Reclamo']['estado'] = 'Pendiente';
 			if ($this->Reclamo->save($this->request->data)) {
-				$this->Session->setFlash(__('The reclamo has been saved.'));
+				$this->Session->setFlash(__('Se envió el reclamo.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The reclamo could not be saved. Please, try again.'));
 			}
 		}
-		$tiporeclamos = $this->Reclamo->Tiporeclamo->find('list');
-		$this->set(compact('tiporeclamos'));
+		$this->Reclamo->Tiporeclamo->recursive = 0;
+		$tiporeclamos = $this->Reclamo->Tiporeclamo->find('all');
+		$this->set(compact('tiporeclamos', 'disenioventa_id'));
+		$this->layout = 'default';
 	}
 
 	/**

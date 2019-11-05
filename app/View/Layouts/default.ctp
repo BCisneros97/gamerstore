@@ -12,11 +12,10 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
 	<?php
 	echo $this->Html->meta('icon', 'img/favicon.png', array('type' => 'image/png'));
-	echo $this->Html->css('fontello.css');
-	echo $this->Html->css('estilo_principal.css');
-
 	echo $this->fetch('meta');
 	echo $this->fetch('css');
+	echo $this->Html->css('fontello.css');
+	echo $this->Html->css('estilo_principal.css');
 	?>
 </head>
 

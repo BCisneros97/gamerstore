@@ -30,6 +30,12 @@
                         </div>
                     </div>
                     <div class="form-group row">
+                        <label for="UserFoto" class="col-sm-2 col-form-label">Foto:</label>
+                        <div class="col-sm-10">
+                            <img src="data:image/jpg;base64,<?= base64_encode($user['User']['foto']) ?>" width="30%" height="auto">
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <label for="UserEmail" class="col-sm-2 col-form-label">Email:</label>
                         <div class="col-sm-10">
                             <input type="text" readonly class="form-control-plaintext" id="UserEmail" value="<?= $user['User']['email'] ?>">

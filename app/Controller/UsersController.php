@@ -50,6 +50,7 @@ class UsersController extends AppController {
 		if ($this->request->is('post')) {
 			$this->User->create();
 			$this->request->data['User']['password'] = password_hash($this->request->data['User']['password'], PASSWORD_BCRYPT);
+			$this->request->data['User']['foto'] = file_get_contents($_FILES['foto']['tmp_name']);
 			if ($this->User->save($this->request->data, array('deep'=>'true'))) {
 				$this->Session->setFlash(__('Usuario guardado correctamente'));
 				return $this->redirect(array('action' => 'index'));
