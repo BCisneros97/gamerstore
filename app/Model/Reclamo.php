@@ -31,7 +31,7 @@ class Reclamo extends AppModel {
  *
  * @var array
  */
-	public $hasMany = array(
+	public $hasOne = array(
 		'DiseniosVenta' => array(
 			'className' => 'DiseniosVenta',
 			'foreignKey' => 'reclamo_id',
@@ -46,5 +46,7 @@ class Reclamo extends AppModel {
 			'counterQuery' => ''
 		)
 	);
+
+	public $actsAs = array('Containable');
 
 }
