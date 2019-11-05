@@ -1,54 +1,109 @@
-<div class="descuentos index">
-	<h2><?php echo __('Descuentos'); ?></h2>
-	<table cellpadding="0" cellspacing="0">
-	<thead>
-	<tr>
-			<th><?php echo $this->Paginator->sort('id'); ?></th>
-			<th><?php echo $this->Paginator->sort('compraminima'); ?></th>
-			<th><?php echo $this->Paginator->sort('porcentaje'); ?></th>
-			<th><?php echo $this->Paginator->sort('fechainicio'); ?></th>
-			<th><?php echo $this->Paginator->sort('fechatermino'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	</thead>
-	<tbody>
-	<?php foreach ($descuentos as $descuento): ?>
-	<tr>
-		<td><?php echo h($descuento['Descuento']['id']); ?>&nbsp;</td>
-		<td><?php echo h($descuento['Descuento']['compraminima']); ?>&nbsp;</td>
-		<td><?php echo h($descuento['Descuento']['porcentaje']); ?>&nbsp;</td>
-		<td><?php echo h($descuento['Descuento']['fechainicio']); ?>&nbsp;</td>
-		<td><?php echo h($descuento['Descuento']['fechatermino']); ?>&nbsp;</td>
-		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $descuento['Descuento']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $descuento['Descuento']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $descuento['Descuento']['id']), array(), __('Are you sure you want to delete # %s?', $descuento['Descuento']['id'])); ?>
-		</td>
-	</tr>
-<?php endforeach; ?>
-	</tbody>
-	</table>
-	<p>
-	<?php
-	echo $this->Paginator->counter(array(
-	'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	));
-	?>	</p>
-	<div class="paging">
-	<?php
-		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
-		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
-	?>
-	</div>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New Descuento'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Categorias'), array('controller' => 'categorias', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Categoria'), array('controller' => 'categorias', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Productos'), array('controller' => 'productos', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Producto'), array('controller' => 'productos', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Descuentos</h1>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        <?php echo $this->Html->link(
+                            $this->Html->tag('button', 'Nuevo (Categoria)', array('class' => 'btn btn-info')),
+                            array('controller' => 'categorias_descuentos', 'action' => 'add'),
+                            array('escape' => false)
+                        ); ?>
+                        <?php echo $this->Html->link(
+                            $this->Html->tag('button', 'Nuevo (Producto)', array('class' => 'btn btn-info')),
+                            array('controller' => 'descuentos_productos', 'action' => 'add'),
+                            array('escape' => false)
+                        ); ?>
+                    </h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table id="example2" class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Inicio</th>
+                                <th>Término</th>
+                                <th>Tipo</th>
+                                <th>Compra mínima</th>
+                                <th>% descuento</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($descuentos as $descuento) : ?>
+                                <tr>
+                                    <td><?php echo h($descuento['Descuento']['id']); ?></td>
+                                    <td><?php echo h($descuento['Descuento']['fechainicio']); ?></td>
+                                    <td><?php echo h($descuento['Descuento']['fechatermino']); ?></td>
+                                    <td>
+                                        <?php
+                                            if (!empty($descuento['Categoria'])) {
+                                                echo 'Categoría';
+                                                $controller = 'categorias_descuentos';
+                                            } else if (!empty($descuento['Producto'])) {
+                                                echo 'Producto';
+                                                $controller = 'descuentos_productos';
+                                            }
+                                            ?>
+                                    </td>
+                                    <td><?php echo h($descuento['Descuento']['compraminima']); ?></td>
+                                    <td><?php echo h($descuento['Descuento']['porcentaje']); ?></td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <?php echo $this->Html->link(
+                                                    $this->Html->tag(
+                                                        'button',
+                                                        $this->Html->tag('i', '', array('class' => "fas fa-eye")),
+                                                        array('class' => "btn btn-default")
+                                                    ),
+                                                    array('controller' => $controller, 'action' => 'view', $descuento['Descuento']['id']),
+                                                    array('escape' => false)
+                                                ); ?>
+                                            <?php echo $this->Html->link(
+                                                    $this->Html->tag(
+                                                        'button',
+                                                        $this->Html->tag('i', '', array('class' => "fas fa-edit")),
+                                                        array('class' => "btn btn-default")
+                                                    ),
+                                                    array('controller' => $controller, 'action' => 'edit', $descuento['Descuento']['id']),
+                                                    array('escape' => false)
+                                                ); ?>
+                                            <?php echo $this->Form->postLink(
+                                                    $this->Html->tag(
+                                                        'button',
+                                                        $this->Html->tag('i', '', array('class' => "fas fa-trash")),
+                                                        array('class' => "btn btn-default")
+                                                    ),
+                                                    array('controller' => $controller, 'action' => 'delete', $descuento['Descuento']['id']),
+                                                    array('escape' => false),
+                                                    __('¿Está seguro de que quiere eliminar el descuento "%s"?', $descuento['Descuento']['id'])
+                                                ); ?>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+<!-- /.content -->

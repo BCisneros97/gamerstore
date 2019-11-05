@@ -1,27 +1,78 @@
-<div class="reclamos form">
-<?php echo $this->Form->create('Reclamo'); ?>
-	<fieldset>
-		<legend><?php echo __('Edit Reclamo'); ?></legend>
-	<?php
-		echo $this->Form->input('id');
-		echo $this->Form->input('descripcion');
-		echo $this->Form->input('prueba');
-		echo $this->Form->input('tiporeclamo_id');
-		echo $this->Form->input('fecha');
-		echo $this->Form->input('solucion');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Editar reclamo</h1>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
 
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Reclamo.id')), array(), __('Are you sure you want to delete # %s?', $this->Form->value('Reclamo.id'))); ?></li>
-		<li><?php echo $this->Html->link(__('List Reclamos'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Tiporeclamos'), array('controller' => 'tiporeclamos', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Tiporeclamo'), array('controller' => 'tiporeclamos', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Disenios Ventas'), array('controller' => 'disenios_ventas', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Disenios Venta'), array('controller' => 'disenios_ventas', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
+<section class="content">
+    <div class="row">
+        <div class="col-12">
+            <div class="card card-info">
+                <div class="card-header">
+                    <h3 class="card-title"></h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <?php echo $this->Form->create('Reclamo', array('class' => 'form-horizontal')); ?>
+                <div class="card-body">
+                    <?php echo $this->Form->input('id'); ?>
+                    <div class="form-group row">
+                        <label for="ReclamoFecha" class="col-sm-2 col-form-label">Fecha</label>
+                        <div class="col-sm-10">
+                            <input type="text" readonly class="form-control-plaintext" id="ReclamoFecha" value="<?= $this->request->data['Reclamo']['fecha'] ?>">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="ReclamoTipo" class="col-sm-2 col-form-label">Tipo</label>
+                        <div class="col-sm-10">
+                            <input type="text" readonly class="form-control-plaintext" id="ReclamoTiporeclamo" value="<?= $this->request->data['Tiporeclamo']['descripcion'] ?>">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="ReclamoCliente" class="col-sm-2 col-form-label">Cliente</label>
+                        <div class="col-sm-10">
+                            <input type="text" readonly class="form-control-plaintext" id="ReclamoCliente" value="<?= $this->request->data['DiseniosVenta']['Venta']['Cliente']['User']['nombre'] ?>">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="ReclamoDescripcion" class="col-sm-2 col-form-label">Descripción</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" id="ReclamoDescripcion" readonly><?= $this->request->data['Reclamo']['descripcion'] ?></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="ReclamoPrueba" class="col-sm-2 col-form-label">Prueba</label>
+                        <div class="col-sm-10">
+                            <?= $this->Html->image('p-1.png', array('width' => '50%', 'heigth' => 'auto')) ?>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="ReclamoEstado" class="col-sm-2 col-form-label">Estado</label>
+                        <div class="col-sm-10">
+                            <select name="data[Reclamo][estado]" class="form-control" id="ReclamoEstado">
+                                <option value="Pendiente" <?= $this->request->data['Reclamo']['estado'] == 'Pendiente' ? 'selected' : '' ?>>Pendiente</option>
+                                <option value="Finalizado" <?= $this->request->data['Reclamo']['estado'] == 'Finalizado' ? 'selected' : '' ?>>Finalizado</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="ReclamoSolucion" class="col-sm-2 col-form-label">Solución</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" id="ReclamoSolucion" name="data[Reclamo][solucion]"><?= $this->request->data['Reclamo']['solucion'] ?></textarea>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-info">Guardar</button>
+                </div>
+                <!-- /.card-footer -->
+                <?php echo $this->Form->end(); ?>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,87 +1,76 @@
-<div class="reclamos view">
-<h2><?php echo __('Reclamo'); ?></h2>
-	<dl>
-		<dt><?php echo __('Id'); ?></dt>
-		<dd>
-			<?php echo h($reclamo['Reclamo']['id']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Descripcion'); ?></dt>
-		<dd>
-			<?php echo h($reclamo['Reclamo']['descripcion']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Prueba'); ?></dt>
-		<dd>
-			<?php echo h($reclamo['Reclamo']['prueba']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Tiporeclamo'); ?></dt>
-		<dd>
-			<?php echo $this->Html->link($reclamo['Tiporeclamo']['id'], array('controller' => 'tiporeclamos', 'action' => 'view', $reclamo['Tiporeclamo']['id'])); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Fecha'); ?></dt>
-		<dd>
-			<?php echo h($reclamo['Reclamo']['fecha']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Solucion'); ?></dt>
-		<dd>
-			<?php echo h($reclamo['Reclamo']['solucion']); ?>
-			&nbsp;
-		</dd>
-	</dl>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Edit Reclamo'), array('action' => 'edit', $reclamo['Reclamo']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Reclamo'), array('action' => 'delete', $reclamo['Reclamo']['id']), array(), __('Are you sure you want to delete # %s?', $reclamo['Reclamo']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Reclamos'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Reclamo'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Tiporeclamos'), array('controller' => 'tiporeclamos', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Tiporeclamo'), array('controller' => 'tiporeclamos', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Disenios Ventas'), array('controller' => 'disenios_ventas', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Disenios Venta'), array('controller' => 'disenios_ventas', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
-<div class="related">
-	<h3><?php echo __('Related Disenios Ventas'); ?></h3>
-	<?php if (!empty($reclamo['DiseniosVenta'])): ?>
-	<table cellpadding = "0" cellspacing = "0">
-	<tr>
-		<th><?php echo __('Id'); ?></th>
-		<th><?php echo __('Preciounitario'); ?></th>
-		<th><?php echo __('Cantidad'); ?></th>
-		<th><?php echo __('Precioenvio'); ?></th>
-		<th><?php echo __('Disenio Id'); ?></th>
-		<th><?php echo __('Venta Id'); ?></th>
-		<th><?php echo __('Reclamo Id'); ?></th>
-		<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	<?php foreach ($reclamo['DiseniosVenta'] as $diseniosVenta): ?>
-		<tr>
-			<td><?php echo $diseniosVenta['id']; ?></td>
-			<td><?php echo $diseniosVenta['preciounitario']; ?></td>
-			<td><?php echo $diseniosVenta['cantidad']; ?></td>
-			<td><?php echo $diseniosVenta['precioenvio']; ?></td>
-			<td><?php echo $diseniosVenta['disenio_id']; ?></td>
-			<td><?php echo $diseniosVenta['venta_id']; ?></td>
-			<td><?php echo $diseniosVenta['reclamo_id']; ?></td>
-			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'disenios_ventas', 'action' => 'view', $diseniosVenta['id'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'disenios_ventas', 'action' => 'edit', $diseniosVenta['id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'disenios_ventas', 'action' => 'delete', $diseniosVenta['id']), array(), __('Are you sure you want to delete # %s?', $diseniosVenta['id'])); ?>
-			</td>
-		</tr>
-	<?php endforeach; ?>
-	</table>
-<?php endif; ?>
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Ver reclamo</h1>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
 
-	<div class="actions">
-		<ul>
-			<li><?php echo $this->Html->link(__('New Disenios Venta'), array('controller' => 'disenios_ventas', 'action' => 'add')); ?> </li>
-		</ul>
-	</div>
-</div>
+<section class="content">
+    <div class="row">
+        <div class="col-12">
+            <div class="card card-info">
+                <div class="card-header">
+                    <h3 class="card-title"></h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label for="ReclamoId" class="col-sm-2 col-form-label">Id:</label>
+                        <div class="col-sm-10">
+                            <input type="text" readonly class="form-control-plaintext" id="ReclamoId" value="<?= $reclamo['Reclamo']['id'] ?>">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="ReclamoFecha" class="col-sm-2 col-form-label">Fecha:</label>
+                        <div class="col-sm-10">
+                            <input type="text" readonly class="form-control-plaintext" id="ReclamoFecha" value="<?= $reclamo['Reclamo']['fecha'] ?>">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="ReclamoTiporeclamo" class="col-sm-2 col-form-label">Tipo:</label>
+                        <div class="col-sm-10">
+                            <input type="text" readonly class="form-control-plaintext" id="ReclamoTiporeclamo" value="<?= $reclamo['Tiporeclamo']['descripcion'] ?>">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="ReclamoEstado" class="col-sm-2 col-form-label">Estado:</label>
+                        <div class="col-sm-10">
+                            <input type="text" readonly class="form-control-plaintext" id="ReclamoEstado" value="<?= $reclamo['Reclamo']['estado'] ?>">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="ReclamoCliente" class="col-sm-2 col-form-label">Cliente:</label>
+                        <div class="col-sm-10">
+                            <input type="text" readonly class="form-control-plaintext" id="ReclamoCliente" value="<?= $reclamo['DiseniosVenta']['Venta']['Cliente']['User']['nombre'] ?>">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="ReclamoDescripcion" class="col-sm-2 col-form-label">Descripción:</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control-plaintext" id="ReclamoDescripcion" readonly><?= $reclamo['Reclamo']['descripcion'] ?></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="ReclamoPrueba" class="col-sm-2 col-form-label">Prueba:</label>
+                        <div class="col-sm-10">
+                            <?= $this->Html->image('p-1.png', array('width' => '50%', 'heigth' => 'auto')) ?>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="ReclamoSolucion" class="col-sm-2 col-form-label">Solución:</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control-plaintext" id="ReclamoSolucion"><?= $reclamo['Reclamo']['solucion'] ?></textarea>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                </div>
+                <!-- /.card-footer -->
+            </div>
+        </div>
+    </div>
+</section>

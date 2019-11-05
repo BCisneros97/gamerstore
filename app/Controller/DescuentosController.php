@@ -13,7 +13,8 @@ class DescuentosController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator');
+	public $components = array('Paginator', 'Session');
+	public $layout = 'admin';
 
 /**
  * index method
@@ -21,7 +22,7 @@ class DescuentosController extends AppController {
  * @return void
  */
 	public function index() {
-		$this->Descuento->recursive = 0;
+		$this->Descuento->recursive = 1;
 		$this->set('descuentos', $this->Paginator->paginate());
 	}
 
