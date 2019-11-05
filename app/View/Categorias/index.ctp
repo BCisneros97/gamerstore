@@ -17,7 +17,7 @@
         <div class="card-header">
           <h3 class="card-title">
             <?php echo $this->Html->link(
-              $this->Html->tag('button', 'Nuevo', array('class'=>'btn btn-info')),
+              $this->Html->tag('button', 'Nuevo', array('class' => 'btn btn-info')),
               array('action' => 'add'),
               array('escape' => false)
             ); ?>

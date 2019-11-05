@@ -45,4 +45,5 @@ class Descuento extends AppModel {
 		)
 	);
 
+	public $actsAs = array('Containable');
 }
