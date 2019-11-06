@@ -1,85 +1,26 @@
-<!-- Content Header (Page header) -->
-<section class="content-header">
-  <div class="container-fluid">
-    <div class="row mb-2">
-      <div class="col-sm-6">
-        <h1>Categorías</h1>
-      </div>
-    </div>
-  </div><!-- /.container-fluid -->
-</section>
+<?php echo $this->Html->css('categoria', array('inline' => false));
+echo $this->element('menucategorias', array('categorias' => $categorias)) ?>
+<div class="productos">
+    <section id="destacados">
+        <div class="contenedor">
+            <h3><?= $categoria['Categoria']['nombre'] ?></h3>
 
-<!-- Main content -->
-<section class="content">
-  <div class="row">
-    <div class="col-12">
-      <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">
-            <?php echo $this->Html->link(
-              $this->Html->tag('button', 'Nuevo', array('class' => 'btn btn-info')),
-              array('action' => 'add'),
-              array('escape' => false)
-            ); ?>
-          </h3>
+            <?php foreach ($categoria['Producto'] as $producto) : ?>
+                <article class="producto">
+                    <div class="img-wrapper">
+                        <img src="data:image/jpg;base64,<?= base64_encode($producto['imagen']) ?>" alt="<?= $producto['nombre'] ?>">
+                    </div>
+                    <?= $this->Html->link(
+                            '<h4>' . $producto['nombre'] . '</h4>',
+                            array('controller' => 'productos', 'action' => 'view', 'id' => $producto['id']),
+                            array('escape' => false)
+                        ) ?>
+                    <p class="User"><?= $producto['preciounitario'] ?></p>
+
+                    <label class="icon-estrella"></label>4.8
+                    <p class="ventas">50 vendidos</p>
+                </article>
+            <?php endforeach; ?>
         </div>
-        <!-- /.card-header -->
-        <div class="card-body">
-          <table id="example2" class="table table-bordered table-hover">
-            <thead>
-              <tr>
-                <th>Id</th>
-                <th>Nombre</th>
-                <th>Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php foreach ($categorias as $categoria) : ?>
-                <tr>
-                  <td><?php echo h($categoria['Categoria']['id']); ?></td>
-                  <td><?php echo h($categoria['Categoria']['nombre']); ?></td>
-                  <td>
-                    <div class="btn-group">
-                      <?php echo $this->Html->link(
-                          $this->Html->tag(
-                            'button',
-                            $this->Html->tag('i', '', array('class' => "fas fa-eye")),
-                            array('class' => "btn btn-default")
-                          ),
-                          array('action' => 'view', $categoria['Categoria']['id']),
-                          array('escape' => false)
-                        ); ?>
-                      <?php echo $this->Html->link(
-                          $this->Html->tag(
-                            'button',
-                            $this->Html->tag('i', '', array('class' => "fas fa-edit")),
-                            array('class' => "btn btn-default")
-                          ),
-                          array('action' => 'edit', $categoria['Categoria']['id']),
-                          array('escape' => false)
-                        ); ?>
-                      <?php echo $this->Form->postLink(
-                          $this->Html->tag(
-                            'button',
-                            $this->Html->tag('i', '', array('class' => "fas fa-trash")),
-                            array('class' => "btn btn-default")
-                          ),
-                          array('action' => 'delete', $categoria['Categoria']['id']),
-                          array('escape' => false),
-                          __('¿Está seguro de que quiere eliminar "%s"?', $categoria['Categoria']['nombre'])
-                        ); ?>
-                  </td>
-                </tr>
-              <?php endforeach; ?>
-            </tbody>
-          </table>
-        </div>
-        <!-- /.card-body -->
-      </div>
-      <!-- /.card -->
-    </div>
-    <!-- /.col -->
-  </div>
-  <!-- /.row -->
-</section>
-<!-- /.content -->
+    </section>
+</div>

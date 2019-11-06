@@ -6,34 +6,52 @@ App::uses('AppController', 'Controller');
  * @property Categoria $Categoria
  * @property PaginatorComponent $Paginator
  */
-class CategoriasController extends AppController {
+class CategoriasController extends AppController
+{
 
-/**
- * Components
- *
- * @var array
- */
+	/**
+	 * Components
+	 *
+	 * @var array
+	 */
 	public $components = array('Paginator', 'Session');
 	public $layout = 'admin';
 
-/**
- * index method
- *
- * @return void
- */
-	public function index() {
+	/**
+	 * index method
+	 *
+	 * @return void
+	 */
+	public function index($id = 1)
+	{
+		$this->Categoria->recursive = 1;
+		$this->set('categorias', $this->Categoria->find('all'));
+		$this->set('categoria', $this->Categoria->find('first', array(
+			'conditions' => array('Categoria.id' => $id)
+		)));
+		$this->layout = 'default';
+	}
+
+	/**
+	 * index method
+	 *
+	 * @return void
+	 */
+	public function adminIndex()
+	{
 		$this->Categoria->recursive = 0;
 		$this->set('categorias', $this->Paginator->paginate());
 	}
 
-/**
- * view method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function view($id = null) {
+	/**
+	 * view method
+	 *
+	 * @throws NotFoundException
+	 * @param string $id
+	 * @return void
+	 */
+	public function view($id = null)
+	{
 		if (!$this->Categoria->exists($id)) {
 			throw new NotFoundException(__('No existe la categoría.'));
 		}
@@ -41,12 +59,13 @@ class CategoriasController extends AppController {
 		$this->set('categoria', $this->Categoria->find('first', $options));
 	}
 
-/**
- * add method
- *
- * @return void
- */
-	public function add() {
+	/**
+	 * add method
+	 *
+	 * @return void
+	 */
+	public function add()
+	{
 		if ($this->request->is('post')) {
 			$this->Categoria->create();
 			if ($this->Categoria->save($this->request->data)) {
@@ -60,14 +79,15 @@ class CategoriasController extends AppController {
 		$this->set(compact('descuentos'));
 	}
 
-/**
- * edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function edit($id = null) {
+	/**
+	 * edit method
+	 *
+	 * @throws NotFoundException
+	 * @param string $id
+	 * @return void
+	 */
+	public function edit($id = null)
+	{
 		if (!$this->Categoria->exists($id)) {
 			throw new NotFoundException(__('No existe categoria'));
 		}
@@ -86,14 +106,15 @@ class CategoriasController extends AppController {
 		$this->set(compact('descuentos'));
 	}
 
-/**
- * delete method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function delete($id = null) {
+	/**
+	 * delete method
+	 *
+	 * @throws NotFoundException
+	 * @param string $id
+	 * @return void
+	 */
+	public function delete($id = null)
+	{
 		$this->Categoria->id = $id;
 		if (!$this->Categoria->exists()) {
 			throw new NotFoundException(__('La categoría no existe'));
