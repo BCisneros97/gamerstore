@@ -24,6 +24,11 @@ class DiseniosController extends AppController {
 	public function index() {
 		$this->Disenio->recursive = 0;
 		$this->set('disenios', $this->Paginator->paginate());
+
+
+
+
+
 	}
 
 /**
@@ -39,6 +44,24 @@ class DiseniosController extends AppController {
 		}
 		$options = array('conditions' => array('Disenio.' . $this->Disenio->primaryKey => $id));
 		$this->set('disenio', $this->Disenio->find('first', $options));
+
+        $this->loadModel('User');
+        $options['joins']=array(
+            array('table'=>'users',
+                'alias'=>'User',
+                'type'=>'LEFT',
+                'conditions'=>array(
+                    'Cliente.user_id = User.id'
+                ))
+        );
+        $options['fields'] =array(
+            'Disenio.id','Disenio.imagen','Disenio.descripcion','Disenio.producto_id','Disenio.cliente_id',
+            'Producto.id','Producto.nombre','Producto.imagen','Producto.caracteristica','Producto.preciounitario','Producto.precioenviolocal','Producto.precioenvioprovincia','Producto.categoria_id','Producto.proveedor_id',
+            'Cliente.id','Cliente.tipo','Cliente.sexo', 'Cliente.user_id',
+            'User.id','User.nombre','User.email','User.password','User.foto','User.tipo'
+        );
+        $disenios=$this->Disenio->find('first',$options);
+        $this->set('disenio',$disenios);
 	}
 
 /**

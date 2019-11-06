@@ -24,7 +24,7 @@
 		<div class="contenedor">
 			<?php echo $this->Html->link(
 				$this->Html->image('gamer-store-logo.png', array('alt' => 'Logo Gamer Store')),
-				'home',
+				array('controller' => 'pages', 'action' => 'home'),
 				array('escape' => false)
 			);
 			?>
@@ -41,13 +41,13 @@
 					$this->Html->tag('span', 'Iniciar sesión', array('id'=>'login')),
 					array('class' => 'icon-usuario', 'escape' => false)
 				),
-				'login',
+				array('controller' => 'pages', 'action' => 'login'),
 				array('escape' => false)
 			); ?>
 			
 			<?php echo $this->Html->link(
 				$this->Html->tag('span', '', array('class' => 'icon-carrito')),
-				'carrito',
+				array('controller' => 'pages', 'action' => 'carrito'),
 				array('escape' => false)
 			); ?>
 			
