@@ -9,12 +9,12 @@ App::uses('AppController', 'Controller');
 class ProductosController extends AppController
 {
 
-/**
- * Components
- *
- * @var array
- */
-	public $components = array('Paginator','Session');
+	/**
+	 * Components
+	 *
+	 * @var array
+	 */
+	public $components = array('Paginator', 'Session');
 	public $layout = 'admin';
 
 	/**
@@ -65,7 +65,7 @@ class ProductosController extends AppController
 			$this->Producto->create();
 
 			$this->request->data['Producto']['imagen'] = file_get_contents($_FILES['imagen']['tmp_name']);
-			
+
 			if ($this->Producto->save($this->request->data)) {
 				$this->Session->setFlash(__('El producto ha sido Guardado.'));
 				return $this->redirect(array('action' => 'index'));
@@ -130,13 +130,18 @@ class ProductosController extends AppController
 		return $this->redirect(array('action' => 'index'));
 	}
 
-	public function comprar($id = null) {
+	public function comprar($id = null)
+	{
 		$this->Producto->id = $id;
 		if (!$this->Producto->exists()) {
 			throw new NotFoundException(__('No existe el producto'));
 		}
 		$this->request->allowMethod('post');
-		CakeSession::write('Carrito.productos', $id);
-		return $this->redirect(array('action' => 'index'));
+		$this->Producto->recursive = 0;
+		// CakeSession::delete('Carrito.productos');
+		$options = array('conditions' => array('Producto.' . $this->Producto->primaryKey => $id));
+		CakeSession::write('Carrito.productos.'.$id, $this->Producto->find('first', $options));
+
+		return $this->redirect(array('controller' => 'ventas', 'action' => 'carrito'));
 	}
 }

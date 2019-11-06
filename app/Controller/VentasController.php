@@ -108,4 +108,12 @@ class VentasController extends AppController {
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
+
+	public function carrito() {
+		$this->loadModel('Producto');
+
+		$this->set('productos', CakeSession::read('Carrito.productos'));
+
+		$this->layout = 'default';
+	}
 }

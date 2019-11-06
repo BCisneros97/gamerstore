@@ -61,7 +61,7 @@
 
 			<?php echo $this->Html->link(
 				$this->Html->tag('span', '', array('class' => 'icon-carrito')),
-				array('controller' => 'pages', 'action' => 'carrito'),
+				array('controller' => 'ventas', 'action' => 'carrito'),
 				array('escape' => false)
 			); ?>
 

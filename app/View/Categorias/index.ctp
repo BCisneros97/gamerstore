@@ -12,7 +12,7 @@ echo $this->element('menucategorias', array('categorias' => $categorias)) ?>
                     </div>
                     <?= $this->Html->link(
                             '<h4>' . $producto['nombre'] . '</h4>',
-                            array('controller' => 'productos', 'action' => 'view', $producto['id']),
+                            array('controller' => 'productos', 'action' => 'show', $producto['id']),
                             array('escape' => false)
                         ) ?>
                     <p class="User"><?= $producto['preciounitario'] ?></p>
