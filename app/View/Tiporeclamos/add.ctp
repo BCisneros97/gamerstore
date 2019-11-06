@@ -1,19 +1,42 @@
-<div class="tiporeclamos form">
-<?php echo $this->Form->create('Tiporeclamo'); ?>
-	<fieldset>
-		<legend><?php echo __('Add Tiporeclamo'); ?></legend>
-	<?php
-		echo $this->Form->input('descripcion');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Tipos de Reclamos</h1>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
 
-		<li><?php echo $this->Html->link(__('List Tiporeclamos'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Reclamos'), array('controller' => 'reclamos', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Reclamo'), array('controller' => 'reclamos', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
+<section class="content">
+    <div class="row">
+        <div class="col-12">
+            <div class="card card-info">
+                <div class="card-header">
+                    <h3 class="card-title"></h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <?php echo $this->Form->create('Tiporeclamo', array('class' => 'form-horizontal')); ?>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label for="TipoReclamoDescripcion" class="col-sm-2 col-form-label">Descripcion</label>
+                        <div class="col-sm-10">
+                            <?php echo $this->Form->input('descripcion', array('div' => false, 'label' => false, 'class' => 'form-control')); ?>
+                        </div>
+                    </div>
+  
+
+                </div>
+                <!-- /.card-body -->
+                
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-info">Guardar</button>
+                </div>
+                <!-- /.card-footer -->
+
+                <?php echo $this->Form->end(); ?>
+            </div>
+        </div>
+    </div>
+</section>

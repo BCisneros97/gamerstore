@@ -1,46 +1,87 @@
-<div class="tiporeclamos index">
-	<h2><?php echo __('Tiporeclamos'); ?></h2>
-	<table cellpadding="0" cellspacing="0">
-	<thead>
-	<tr>
-			<th><?php echo $this->Paginator->sort('id'); ?></th>
-			<th><?php echo $this->Paginator->sort('descripcion'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	</thead>
-	<tbody>
-	<?php foreach ($tiporeclamos as $tiporeclamo): ?>
-	<tr>
-		<td><?php echo h($tiporeclamo['Tiporeclamo']['id']); ?>&nbsp;</td>
-		<td><?php echo h($tiporeclamo['Tiporeclamo']['descripcion']); ?>&nbsp;</td>
-		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $tiporeclamo['Tiporeclamo']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $tiporeclamo['Tiporeclamo']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $tiporeclamo['Tiporeclamo']['id']), array(), __('Are you sure you want to delete # %s?', $tiporeclamo['Tiporeclamo']['id'])); ?>
-		</td>
-	</tr>
-<?php endforeach; ?>
-	</tbody>
-	</table>
-	<p>
-	<?php
-	echo $this->Paginator->counter(array(
-	'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	));
-	?>	</p>
-	<div class="paging">
-	<?php
-		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
-		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
-	?>
-	</div>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New Tiporeclamo'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Reclamos'), array('controller' => 'reclamos', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Reclamo'), array('controller' => 'reclamos', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Tipo Reclamos</h1>
+      </div>
+    </div>
+  </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">
+            <?php echo $this->Html->link(
+               $this->Html->tag('button', 'Nuevo', array('class'=>'btn btn-info')),
+              array('action' => 'add'),
+              array('escape' => false)
+            ); ?>
+          </h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+          <table id="example2" class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Descripcion</th>
+               
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php foreach ($tiporeclamos as $tiporeclamo) : ?>
+                <tr>
+                  <td><?php echo h($tiporeclamo['Tiporeclamo']['id']); ?></td>
+                  <td><?php echo h($tiporeclamo['Tiporeclamo']['descripcion']); ?></td>
+                  
+                  <td>
+                    <div class="btn-group">
+                      <?php echo $this->Html->link(
+                          $this->Html->tag(
+                            'button',
+                            $this->Html->tag('i', '', array('class' => "fas fa-eye")),
+                            array('class' => "btn btn-default")
+                          ),
+                          array('action' => 'view', $tiporeclamo['Tiporeclamo']['id']),
+                          array('escape' => false)
+                        ); ?>
+                      <?php echo $this->Html->link(
+                          $this->Html->tag(
+                            'button',
+                            $this->Html->tag('i', '', array('class' => "fas fa-edit")),
+                            array('class' => "btn btn-default")
+                          ),
+                          array('action' => 'edit', $tiporeclamo['Tiporeclamo']['id']),
+                          array('escape' => false)
+                        ); ?>
+                      <?php echo $this->Form->postLink(
+                          $this->Html->tag(
+                            'button',
+                            $this->Html->tag('i', '', array('class' => "fas fa-trash")),
+                            array('class' => "btn btn-default")
+                          ),
+                          array('action' => 'delete', $tiporeclamo['Tiporeclamo']['id']),
+                          array('escape' => false),
+                          __('¿Está seguro de que quiere eliminar "%s"?', $tiporeclamo['Tiporeclamo']['descripcion'])
+                        ); ?>
+                  </td>
+                </tr>
+              <?php endforeach; ?>
+            </tbody>
+          </table>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+    </div>
+    <!-- /.col -->
+  </div>
+  <!-- /.row -->
+</section>
+<!-- /.content -->

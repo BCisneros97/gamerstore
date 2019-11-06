@@ -14,6 +14,7 @@ class TiporeclamosController extends AppController {
  * @var array
  */
 	public $components = array('Paginator');
+	public $layout = 'admin';
 
 /**
  * index method

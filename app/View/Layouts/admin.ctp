@@ -138,6 +138,16 @@
                 array('escape' => false, 'class' => 'nav-link')
               ); ?>
             </li>
+
+            <li class="nav-item">
+              <?php echo $this->Html->link(
+                $this->Html->tag('i', '', array('class' => "nav-icon fas fa-user")) .
+                  $this->Html->tag('p', 'TipoReclamos'),
+                array('controller' => 'Tiporeclamos', 'action' => 'index'),
+                array('escape' => false, 'class' => 'nav-link')
+              ); ?>
+            </li>
+
             <li class="nav-item">
               <?php echo $this->Html->link(
                 $this->Html->tag('i', '', array('class' => "nav-icon fas fa-chart-pie")) .
