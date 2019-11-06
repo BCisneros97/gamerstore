@@ -6,34 +6,37 @@ App::uses('AppController', 'Controller');
  * @property Producto $Producto
  * @property PaginatorComponent $Paginator
  */
-class ProductosController extends AppController {
+class ProductosController extends AppController
+{
 
-/**
- * Components
- *
- * @var array
- */
+	/**
+	 * Components
+	 *
+	 * @var array
+	 */
 	public $components = array('Paginator');
 	public $layout = 'admin';
 
-/**
- * index method
- *
- * @return void
- */
-	public function index() {
+	/**
+	 * index method
+	 *
+	 * @return void
+	 */
+	public function index()
+	{
 		$this->Producto->recursive = 0;
 		$this->set('productos', $this->Paginator->paginate());
 	}
 
-/**
- * view method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function view($id = null) {
+	/**
+	 * view method
+	 *
+	 * @throws NotFoundException
+	 * @param string $id
+	 * @return void
+	 */
+	public function view($id = null)
+	{
 		if (!$this->Producto->exists($id)) {
 			throw new NotFoundException(__('Invalid producto'));
 		}
@@ -41,12 +44,23 @@ class ProductosController extends AppController {
 		$this->set('producto', $this->Producto->find('first', $options));
 	}
 
-/**
- * add method
- *
- * @return void
- */
-	public function add() {
+	public function show($id = null)
+	{
+		if (!$this->Producto->exists($id)) {
+			throw new NotFoundException(__('El producto no existe'));
+		}
+		$options = array('conditions' => array('Producto.' . $this->Producto->primaryKey => $id));
+		$this->set('producto', $this->Producto->find('first', $options));
+		$this->layout = 'default';
+	}
+
+	/**
+	 * add method
+	 *
+	 * @return void
+	 */
+	public function add()
+	{
 		if ($this->request->is('post')) {
 			$this->Producto->create();
 			if ($this->Producto->save($this->request->data)) {
@@ -62,14 +76,15 @@ class ProductosController extends AppController {
 		$this->set(compact('categorias', 'proveedors', 'descuentos'));
 	}
 
-/**
- * edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function edit($id = null) {
+	/**
+	 * edit method
+	 *
+	 * @throws NotFoundException
+	 * @param string $id
+	 * @return void
+	 */
+	public function edit($id = null)
+	{
 		if (!$this->Producto->exists($id)) {
 			throw new NotFoundException(__('Invalid producto'));
 		}
@@ -90,14 +105,15 @@ class ProductosController extends AppController {
 		$this->set(compact('categorias', 'proveedors', 'descuentos'));
 	}
 
-/**
- * delete method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function delete($id = null) {
+	/**
+	 * delete method
+	 *
+	 * @throws NotFoundException
+	 * @param string $id
+	 * @return void
+	 */
+	public function delete($id = null)
+	{
 		$this->Producto->id = $id;
 		if (!$this->Producto->exists()) {
 			throw new NotFoundException(__('Invalid producto'));
@@ -108,6 +124,16 @@ class ProductosController extends AppController {
 		} else {
 			$this->Session->setFlash(__('The producto could not be deleted. Please, try again.'));
 		}
+		return $this->redirect(array('action' => 'index'));
+	}
+
+	public function comprar($id = null) {
+		$this->Producto->id = $id;
+		if (!$this->Producto->exists()) {
+			throw new NotFoundException(__('No existe el producto'));
+		}
+		$this->request->allowMethod('post');
+		CakeSession::write('Carrito.productos', $id);
 		return $this->redirect(array('action' => 'index'));
 	}
 }

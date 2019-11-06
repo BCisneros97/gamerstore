@@ -3,12 +3,12 @@
 <section id="detalle-producto" class="contenedor">
     <article class="post-producto">
         <div class="titulo">
-            <h3>Microsoft Mouse Wireless Mobile 3500 Halo Limited Edition: The Master Chief Inalámbrico</h3>
+            <h3><?= $producto['Producto']['nombre'] ?></h3>
             <label class="icon-estrella calificacion"></label>3.8
             <p class="ventas">(78 vendidos)</p>
         </div>
         <div class="img-wrapper">
-            <?php echo $this->Html->image('mouse-3.jpg', array('alt' => 'Mouse inalámbrico')); ?>
+            <img src="data:image/jpg;base64,<?= base64_encode($producto['Producto']['imagen']) ?>" alt="<?= $producto['Producto']['nombre'] ?>">
         </div>
         <h4>¿Qué te parece el diseño?</h4>
         <div class="calificar">
@@ -53,17 +53,22 @@
         </div>
         <div id="caja-compra">
             <div id="caja-precio">
-                <span class="precio">S/.&nbsp;30.00</span>
+                <span class="precio">S/.&nbsp;<?= $producto['Producto']['preciounitario'] ?>.00</span>
                 <span class="igv">Incluye IGV</span>
             </div>
             <div id="caja-cantidad">
                 <span class="cantidad">Cantidad:</span>
                 <input id="input-cantidad" type="number" value="1" min="1">
             </div>
-            <button type="button" class="btn-comprar">
-                <label class="icon-carrito"></label>
-                <span>COMPRAR AHORA</span>
-            </button>
+            <?php echo $this->Form->postLink(
+                $this->Html->tag(
+                    'button',
+                    '<label class="icon-carrito"></label><span>COMPRAR AHORA</span>',
+                    array('class' => "btn-comprar")
+                ),
+                array('action' => 'comprar', $producto['Producto']['id']),
+                array('escape' => false)
+            ); ?>
         </div>
     </article>
 </section>

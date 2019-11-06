@@ -30,7 +30,7 @@
             </span>
             <?php echo $this->Html->image('p-4.jpg', array('alt' => 'Joystick Fornite')); ?>
             <div class="detalle">
-                <h4>Joystick Fornite</h4>
+                <h4><?= CakeSession::read('Config.time') ?></h4>
                 <p class="precio">S/.&nbsp;25.00</p>
                 <p class="envio">Envío: S/.&nbsp;8.00</p>
                 <div class="cantidad">
