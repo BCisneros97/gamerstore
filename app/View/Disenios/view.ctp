@@ -64,7 +64,7 @@
                             'text' => 'Cliente :',
                             'class' => 'col-sm-2 col-form-label'
                         ),
-                        'value' => $disenio['User']['nombre'],));
+                        'value' => $disenio['User']['username'],));
                     ?>
 
                 </div>
