@@ -20,7 +20,7 @@
                     <div class="form-group row">
                         <label for="ProductoId" class="col-sm-2 col-form-label">Id:</label>
                         <div class="col-sm-10">
-                            <input type="text" readonly class="form-control-plaintext" id="CategoriaId" value="<?= $producto['Producto']['id'] ?>">
+                            <input type="text" readonly class="form-control-plaintext" id="ProductoId" value="<?= $producto['Producto']['id'] ?>">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -75,7 +75,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="ProductoProveedorID" class="col-sm-2 col-form-label">Precio envio Local:</label>
+                        <label for="ProductoProveedorID" class="col-sm-2 col-form-label">Proveedor:</label>
                         <div class="col-sm-10">
                             <input type="text" readonly class="form-control-plaintext" id="ProductoProveedorID" value="<?= $producto['Producto']['proveedor_id'] ?>">
                         </div>
