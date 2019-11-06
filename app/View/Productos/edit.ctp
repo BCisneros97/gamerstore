@@ -33,7 +33,7 @@
                     <div class="form-group row">
                         <label for="ProductoImagen" class="col-sm-2 col-form-label">Imagen</label>
                         <div class="col-sm-10">
-                            <img src="data:image/jpg;base64,<?= base64_encode($this->request->data['¨Producto']['imagen']) ?>" width="30%" height="auto">
+                            <img src="data:image/jpg;base64,<?= base64_encode($this->request->data['Producto']['imagen']) ?>" width="30%" height="auto">
                             <input type="file" class="form-control-file" id="ProductoImagen" name="imagen">
                         </div>
                     </div>
