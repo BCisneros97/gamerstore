@@ -41,7 +41,7 @@
                                 <td><?php echo h($cliente['Cliente']['id']); ?></td>
                                 <td><?php echo h($cliente['Cliente']['tipo']); ?></td>
                                 <td><?php echo h($cliente['Cliente']['sexo']);?></td>
-                                <td><?php echo h($cliente['User']['nombre']);?></td>
+                                <td><?php echo h($cliente['User']['username']);?></td>
                                 <td>
                                     <div class="btn-group">
                                         <?php echo $this->Html->link(

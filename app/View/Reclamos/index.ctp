@@ -36,7 +36,7 @@
                                 <tr>
                                     <td><?php echo h($reclamo['Reclamo']['id']); ?></td>
                                     <td><?php echo h($reclamo['Reclamo']['fecha']); ?></td>
-                                    <td><?php echo h($reclamo['DiseniosVenta']['Venta']['Cliente']['User']['nombre']); ?></td>
+                                    <td><?php echo h($reclamo['DiseniosVenta']['Venta']['Cliente']['User']['username']); ?></td>
                                     <td><?php echo h($reclamo['Tiporeclamo']['descripcion']); ?></td>
                                     <td><?php echo h($reclamo['Reclamo']['estado']); ?></td>
                                     <td>

@@ -73,7 +73,7 @@
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
+                       with font-awesome or any other icon font library -->
             <li class="nav-item">
               <?php echo $this->Html->link(
                 $this->Html->tag('i', '', array('class' => "nav-icon fas fa-tachometer-alt")) .
@@ -103,6 +103,14 @@
                 $this->Html->tag('i', '', array('class' => "nav-icon fas fa-chart-pie")) .
                   $this->Html->tag('p', 'Descuentos'),
                 array('controller' => 'descuentos', 'action' => 'index'),
+                array('escape' => false, 'class' => 'nav-link')
+              ); ?>
+            </li>
+            <li class="nav-item">
+              <?php echo $this->Html->link(
+                $this->Html->tag('i', '', array('class' => "nav-icon fas fa-tree")) .
+                  $this->Html->tag('p', 'Diseños'),
+                array('controller' => 'disenios/index', 'action' => 'index'),
                 array('escape' => false, 'class' => 'nav-link')
               ); ?>
             </li>
