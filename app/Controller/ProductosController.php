@@ -13,7 +13,7 @@ class ProductosController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator');
+	public $components = array('Paginator','Session');
 	public $layout = 'admin';
 
 /**
@@ -35,7 +35,7 @@ class ProductosController extends AppController {
  */
 	public function view($id = null) {
 		if (!$this->Producto->exists($id)) {
-			throw new NotFoundException(__('Invalid producto'));
+			throw new NotFoundException(__('No Existe el Producto'));
 		}
 		$options = array('conditions' => array('Producto.' . $this->Producto->primaryKey => $id));
 		$this->set('producto', $this->Producto->find('first', $options));
@@ -49,14 +49,17 @@ class ProductosController extends AppController {
 	public function add() {
 		if ($this->request->is('post')) {
 			$this->Producto->create();
+
+			$this->request->data['Producto']['imagen'] = file_get_contents($_FILES['imagen']['tmp_name']);
+			
 			if ($this->Producto->save($this->request->data)) {
-				$this->Session->setFlash(__('The producto has been saved.'));
+				$this->Session->setFlash(__('El producto ha sido Guardado.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The producto could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('El Producto no se pudo guardar. Intente otra vez.'));
 			}
 		}
-		$categorias = $this->Producto->Categorium->find('list');
+		$categorias = $this->Producto->Categoria->find('list');
 		$proveedors = $this->Producto->Proveedor->find('list');
 		$descuentos = $this->Producto->Descuento->find('list');
 		$this->set(compact('categorias', 'proveedors', 'descuentos'));
@@ -75,16 +78,16 @@ class ProductosController extends AppController {
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Producto->save($this->request->data)) {
-				$this->Session->setFlash(__('The producto has been saved.'));
+				$this->Session->setFlash(__('El Producto ha sido Guardado.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The producto could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('El Producto no se pudo guardar. Intente otra vez.'));
 			}
 		} else {
 			$options = array('conditions' => array('Producto.' . $this->Producto->primaryKey => $id));
 			$this->request->data = $this->Producto->find('first', $options);
 		}
-		$categorias = $this->Producto->Categorium->find('list');
+		$categorias = $this->Producto->Categoria->find('list');
 		$proveedors = $this->Producto->Proveedor->find('list');
 		$descuentos = $this->Producto->Descuento->find('list');
 		$this->set(compact('categorias', 'proveedors', 'descuentos'));
@@ -100,13 +103,13 @@ class ProductosController extends AppController {
 	public function delete($id = null) {
 		$this->Producto->id = $id;
 		if (!$this->Producto->exists()) {
-			throw new NotFoundException(__('Invalid producto'));
+			throw new NotFoundException(__('El Producto no Existe'));
 		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Producto->delete()) {
-			$this->Session->setFlash(__('The producto has been deleted.'));
+			$this->Session->setFlash(__('Se ha eliminado el Producto.'));
 		} else {
-			$this->Session->setFlash(__('The producto could not be deleted. Please, try again.'));
+			$this->Session->setFlash(__('No se pudo eliminar el Producto. Intente otra vez.'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}

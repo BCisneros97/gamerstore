@@ -1,25 +1,63 @@
-<div class="ventas form">
-<?php echo $this->Form->create('Venta'); ?>
-	<fieldset>
-		<legend><?php echo __('Add Venta'); ?></legend>
-	<?php
-		echo $this->Form->input('fechacompra');
-		echo $this->Form->input('fechaentrega');
-		echo $this->Form->input('numerotarjeta');
-		echo $this->Form->input('cliente_id');
-		echo $this->Form->input('Disenio');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Ventas</h1>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
 
-		<li><?php echo $this->Html->link(__('List Ventas'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Clientes'), array('controller' => 'clientes', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Cliente'), array('controller' => 'clientes', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Disenios'), array('controller' => 'disenios', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Disenio'), array('controller' => 'disenios', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
+<section class="content">
+    <div class="row">
+        <div class="col-12">
+            <div class="card card-info">
+                <div class="card-header">
+                    <h3 class="card-title"></h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <?php echo $this->Form->create('Venta', array('class' => 'form-horizontal')); ?>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label for="VentaFechaCompra" class="col-sm-2 col-form-label">Fecha compra</label>
+                        <div class="col-sm-10">
+                            <input type="date" class="form-control" id="VentaFechaCompra" name="data[Venta][fechacompra]" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="VentaFechaEntrega" class="col-sm-2 col-form-label">Fecha Entrega</label>
+                        <div class="col-sm-10">
+                            <input type="date" class="form-control" id="VentaFechaEntrega" name="data[Venta][fechaentrega]" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="VentaNumeroTarjeta" class="col-sm-2 col-form-label">Numero Tarjeta</label>
+                        <div class="col-sm-10">
+                            <?php echo $this->Form->input('numerotarjeta', array('div' => false, 'label' => false, 'class' => 'form-control')); ?>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label for="VentaClienteId" class="col-sm-2 col-form-label">Cliente</label>
+                        <div class="col-sm-10">
+                            <?php echo $this->Form->input('cliente_id', array('div' => false, 'label' => false, 'class' => 'form-control')); ?>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.card-body -->
+                
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-info">Guardar</button>
+                </div>
+                <!-- /.card-footer -->
+
+                <?php echo $this->Form->end(); ?>
+            </div>
+        </div>
+    </div>
+</section>

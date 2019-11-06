@@ -13,8 +13,9 @@ class TiporeclamosController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator');
+	public $components = array('Paginator','Session');
 	public $layout = 'admin';
+
 
 /**
  * index method
@@ -67,14 +68,14 @@ class TiporeclamosController extends AppController {
  */
 	public function edit($id = null) {
 		if (!$this->Tiporeclamo->exists($id)) {
-			throw new NotFoundException(__('Invalid tiporeclamo'));
+			throw new NotFoundException(__('El Tipo de Reclamo no Existe'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Tiporeclamo->save($this->request->data)) {
-				$this->Session->setFlash(__('The tiporeclamo has been saved.'));
+				$this->Session->setFlash(__('El Tipo de Reclamo ha sido Guardado.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The tiporeclamo could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('El Tipo de Reclamo no se pudo guardar. Intente otra vez.'));
 			}
 		} else {
 			$options = array('conditions' => array('Tiporeclamo.' . $this->Tiporeclamo->primaryKey => $id));
@@ -92,13 +93,13 @@ class TiporeclamosController extends AppController {
 	public function delete($id = null) {
 		$this->Tiporeclamo->id = $id;
 		if (!$this->Tiporeclamo->exists()) {
-			throw new NotFoundException(__('Invalid tiporeclamo'));
+			throw new NotFoundException(__('El Tipo de Reclamo no Existe'));
 		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Tiporeclamo->delete()) {
-			$this->Session->setFlash(__('The tiporeclamo has been deleted.'));
+			$this->Session->setFlash(__('El Tipo de Reclamo ha sido Guardado.'));
 		} else {
-			$this->Session->setFlash(__('The tiporeclamo could not be deleted. Please, try again.'));
+			$this->Session->setFlash(__('El Tipo de Reclamo no se pudo guardar. Intente otra vez.'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
