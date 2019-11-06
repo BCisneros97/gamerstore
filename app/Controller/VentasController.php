@@ -13,7 +13,8 @@ class VentasController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator');
+	public $components = array('Paginator','Session');
+	public $layout = 'admin';
 
 /**
  * index method
@@ -34,7 +35,7 @@ class VentasController extends AppController {
  */
 	public function view($id = null) {
 		if (!$this->Venta->exists($id)) {
-			throw new NotFoundException(__('Invalid venta'));
+			throw new NotFoundException(__('La Venta no Existe'));
 		}
 		$options = array('conditions' => array('Venta.' . $this->Venta->primaryKey => $id));
 		$this->set('venta', $this->Venta->find('first', $options));
@@ -49,10 +50,10 @@ class VentasController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Venta->create();
 			if ($this->Venta->save($this->request->data)) {
-				$this->Session->setFlash(__('The venta has been saved.'));
+				$this->Session->setFlash(__('La Venta ha sido Guardada.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The venta could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('La Venta no se pudo guardar. Intente otra vez.'));
 			}
 		}
 		$clientes = $this->Venta->Cliente->find('list');
@@ -69,14 +70,14 @@ class VentasController extends AppController {
  */
 	public function edit($id = null) {
 		if (!$this->Venta->exists($id)) {
-			throw new NotFoundException(__('Invalid venta'));
+			throw new NotFoundException(__('La Venta no Existe'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Venta->save($this->request->data)) {
-				$this->Session->setFlash(__('The venta has been saved.'));
+				$this->Session->setFlash(__('La Venta ha sido Guardada.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The venta could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('La Venta no se pudo guardar. Intente otra vez.'));
 			}
 		} else {
 			$options = array('conditions' => array('Venta.' . $this->Venta->primaryKey => $id));
@@ -97,13 +98,13 @@ class VentasController extends AppController {
 	public function delete($id = null) {
 		$this->Venta->id = $id;
 		if (!$this->Venta->exists()) {
-			throw new NotFoundException(__('Invalid venta'));
+			throw new NotFoundException(__('La Venta no Existe'));
 		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Venta->delete()) {
-			$this->Session->setFlash(__('The venta has been deleted.'));
+			$this->Session->setFlash(__('La Venta ha sido Guardada.'));
 		} else {
-			$this->Session->setFlash(__('The venta could not be deleted. Please, try again.'));
+			$this->Session->setFlash(__('La Venta no se pudo guardar. Intente otra vez.'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
