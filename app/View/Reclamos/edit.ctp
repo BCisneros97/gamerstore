@@ -35,7 +35,7 @@
                     <div class="form-group row">
                         <label for="ReclamoCliente" class="col-sm-2 col-form-label">Cliente</label>
                         <div class="col-sm-10">
-                            <input type="text" readonly class="form-control-plaintext" id="ReclamoCliente" value="<?= $this->request->data['DiseniosVenta']['Venta']['Cliente']['User']['nombre'] ?>">
+                            <input type="text" readonly class="form-control-plaintext" id="ReclamoCliente" value="<?= $this->request->data['DiseniosVenta']['Venta']['Cliente']['User']['username'] ?>">
                         </div>
                     </div>
                     <div class="form-group row">

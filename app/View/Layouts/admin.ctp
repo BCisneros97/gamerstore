@@ -78,7 +78,7 @@
               <?php echo $this->Html->link(
                 $this->Html->tag('i', '', array('class' => "nav-icon fas fa-tachometer-alt")) .
                   $this->Html->tag('p', 'Categorías'),
-                array('controller' => 'categorias', 'action' => 'index'),
+                array('controller' => 'categorias', 'action' => 'adminIndex'),
                 array('escape' => false, 'class' => 'nav-link')
               ); ?>
             </li>

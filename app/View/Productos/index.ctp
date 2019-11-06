@@ -34,7 +34,7 @@
                 <th>PrecioUnitario</th>
                 <th>PrecioLocal</th>
                 <th>PrecioProductos</th>
-                <th>CategiriaID</th>
+                <th>Categoría</th>
                
                 <th>Acciones</th>
               </tr>
@@ -44,14 +44,10 @@
                 <tr>
                   <td><?php echo h($producto['Producto']['id']); ?></td>
                   <td><?php echo h($producto['Producto']['nombre']); ?></td>
-
-                  
-                  
                   <td><?php echo h($producto['Producto']['preciounitario']); ?></td>
                   <td><?php echo h($producto['Producto']['precioenviolocal']); ?></td>
                   <td><?php echo h($producto['Producto']['precioenvioprovincia']); ?></td>
-                  <td><?php echo h($producto['Producto']['categoria_id']); ?></td>
-                  
+                  <td><?php echo h($producto['Categoria']['nombre']); ?></td>
                   <td>
                     <div class="btn-group">
                       <?php echo $this->Html->link(

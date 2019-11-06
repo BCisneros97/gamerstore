@@ -15,7 +15,7 @@ echo $this->element('menucategorias', array('categorias' => $categorias)) ?>
                             array('controller' => 'productos', 'action' => 'show', $producto['id']),
                             array('escape' => false)
                         ) ?>
-                    <p class="User"><?= $producto['preciounitario'] ?></p>
+                    <p class="User">S/.<?= $producto['preciounitario'] ?>.00</p>
 
                     <label class="icon-estrella"></label>4.8
                     <p class="ventas">50 vendidos</p>

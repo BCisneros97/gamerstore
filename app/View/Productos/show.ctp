@@ -30,11 +30,9 @@
         </div>
         <h4>Características</h4>
         <ul class="caracteristicas">
-            <li>BlueTrack Technology</li>
-            <li>Plug and Play</li>
-            <li>Facto de Forma: Ambidiestro</li>
-            <li>Frecuencia Wireless: 2.4GHz</li>
-            <li>Botones: (3) izquierda, derecha y botón de rueda</li>
+            <?php foreach (explode('.', $producto['Producto']['caracteristica']) as $item) : ?>
+                <li><?= $item ?></li>
+            <?php endforeach; ?>
         </ul>
         <div class="envio">
             <h3>OPCIONES DE ENVIO</h3>

@@ -73,10 +73,13 @@ class ProductosController extends AppController
 				$this->Session->setFlash(__('El Producto no se pudo guardar. Intente otra vez.'));
 			}
 		}
-		$categorias = $this->Producto->Categoria->find('list');
-		$proveedors = $this->Producto->Proveedor->find('list');
-		$descuentos = $this->Producto->Descuento->find('list');
-		$this->set(compact('categorias', 'proveedors', 'descuentos'));
+		$categorias = $this->Producto->Categoria->find('list', array(
+			'fields' => array('id', 'nombre')
+		));
+		$proveedors = $this->Producto->Proveedor->find('list', array(
+			'fields' => array('id', 'razonsocial')
+		));
+		$this->set(compact('categorias', 'proveedors'));
 	}
 
 	/**
@@ -92,6 +95,9 @@ class ProductosController extends AppController
 			throw new NotFoundException(__('Invalid producto'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
+			if (isset($_FILES['imagen'])) {
+				$this->request->data['Producto']['imagen'] = file_get_contents($_FILES['imagen']['tmp_name']);
+			}
 			if ($this->Producto->save($this->request->data)) {
 				$this->Session->setFlash(__('El Producto ha sido Guardado.'));
 				return $this->redirect(array('action' => 'index'));
@@ -102,10 +108,13 @@ class ProductosController extends AppController
 			$options = array('conditions' => array('Producto.' . $this->Producto->primaryKey => $id));
 			$this->request->data = $this->Producto->find('first', $options);
 		}
-		$categorias = $this->Producto->Categoria->find('list');
-		$proveedors = $this->Producto->Proveedor->find('list');
-		$descuentos = $this->Producto->Descuento->find('list');
-		$this->set(compact('categorias', 'proveedors', 'descuentos'));
+		$categorias = $this->Producto->Categoria->find('list', array(
+			'fields' => array('id', 'nombre')
+		));
+		$proveedors = $this->Producto->Proveedor->find('list', array(
+			'fields' => array('id', 'razonsocial')
+		));
+		$this->set(compact('categorias', 'proveedors'));
 	}
 
 	/**
@@ -140,7 +149,7 @@ class ProductosController extends AppController
 		$this->Producto->recursive = 0;
 		// CakeSession::delete('Carrito.productos');
 		$options = array('conditions' => array('Producto.' . $this->Producto->primaryKey => $id));
-		CakeSession::write('Carrito.productos.'.$id, $this->Producto->find('first', $options));
+		CakeSession::write('Carrito.productos.' . $id, $this->Producto->find('first', $options));
 
 		return $this->redirect(array('controller' => 'ventas', 'action' => 'carrito'));
 	}

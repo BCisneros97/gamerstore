@@ -6,7 +6,7 @@ echo $this->Html->image('gamer-store-logo.png', array('alt' => 'Logo Gamer Store
 ?>
 <h1>Registrarse</h1>
 <?php
-echo $this->Form->input('nombre', array(
+echo $this->Form->input('username', array(
     'label' => false,
     'before' => '<i class="fas fa-user"></i>',
     'type' => 'text',
@@ -37,14 +37,6 @@ echo $this->Form->input('password', array(
 <div class="textbox">
     <i class="fas fa-lock"></i>
     <input type="password" id="ConfirmacionPassword" placeholder="Repetir contraseña" required>
-</div>
-<div class="textbox">
-    <i class="fas fa-venus-mars"></i>
-    <select name="data[Cliente][sexo]" id="ClienteSexo" required>
-        <option disabled selected>Género</option>
-        <option value="M">Masculino</option>
-        <option value="F">Femenino</option>
-    </select>
 </div>
 
 <?php

@@ -49,7 +49,7 @@
                   <td><?php echo h($proveedor['Proveedor']['telefono']); ?></td>
                   <td><?php echo h($proveedor['Proveedor']['email']); ?></td>
                   <td><?php echo h($proveedor['Proveedor']['direccion']); ?></td>
-                  <td><?php echo h($proveedor['Proveedor']['ciudad_id']); ?></td>
+                  <td><?php echo h($proveedor['Ciudad']['nombre']); ?></td>
 
                   <td>
                     <div class="btn-group">

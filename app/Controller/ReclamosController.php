@@ -68,7 +68,7 @@ class ReclamosController extends AppController
 	 *
 	 * @return void
 	 */
-	public function add($disenioventa_id = null)
+	public function add($disenioventa_id = 1)
 	{
 		if (!$this->Reclamo->DiseniosVenta->exists($disenioventa_id)) {
 			throw new NotFoundException(__('No se puede crear reclamo'));
