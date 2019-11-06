@@ -35,39 +35,51 @@
 			<input type="checkbox" id="menu-bar">
 			<label class="icon-menu" for="menu-bar"></label>
 
-			<?php echo $this->Html->link(
-				$this->Html->tag(
-					'p',
-					$this->Html->tag('span', 'Iniciar sesión', array('id'=>'login')),
-					array('class' => 'icon-usuario', 'escape' => false)
-				),
-				array('controller' => 'pages', 'action' => 'login'),
-				array('escape' => false)
-			); ?>
-			
+			<?php
+			if (AuthComponent::user('id') != null) {
+				echo $this->Html->link(
+					$this->Html->tag(
+						'p',
+						$this->Html->tag('span', AuthComponent::user('username'), array('id' => 'login')),
+						array('class' => 'icon-usuario', 'escape' => false)
+					),
+					array('controller' => 'users', 'action' => 'logout'),
+					array('escape' => false)
+				);
+			} else {
+				echo $this->Html->link(
+					$this->Html->tag(
+						'p',
+						$this->Html->tag('span', 'Iniciar sesión', array('id' => 'login')),
+						array('class' => 'icon-usuario', 'escape' => false)
+					),
+					array('controller' => 'users', 'action' => 'login'),
+					array('escape' => false)
+				);
+			}
+			?>
+
 			<?php echo $this->Html->link(
 				$this->Html->tag('span', '', array('class' => 'icon-carrito')),
 				array('controller' => 'pages', 'action' => 'carrito'),
 				array('escape' => false)
 			); ?>
-			
+
 			<?php echo $this->element('menu_principal'); ?>
-			
+
 		</div>
 	</header>
-	
-	<main>
-		<?php echo $this->Session->flash(); ?>
 
+	<main>
 		<?php echo $this->fetch('content'); ?>
 	</main>
 
 	<?php echo $this->element('footer'); ?>
-	
+
 	<?php echo $this->element('redes_sociales'); ?>
-	
+
 	<?php echo $this->element('sql_dump'); ?>
-	
+
 	<?php echo $this->fetch('script'); ?>
 </body>
 

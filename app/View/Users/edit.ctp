@@ -21,9 +21,9 @@
                 <div class="card-body">
                     <?php echo $this->Form->input('id'); ?>
                     <div class="form-group row">
-                        <label for="UserNombre" class="col-sm-2 col-form-label">Nombre</label>
+                        <label for="UserUsername" class="col-sm-2 col-form-label">Nombre</label>
                         <div class="col-sm-10">
-                            <?php echo $this->Form->input('nombre', array('div' => false, 'label' => false, 'class' => 'form-control')); ?>
+                            <?php echo $this->Form->input('username', array('div' => false, 'label' => false, 'class' => 'form-control')); ?>
                         </div>
                     </div>
                     <div class="form-group row">

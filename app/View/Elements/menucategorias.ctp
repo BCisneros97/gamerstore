@@ -7,7 +7,7 @@
                 <li>
                     <?php echo $this->Html->link(
                             $cat['Categoria']['nombre'],
-                            array('controller' => 'categorias', 'action' => 'index', 'id' => $cat['Categoria']['id'])
+                            array('controller' => 'categorias', 'action' => 'index', $cat['Categoria']['id'])
                         ); ?>
                 </li>
             <?php endforeach; ?>

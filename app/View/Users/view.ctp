@@ -24,9 +24,9 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="UserNombre" class="col-sm-2 col-form-label">Nombre:</label>
+                        <label for="UserUsername" class="col-sm-2 col-form-label">Nombre:</label>
                         <div class="col-sm-10">
-                            <input type="text" readonly class="form-control-plaintext" id="UserNombre" value="<?= $user['User']['nombre'] ?>">
+                            <input type="text" readonly class="form-control-plaintext" id="UserUsername" value="<?= $user['User']['username'] ?>">
                         </div>
                     </div>
                     <div class="form-group row">

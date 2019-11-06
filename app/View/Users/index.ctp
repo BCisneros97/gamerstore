@@ -39,7 +39,7 @@
                             <?php foreach ($users as $user) : ?>
                                 <tr>
                                     <td><?php echo h($user['User']['id']); ?></td>
-                                    <td><?php echo h($user['User']['nombre']); ?></td>
+                                    <td><?php echo h($user['User']['username']); ?></td>
                                     <td><?php echo h($user['User']['email']); ?></td>
                                     <td><?php echo h($user['User']['tipo']); ?></td>
                                     <td>
@@ -70,7 +70,7 @@
                                                     ),
                                                     array('action' => 'delete', $user['User']['id']),
                                                     array('escape' => false),
-                                                    __('¿Está seguro de que quiere dar de baja al usuario "%s"?', $user['User']['nombre'])
+                                                    __('¿Está seguro de que quiere dar de baja al usuario "%s"?', $user['User']['username'])
                                                 ); ?>
                                         </div>
                                     </td>

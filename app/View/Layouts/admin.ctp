@@ -62,10 +62,10 @@
         <!-- Sidebar user (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
-            <?php echo $this->Html->image('/dist/img/user2-160x160.jpg', array('class' => "img-circle elevation-2", 'alt' => "User Image")) ?>
+            <img class="img-circle elevation-2" src="data:image/jpg;base64,<?= base64_encode(AuthComponent::user('foto')) ?>">
           </div>
           <div class="info">
-            <a href="#" class="d-block">Alexander Pierce</a>
+            <a href="#" class="d-block"><?= AuthComponent::user('username') ?></a>
           </div>
         </div>
 
@@ -163,7 +163,7 @@
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-      <?php echo $this->Session->flash('flash', array('element'=>'flash')); ?>
+      <?php echo $this->Session->flash('flash', array('element' => 'flash')); ?>
 
       <?php echo $this->fetch('content'); ?>
     </div>
