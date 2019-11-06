@@ -58,7 +58,7 @@ class DiseniosController extends AppController {
             'Disenio.id','Disenio.imagen','Disenio.descripcion','Disenio.producto_id','Disenio.cliente_id',
             'Producto.id','Producto.nombre','Producto.imagen','Producto.caracteristica','Producto.preciounitario','Producto.precioenviolocal','Producto.precioenvioprovincia','Producto.categoria_id','Producto.proveedor_id',
             'Cliente.id','Cliente.tipo','Cliente.sexo', 'Cliente.user_id',
-            'User.id','User.nombre','User.email','User.password','User.foto','User.tipo'
+            'User.id','User.username','User.email','User.password','User.foto','User.tipo'
         );
         $disenios=$this->Disenio->find('first',$options);
         $this->set('disenio',$disenios);
