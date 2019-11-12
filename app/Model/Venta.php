@@ -1,0 +1,50 @@
+<?php
+App::uses('AppModel', 'Model');
+/**
+ * Venta Model
+ *
+ * @property Cliente $Cliente
+ * @property Disenio $Disenio
+ */
+class Venta extends AppModel {
+
+
+	//The Associations below have been created with all possible keys, those that are not needed can be removed
+
+/**
+ * belongsTo associations
+ *
+ * @var array
+ */
+	public $belongsTo = array(
+		'Cliente' => array(
+			'className' => 'Cliente',
+			'foreignKey' => 'cliente_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		)
+	);
+
+/**
+ * hasAndBelongsToMany associations
+ *
+ * @var array
+ */
+	public $hasAndBelongsToMany = array(
+		'Disenio' => array(
+			'className' => 'Disenio',
+			'joinTable' => 'disenios_ventas',
+			'foreignKey' => 'venta_id',
+			'associationForeignKey' => 'disenio_id',
+			'unique' => 'keepExisting',
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'finderQuery' => '',
+		)
+	);
+
+}
