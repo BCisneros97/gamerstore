@@ -1,0 +1,15 @@
+.container {
+	padding-top: 150px;
+    margin-left: 50%;
+    width: 100%;
+}
+
+.container h3{
+	font-size: 25px;
+	text-align: center;
+	color: #0C39F3 ;
+}
+
+.col-sm-6{
+	margin-left: 25%;
+}
