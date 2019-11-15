@@ -1,24 +1,87 @@
-<div class="tarjetas form">
-<?php echo $this->Form->create('Tarjeta'); ?>
-	<fieldset>
-		<legend><?php echo __('Edit Tarjeta'); ?></legend>
-	<?php
-		echo $this->Form->input('id');
-		echo $this->Form->input('numero');
-		echo $this->Form->input('fechavencimiento');
-		echo $this->Form->input('ccv');
-		echo $this->Form->input('cliente_id');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
+<?php
+echo $this->Html->css('/plugins/bootstrap/css/bootstrap.min.css', array('inline' => false));
+echo $this->Html->script('/plugins/jquery/jquery.min.js', array('inline' => false));
+echo $this->Html->script('/plugins/bootstrap/js/bootstrap4.min.js', array('inline' => false));
+?>
+<div class="container" style="margin-top: 110px">
+    
+    <div class="row">
+        <div class="col-sm-3">
+            <?php echo $this->element('menu_usuario'); ?>
+        </div>
+        <div class="col-sm-9" >
+            <h3>Editar Tarjeta</h3>
 
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Tarjeta.id')), array(), __('Are you sure you want to delete # %s?', $this->Form->value('Tarjeta.id'))); ?></li>
-		<li><?php echo $this->Html->link(__('List Tarjetas'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Clientes'), array('controller' => 'clientes', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Cliente'), array('controller' => 'clientes', 'action' => 'add')); ?> </li>
-	</ul>
+                <div class="card bg-red">
+                    <div class="card-header"></div>
+                        <div class="card-body">
+                            <div class="direccions form">
+                                <?php echo $this->Form->create('Tarjeta'); ?>
+                                <fieldset>
+                                    <div class="container ">
+                                        <?php echo $this->Form->input('id'); ?>
+                                            <div class="row">
+                                                <?php
+                                                    echo $this->Form->input('numero', array(
+                                                        'label' => array(
+                                                        'text'=>'Tarjeta :',
+                                                        'class'=>'font-weight-bolder col-form-label col-sm-3',
+                                                        'style'=>'margin-bottom: 10px'
+                                                    ),
+                                                        'class' => 'form-control col-sm-9',
+                                                        'div'=>false,
+                                                        'placeholder'=>'Numero de Tarjeta:'
+                                                    ));
+                                                    
+                                                    echo $this->Form->input('fechavencimiento', array(
+                                                        'label' => array(
+                                                        'text'=>'Fecha de Vencimiento  :',
+                                                        'class'=>'font-weight-bolder col-form-label col-sm-3',
+                                                        'style'=>'margin-bottom: 10px',
+                                                    ),
+                                                        'class' => 'form-control col-sm-9',
+                                                        'div'=>false,
+                                                        'placeholder'=>'MM/YY'
+                                                    ));
+                            
+                                                    echo $this->Form->input('ccv', array(
+                                                        'label' => array(
+                                                        'text'=>'CVV  :',
+                                                        'class'=>'font-weight-bolder col-form-label col-sm-3',
+                                                        'style'=>'margin-bottom: 10px',
+                                                    ),
+                                                        'class' => 'form-control col-sm-9',
+                                                        'div'=>false,
+                                                    ));
+                            
+                                                    echo $this->Form->input('nombretarj', array(
+                                                        'label' => array(
+                                                        'text'=>'Nombre de la Tarjeta :',
+                                                        'class'=>'font-weight-bolder col-form-label col-sm-3',
+                                                        'style'=>'margin-bottom: 10px',
+                                                    ),
+                                                        'class' => 'form-control col-sm-9',
+                                                        'div'=>false,
+                                                        'type'=>'text',
+                                                        'maxlength'=>'60'
+                                                    ));
+                                                ?>
+                                            </div>
+                                    </div>
+                                </fieldset>
+                                <?php
+                                    $options = array(
+                                    'type' => 'submit',
+                                    'class' => 'btn btn-info',
+                                    'label' => 'Guardar',
+                                    'div' => array(
+                                    'class'=>'card-footer'
+                                    )
+                                );
+                                echo $this->Form->end($options); ?>
+                            </div>
+                    </div>
+                </div>
+        </div>
+    </div>
 </div>
