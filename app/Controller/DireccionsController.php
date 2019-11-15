@@ -13,7 +13,7 @@ class DireccionsController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator');
+	public $components = array('Paginator','Session');
 
 /**
  * index method
@@ -48,6 +48,10 @@ class DireccionsController extends AppController {
 	public function add() {
 		if ($this->request->is('post')) {
 			$this->Direccion->create();
+			$cliente=$this->Direccion->Cliente->find('first',array(
+			    'conditions' => array('Cliente.user_id' => AuthComponent::user('id'))
+            ));
+			$this->request->data['Direccion']['cliente_id']=$cliente['Cliente']['id'];
 			if ($this->Direccion->save($this->request->data)) {
 				$this->Session->setFlash(__('The direccion has been saved.'));
 				return $this->redirect(array('action' => 'index'));
@@ -55,7 +59,7 @@ class DireccionsController extends AppController {
 				$this->Session->setFlash(__('The direccion could not be saved. Please, try again.'));
 			}
 		}
-		$ciudads = $this->Direccion->Ciudad->find('list');
+		$ciudads = $this->Direccion->Ciudad->find('list',array('fields' => array('Ciudad.nombre')));
 		$clientes = $this->Direccion->Cliente->find('list');
 		$this->set(compact('ciudads', 'clientes'));
 	}

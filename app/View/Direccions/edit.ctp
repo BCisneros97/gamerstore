@@ -1,28 +1,87 @@
-<div class="direccions form">
-<?php echo $this->Form->create('Direccion'); ?>
-	<fieldset>
-		<legend><?php echo __('Edit Direccion'); ?></legend>
-	<?php
-		echo $this->Form->input('id');
-		echo $this->Form->input('primeralinea');
-		echo $this->Form->input('segundalinea');
-		echo $this->Form->input('ciudad_id');
-		echo $this->Form->input('codigopostal');
-		echo $this->Form->input('telefono');
-		echo $this->Form->input('cliente_id');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
+<?php
+echo $this->Html->css('/plugins/bootstrap/css/bootstrap.min.css', array('inline' => false));
+echo $this->Html->script('/plugins/jquery/jquery.min.js', array('inline' => false));
+echo $this->Html->script('/plugins/bootstrap/js/bootstrap4.min.js', array('inline' => false));
+?>
+<div class="container" style="margin-top: 110px">
+    <h3>Editar Dirección de Envío</h3>
 
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Direccion.id')), array(), __('Are you sure you want to delete # %s?', $this->Form->value('Direccion.id'))); ?></li>
-		<li><?php echo $this->Html->link(__('List Direccions'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Ciudads'), array('controller' => 'ciudads', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Ciudad'), array('controller' => 'ciudads', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Clientes'), array('controller' => 'clientes', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Cliente'), array('controller' => 'clientes', 'action' => 'add')); ?> </li>
-	</ul>
+    <div class="card bg-red">
+        <div class="card-header"></div>
+        <div class="card-body">
+            <div class="direccions form">
+                <?php echo $this->Form->create('Direccion'); ?>
+                <fieldset>
+                    <div class="container ">
+                        <div class="row">
+                            <?php
+                            echo $this->Form->input('primeralinea', array(
+                                'label' => array(
+                                    'text'=>'Dirección :',
+                                    'class'=>'font-weight-bolder col-form-label col-sm-3',
+                                    'style'=>'margin-bottom: 10px'
+                                ),
+                                'class' => 'form-control col-sm-9',
+                                'div'=>false,
+                                'placeholder'=>'Dirección de la calle:'
+                            ));
+                            echo $this->Form->input('segundalinea', array(
+                                'label' => array(
+                                    'text'=>'Referencia  :',
+                                    'class'=>'font-weight-bolder col-form-label col-sm-3',
+                                    'style'=>'margin-bottom: 10px',
+                                ),
+                                'class' => 'form-control col-sm-9',
+                                'div'=>false,
+                                'placeholder'=>'Apartamento, suite, unidad, etc. (opcional)'
+                            ));
+                            echo $this->Form->input('ciudad_id', array(
+                                'label' => array(
+                                    'text'=>'Ciudad  :',
+                                    'class'=>'font-weight-bolder col-form-label col-sm-3',
+                                    'style'=>'margin-bottom: 10px',
+                                ),
+                                'class' => 'form-control col-sm-9',
+                                'div'=>false,
+                            ));
+                            echo $this->Form->input('codigopostal', array(
+                                'label' => array(
+                                    'text'=>'Codigo Postal  :',
+                                    'class'=>'font-weight-bolder col-form-label col-sm-3',
+                                    'style'=>'margin-bottom: 10px',
+                                ),
+                                'class' => 'form-control col-sm-9',
+                                'div'=>false,
+                                'type'=>'text',
+                                'maxlength'=>'4'
+                            ));
+                            echo $this->Form->input('telefono', array(
+                                'label' => array(
+                                    'text'=>'Telefono  :',
+                                    'class'=>'font-weight-bolder col-form-label col-sm-3',
+                                    'style'=>'margin-bottom: 10px',
+                                ),
+                                'class' => 'form-control col-sm-9',
+                                'div'=>false,
+                                'type'=>'text',
+                                'maxlength'=>'9'
+                            ));
+                            ?>
+                        </div>
+                    </div>
+                </fieldset>
+                <?php
+                $options = array(
+                    'type' => 'submit',
+                    'class' => 'btn btn-info',
+                    'label' => 'Guardar',
+                    'div' => array(
+                        'class'=>'card-footer'
+                    )
+                );
+                echo $this->Form->end($options); ?>
+            </div>
+        </div>
+
+    </div>
 </div>

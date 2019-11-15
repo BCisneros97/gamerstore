@@ -1,62 +1,77 @@
-<div class="direccions index">
-	<h2><?php echo __('Direccions'); ?></h2>
-	<table cellpadding="0" cellspacing="0">
-	<thead>
-	<tr>
-			<th><?php echo $this->Paginator->sort('id'); ?></th>
-			<th><?php echo $this->Paginator->sort('primeralinea'); ?></th>
-			<th><?php echo $this->Paginator->sort('segundalinea'); ?></th>
-			<th><?php echo $this->Paginator->sort('ciudad_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('codigopostal'); ?></th>
-			<th><?php echo $this->Paginator->sort('telefono'); ?></th>
-			<th><?php echo $this->Paginator->sort('cliente_id'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	</thead>
-	<tbody>
-	<?php foreach ($direccions as $direccion): ?>
-	<tr>
-		<td><?php echo h($direccion['Direccion']['id']); ?>&nbsp;</td>
-		<td><?php echo h($direccion['Direccion']['primeralinea']); ?>&nbsp;</td>
-		<td><?php echo h($direccion['Direccion']['segundalinea']); ?>&nbsp;</td>
-		<td>
-			<?php echo $this->Html->link($direccion['Ciudad']['id'], array('controller' => 'ciudads', 'action' => 'view', $direccion['Ciudad']['id'])); ?>
-		</td>
-		<td><?php echo h($direccion['Direccion']['codigopostal']); ?>&nbsp;</td>
-		<td><?php echo h($direccion['Direccion']['telefono']); ?>&nbsp;</td>
-		<td>
-			<?php echo $this->Html->link($direccion['Cliente']['id'], array('controller' => 'clientes', 'action' => 'view', $direccion['Cliente']['id'])); ?>
-		</td>
-		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $direccion['Direccion']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $direccion['Direccion']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $direccion['Direccion']['id']), array(), __('Are you sure you want to delete # %s?', $direccion['Direccion']['id'])); ?>
-		</td>
-	</tr>
-<?php endforeach; ?>
-	</tbody>
-	</table>
-	<p>
-	<?php
-	echo $this->Paginator->counter(array(
-	'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	));
-	?>	</p>
-	<div class="paging">
-	<?php
-		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
-		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
-	?>
-	</div>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New Direccion'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Ciudads'), array('controller' => 'ciudads', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Ciudad'), array('controller' => 'ciudads', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Clientes'), array('controller' => 'clientes', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Cliente'), array('controller' => 'clientes', 'action' => 'add')); ?> </li>
-	</ul>
+<?php
+echo $this->Html->css('/plugins/bootstrap/css/bootstrap.min.css', array('inline' => false));
+echo $this->Html->script('/plugins/jquery/jquery.min.js', array('inline' => false));
+echo $this->Html->script('/plugins/bootstrap/js/bootstrap4.min.js', array('inline' => false));
+?>
+<div class="container" style="margin-top: 110px">
+    <h3>Mi Dirección de Envío</h3>
+
+    <div class="card bg-red">
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">
+                    <?php echo $this->Html->link(
+                        $this->Html->tag('button', 'Añadir Direccion', array('class' => 'btn btn-info')),
+                        array('action' => 'add'),
+                        array('escape' => false)
+                    );
+                    ?>
+                </h3>
+            </div>
+            <div class="card-body">
+                <div class="container">
+                    <div class="row">
+                        <?php
+                        foreach ($direccions as $direccion):
+                            ?>
+                            <div class="col-sm-3">
+                                <div class="card" style="min-height: 250px;max-height: 250px ">
+                                    <div class="card-header">
+
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-sm-1">
+                                                <i class="fas fa-map-marker"></i>
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <p class="text-left"> <?php echo h($direccion['Direccion']['primeralinea'])."<br>".h($direccion['Direccion']['segundalinea'])."<br>".h($direccion['Ciudad']['nombre']).", ".h($direccion['Direccion']['codigopostal'])  ?></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-1">
+                                                <i class="fas fa-mobile-alt"></i>
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <p class="text-left"> <?php echo h($direccion['Direccion']['telefono']) ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card-footer">
+                                        <div class="row">
+                                            <div class="col-sm">
+
+                                                <?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $direccion['Direccion']['id'])); ?>
+                                            </div>
+                                            <div class="col-sm">
+                                                <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $direccion['Direccion']['id']), array(), __('Está seguro de eliminar  # %s?', $direccion['Direccion']['id'])); ?>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
 </div>
