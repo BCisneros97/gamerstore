@@ -6,34 +6,37 @@ App::uses('AppController', 'Controller');
  * @property Venta $Venta
  * @property PaginatorComponent $Paginator
  */
-class VentasController extends AppController {
+class VentasController extends AppController
+{
 
-/**
- * Components
- *
- * @var array
- */
-	public $components = array('Paginator','Session');
+	/**
+	 * Components
+	 *
+	 * @var array
+	 */
+	public $components = array('Paginator', 'Session');
 	public $layout = 'admin';
 
-/**
- * index method
- *
- * @return void
- */
-	public function index() {
+	/**
+	 * index method
+	 *
+	 * @return void
+	 */
+	public function index()
+	{
 		$this->Venta->recursive = 0;
 		$this->set('ventas', $this->Paginator->paginate());
 	}
 
-/**
- * view method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function view($id = null) {
+	/**
+	 * view method
+	 *
+	 * @throws NotFoundException
+	 * @param string $id
+	 * @return void
+	 */
+	public function view($id = null)
+	{
 		if (!$this->Venta->exists($id)) {
 			throw new NotFoundException(__('La Venta no Existe'));
 		}
@@ -41,34 +44,40 @@ class VentasController extends AppController {
 		$this->set('venta', $this->Venta->find('first', $options));
 	}
 
-/**
- * add method
- *
- * @return void
- */
-	public function add() {
+	/**
+	 * add method
+	 *
+	 * @return void
+	 */
+	public function add()
+	{
 		if ($this->request->is('post')) {
 			$this->Venta->create();
-			if ($this->Venta->save($this->request->data)) {
-				$this->Session->setFlash(__('La Venta ha sido Guardada.'));
-				return $this->redirect(array('action' => 'index'));
+			
+			$fcompra = date_create('now');
+			$this->request->data['Venta']['fechacompra'] = date_format($fcompra, 'Y-m-d');
+			date_add($fcompra, date_interval_create_from_date_string('10 days'));
+			$this->request->data['Venta']['fechaentrega'] = date_format($fcompra, 'Y-m-d');
+			
+			if ($this->Venta->saveAssociated($this->request->data, array('deep' => true))) {
+				CakeSession::delete('Carrito');
+				return $this->redirect(array('controller'=>'disenios','action' => 'carrito'));
 			} else {
 				$this->Session->setFlash(__('La Venta no se pudo guardar. Intente otra vez.'));
+				return $this->redirect(array('controller'=>'disenios','action' => 'carrito'));
 			}
 		}
-		$clientes = $this->Venta->Cliente->find('list');
-		$disenios = $this->Venta->Disenio->find('list');
-		$this->set(compact('clientes', 'disenios'));
 	}
 
-/**
- * edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function edit($id = null) {
+	/**
+	 * edit method
+	 *
+	 * @throws NotFoundException
+	 * @param string $id
+	 * @return void
+	 */
+	public function edit($id = null)
+	{
 		if (!$this->Venta->exists($id)) {
 			throw new NotFoundException(__('La Venta no Existe'));
 		}
@@ -88,14 +97,15 @@ class VentasController extends AppController {
 		$this->set(compact('clientes', 'disenios'));
 	}
 
-/**
- * delete method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function delete($id = null) {
+	/**
+	 * delete method
+	 *
+	 * @throws NotFoundException
+	 * @param string $id
+	 * @return void
+	 */
+	public function delete($id = null)
+	{
 		$this->Venta->id = $id;
 		if (!$this->Venta->exists()) {
 			throw new NotFoundException(__('La Venta no Existe'));
@@ -107,13 +117,5 @@ class VentasController extends AppController {
 			$this->Session->setFlash(__('La Venta no se pudo guardar. Intente otra vez.'));
 		}
 		return $this->redirect(array('action' => 'index'));
-	}
-
-	public function carrito() {
-		$this->loadModel('Producto');
-
-		$this->set('productos', CakeSession::read('Carrito.productos'));
-
-		$this->layout = 'default';
 	}
 }

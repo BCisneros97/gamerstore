@@ -78,4 +78,6 @@ class Disenio extends AppModel {
 		)
 	);
 
+	public $actsAs = array('Containable');
+
 }

@@ -103,4 +103,6 @@ class Cliente extends AppModel {
 		)
 	);
 
+	public $actAs = array('Containable');
+
 }

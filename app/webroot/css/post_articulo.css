@@ -63,6 +63,17 @@
     text-align: center;
 }
 
+.post-producto .btn-personalizar {
+    background: #ea6209;
+    border-radius: 5px;
+    width: 100px;
+    height: 30px;
+    border: none;
+    font-size: 15px;
+    color: #fff;
+    cursor: pointer;
+}
+
 .post-producto .btn-comprar {
     background: #e44300;
     width: 100%;
@@ -72,6 +83,7 @@
     border: none;
     font-size: 18px;
     color: #fff;
+    cursor: pointer;
 }
 
 .btn-comprar .icon-carrito {
@@ -104,6 +116,7 @@
     display: block;
     width: 33%;
     float: left;
+    cursor: pointer;
 }
 
 .envio img {
@@ -112,6 +125,20 @@
 
 .envio p {
     font-size: 12px;
+}
+
+.envio input {
+    display: none;
+}
+
+#local:checked ~ * #cajita-local {
+    border: 2px solid #ed960071;
+}
+#provincia:checked ~ * #cajita-provincia {
+    border: 2px solid #ed960071;
+}
+#tienda:checked ~ * #cajita-tienda {
+    border: 2px solid #ed960071;
 }
 
 .calificar {
@@ -174,7 +201,7 @@
 
 @media(min-width: 768px) {
     .post-producto .envio {
-        height: 80px;
+        height: 90px;
         margin-bottom: 20px;
     }
 

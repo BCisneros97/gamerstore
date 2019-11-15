@@ -1,54 +1,32 @@
 #carrito {
     margin-top: 120px;
-    height: 400px;
     padding: 0 10px;
+    min-height: 400px;
 }
 
-.item-compra {
-    height: 125px;
-    margin-bottom: 10px;
+.img-item {
+    width: 80px;
+    height: 80px;
 }
 
-.opciones {
-    margin-bottom: 15px;
-}
-
-.opciones label{
-    float: right;
+.icon-eliminar {
     font-size: 18px;
 }
 
-#carrito input[type='checkbox'] {
-    margin-right: 5px;
-    color: #fff;
-    border: 1px solid #e3e3e3;
-}
-
-.item-compra .seleccionar {
-    float: left;
-    margin-top: 35px;
-}
-
-.item-compra img {
-    float: left;
-    width: 80px;
-    height: 80px;
-    margin-right: 8px;
-}
-
-.item-compra .detalle {
-    float: left;
-    width: 65%;
-}
-
-.item-compra h4 {
-    font-size: 12px;
+.detalle h4 {
+    font-size: 14px;
+    font-weight: bold;
     margin-bottom: 5px;
 }
 
-.item-compra .precio, .item-compra .envio {
+.eliminar a {
+    all: unset;
+    cursor: pointer;
+}
+
+.detalle .precio, .detalle .envio {
     color: #005ea8;
-    font-size: 12px;
+    font-size: 14px;
     margin-bottom: 5px;
 }
 
@@ -86,7 +64,7 @@
     margin-right: 18px;
 }
 
-.resumen .btn-pagar {
+.btn-pagar {
     background: #e44300;
     border-radius: 5px;
     border: none;
@@ -96,12 +74,15 @@
     font-size: 18px;
 }
 
-@media(min-width: 768px) {
-    .resumen {
-        margin-right: 20px;
-    }
+.item-direccion p {
+    margin-bottom: 0px;
+}
 
-    .item-compra img {
-        margin-right: 10px;
-    }
+.item-direccion {
+    margin-bottom: 15px;
+}
+
+
+@media(min-width: 768px) {
+    
 }

@@ -138,19 +138,4 @@ class ProductosController extends AppController
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
-
-	public function comprar($id = null)
-	{
-		$this->Producto->id = $id;
-		if (!$this->Producto->exists()) {
-			throw new NotFoundException(__('No existe el producto'));
-		}
-		$this->request->allowMethod('post');
-		$this->Producto->recursive = 0;
-		// CakeSession::delete('Carrito.productos');
-		$options = array('conditions' => array('Producto.' . $this->Producto->primaryKey => $id));
-		CakeSession::write('Carrito.productos.' . $id, $this->Producto->find('first', $options));
-
-		return $this->redirect(array('controller' => 'ventas', 'action' => 'carrito'));
-	}
 }

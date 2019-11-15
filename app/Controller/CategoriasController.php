@@ -26,8 +26,18 @@ class CategoriasController extends AppController
 	{
 		$this->Categoria->recursive = 1;
 		$this->set('categorias', $this->Categoria->find('all'));
-		$this->set('categoria', $this->Categoria->find('first', array(
-			'conditions' => array('Categoria.id' => $id)
+		$this->Categoria->recursive = 0;
+		$this->set('categoria', $this->Categoria->find(
+			'first',
+			array('conditions' => array('Categoria.id' => $id))
+		));
+		$this->loadModel('Disenio');
+		$this->set('disenios', $this->Disenio->find('all', array(
+			'contain' => array(
+				'Producto',
+				'Cliente' => array('User')
+			),
+			'conditions' => array('Producto.categoria_id' => $id)
 		)));
 		$this->layout = 'default';
 	}

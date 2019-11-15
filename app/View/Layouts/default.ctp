@@ -35,33 +35,38 @@
 			<input type="checkbox" id="menu-bar">
 			<label class="icon-menu" for="menu-bar"></label>
 
-			<?php
-			if (AuthComponent::user('id') != null) {
-				echo $this->Html->link(
-					$this->Html->tag(
-						'p',
-						$this->Html->tag('span', AuthComponent::user('username'), array('id' => 'login')),
-						array('class' => 'icon-usuario', 'escape' => false)
-					),
-					array('controller' => 'users', 'action' => 'logout'),
-					array('escape' => false)
-				);
-			} else {
-				echo $this->Html->link(
-					$this->Html->tag(
-						'p',
-						$this->Html->tag('span', 'Iniciar sesión', array('id' => 'login')),
-						array('class' => 'icon-usuario', 'escape' => false)
-					),
-					array('controller' => 'users', 'action' => 'login'),
-					array('escape' => false)
-				);
-			}
-			?>
-
+			<?php if (AuthComponent::user('id') != null) : ?>
+				<div class="dropdown">
+					<p id="menu-user" class="icon-usuario">
+						<span id="login" class="splogin"><?php echo AuthComponent::user('username'); ?></span>
+					</p>
+					<div id="myDropdown" class="dropdown-content">
+						<?php echo $this->Html->link(
+								'Mi cuenta',
+								array('controller' => 'users', 'action' => 'cuenta')
+							); ?>
+						<?php echo $this->Html->link(
+								'Cerrar sesión',
+								array('controller' => 'users', 'action' => 'logout')
+							); ?>
+					</div>
+				</div>
+			<?php else : ?>
+				<?php echo $this->Html->link(
+						$this->Html->tag(
+							'p',
+							$this->Html->tag('span', 'Iniciar sesión', array('id' => 'login')),
+							array('class' => 'icon-usuario', 'escape' => false)
+						),
+						array('controller' => 'users', 'action' => 'login'),
+						array('escape' => false)
+					);
+					?>
+			<?php endif; ?>
+			
 			<?php echo $this->Html->link(
 				$this->Html->tag('span', '', array('class' => 'icon-carrito')),
-				array('controller' => 'ventas', 'action' => 'carrito'),
+				array('controller' => 'disenios', 'action' => 'carrito'),
 				array('escape' => false)
 			); ?>
 
@@ -81,6 +86,24 @@
 	<?php echo $this->element('sql_dump'); ?>
 
 	<?php echo $this->fetch('script'); ?>
+
+	<script>
+		document.getElementById('menu-user').addEventListener('click', function() {
+			document.getElementById("myDropdown").classList.toggle("show");
+		});
+		document.getElementById('login').addEventListener('click', function() {
+			document.getElementById("myDropdown").classList.toggle("show");
+		});
+
+		window.onclick = function(event) {
+			if (!event.target.matches('.icon-usuario') && !event.target.matches('.splogin')) {
+				var dropdown = document.getElementById("myDropdown");
+				if (dropdown.classList.contains('show')) {
+					dropdown.classList.remove('show');
+				}
+			}
+		}
+	</script>
 </body>
 
 </html>

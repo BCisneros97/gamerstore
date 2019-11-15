@@ -10,6 +10,12 @@
         <div class="img-wrapper">
             <img src="data:image/jpg;base64,<?= base64_encode($producto['Producto']['imagen']) ?>" alt="<?= $producto['Producto']['nombre'] ?>">
         </div>
+        <h4>Características</h4>
+        <ul class="caracteristicas">
+            <?php foreach (explode('.', $producto['Producto']['caracteristica']) as $item) : ?>
+                <li><?= $item ?></li>
+            <?php endforeach; ?>
+        </ul>
         <h4>¿Qué te parece el diseño?</h4>
         <div class="calificar">
             <label for="estrella1" class="icon-estrella" id="i-estrella1">
@@ -28,17 +34,19 @@
             </label>
             <input type="radio" id="estrella5" name="estrellas">
         </div>
-        <h4>Características</h4>
-        <ul class="caracteristicas">
-            <?php foreach (explode('.', $producto['Producto']['caracteristica']) as $item) : ?>
-                <li><?= $item ?></li>
-            <?php endforeach; ?>
-        </ul>
+        <?php echo $this->Html->link(
+            $this->Html->tag(
+                'button',
+                '<span>Personalizar</span>'
+            ),
+            array('controller' => 'disenios', 'action' => 'create', $producto['Producto']['id']),
+            array('escape' => false)
+        ); ?>
         <div class="envio">
             <h3>OPCIONES DE ENVIO</h3>
             <div>
                 <?php echo $this->Html->image('icono-envio-chimbote.png', array('alt' => 'Envío a Chimbote')); ?>
-                <p>Envío en Chimbote</p>
+                <p>Envío en Chimbote<br><?php echo $producto['Producto']['preciounitario'] ?></p>
             </div>
             <div>
                 <?php echo $this->Html->image('icono-envio-ciudades.png', array('alt' => 'Envío a otras ciudades')); ?>

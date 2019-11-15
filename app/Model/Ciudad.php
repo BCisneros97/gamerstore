@@ -61,4 +61,5 @@ class Ciudad extends AppModel {
 		)
 	);
 
+	public $actAs = array('Containable');
 }

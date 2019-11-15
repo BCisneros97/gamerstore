@@ -23,27 +23,20 @@ class Venta extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
+		),
+		'Direccion' => array(
+			'className' => 'Direccion',
+			'foreignKey' => 'direccion_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
 		)
 	);
 
-/**
- * hasAndBelongsToMany associations
- *
- * @var array
- */
-	public $hasAndBelongsToMany = array(
-		'Disenio' => array(
-			'className' => 'Disenio',
-			'joinTable' => 'disenios_ventas',
-			'foreignKey' => 'venta_id',
-			'associationForeignKey' => 'disenio_id',
-			'unique' => 'keepExisting',
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'finderQuery' => '',
+	public $hasMany = array(
+		'DiseniosVenta' => array(
+			'className' => 'DiseniosVenta',
+			'foreignKey' => 'venta_id'
 		)
 	);
 

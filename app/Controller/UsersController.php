@@ -58,7 +58,7 @@ class UsersController extends AppController
 	{
 		if ($this->request->is('post')) {
 			$this->User->create();
-			$this->request->data['User']['password'] = password_hash($this->request->data['User']['password'], PASSWORD_BCRYPT);
+			//$this->request->data['User']['password'] = password_hash($this->request->data['User']['password'], PASSWORD_BCRYPT);
 			$this->request->data['User']['foto'] = file_get_contents($_FILES['foto']['tmp_name']);
 			if ($this->User->save($this->request->data, array('deep' => 'true'))) {
 				$this->Session->setFlash(__('Usuario guardado correctamente'));
@@ -144,7 +144,7 @@ class UsersController extends AppController
 					);
 					unset($this->request->data['User']['password']);
 					$this->Auth->login($this->request->data['User']);
-					return $this->redirect(array('controller' => 'pages'));
+					$this->redirect('/');
 				}
 			} else {
 				$this->Session->setFlash(__('No se pudo guardar el usuario.'));
@@ -163,7 +163,7 @@ class UsersController extends AppController
 		if ($this->request->is('post')) {
 			if ($this->Auth->login()) {
 				if ($this->Auth->user('tipo') == 'Cliente') {
-					return $this->redirect(array('controller' => 'pages'));
+					$this->redirect($this->referer());
 				} else {
 					return $this->redirect(array('controller' => 'categorias', 'action' => 'adminIndex'));
 				}
@@ -179,5 +179,16 @@ class UsersController extends AppController
 	{
 		$this->Auth->logout();
 		return $this->redirect(array('controller' => 'pages'));
+	}
+
+	public function cuenta() {
+		$this->User->Cliente->recursive = 1;
+		$cliente = $this->User->Cliente->find('first', array(
+			'conditions' => array('Cliente.user_id' => AuthComponent::user('id'))
+		));
+
+		$this->set('cliente', $cliente);
+
+		$this->layout = 'default';
 	}
 }

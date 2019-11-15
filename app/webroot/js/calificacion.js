@@ -1,4 +1,4 @@
-$("[type='radio']").on('click', function(e) {
+$(".calificar > input[type='radio']").on('click', function(e) {
     var previousValue = $(this).attr('previousValue');
     $('.calificar label').css('color', '#e0e0e0');
 

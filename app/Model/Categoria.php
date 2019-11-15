@@ -54,4 +54,6 @@ class Categoria extends AppModel {
 		)
 	);
 
+	public $actsAs = array('Containable');
+
 }

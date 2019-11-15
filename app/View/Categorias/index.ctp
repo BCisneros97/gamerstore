@@ -3,19 +3,19 @@ echo $this->element('menucategorias', array('categorias' => $categorias)) ?>
 <div class="productos">
     <section id="destacados">
         <div class="contenedor">
-            <h3><?= $categoria['Categoria']['nombre'] ?></h3>
+            <h3><?php echo $categoria['Categoria']['nombre'] ?></h3>
 
-            <?php foreach ($categoria['Producto'] as $producto) : ?>
+            <?php foreach ($disenios as $disenio) : ?>
                 <article class="producto">
                     <div class="img-wrapper">
-                        <img src="data:image/jpg;base64,<?= base64_encode($producto['imagen']) ?>" alt="<?= $producto['nombre'] ?>">
+                        <img src="data:image/jpg;base64,<?php echo base64_encode($disenio['Disenio']['imagen']) ?>" alt="<?php echo $disenio['Disenio']['descripcion'] ?>">
                     </div>
-                    <?= $this->Html->link(
-                            '<h4>' . $producto['nombre'] . '</h4>',
-                            array('controller' => 'productos', 'action' => 'show', $producto['id']),
+                    <?php echo $this->Html->link(
+                            '<h4>' . $disenio['Disenio']['descripcion'] . '</h4>',
+                            array('controller' => 'disenios', 'action' => 'show', $disenio['Disenio']['id']),
                             array('escape' => false)
                         ) ?>
-                    <p class="User">S/.<?= $producto['preciounitario'] ?>.00</p>
+                    <p class="User"><?php echo $disenio['Cliente']['User']['username'] ?></p>
 
                     <label class="icon-estrella"></label>4.8
                     <p class="ventas">50 vendidos</p>

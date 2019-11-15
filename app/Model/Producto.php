@@ -78,4 +78,6 @@ class Producto extends AppModel {
 		)
 	);
 
+	public $actAs = array('Containable');
+
 }
