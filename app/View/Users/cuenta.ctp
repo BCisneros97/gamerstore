@@ -11,7 +11,7 @@ echo $this->Html->script('/plugins/bootstrap/js/bootstrap4.min.js', array('inlin
             <?php echo $this->element('menu_usuario'); ?>
         </div>
         <div class="col-sm-9">
-            <h2>Mi cuenta</h2>
+            <h3>Mi cuenta</h3>
             <hr>
             <div class="form-group row">
                 <label for="UserUsername" class="col-sm-2 col-form-label">Nombre:</label>

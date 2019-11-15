@@ -11,7 +11,7 @@ echo $this->Html->script('/plugins/bootstrap/js/bootstrap4.min.js', array('inlin
             <?php echo $this->element('menu_usuario'); ?>
         </div>
         <div class="col-sm-9">
-            <h2>Agregar tarjeta</h2>
+            <h3>Agregar tarjeta</h3>
             <hr>
             <div class="card card-info">
                 <div class="card-header">
