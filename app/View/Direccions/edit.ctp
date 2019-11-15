@@ -15,6 +15,7 @@ echo $this->Html->script('/plugins/bootstrap/js/bootstrap4.min.js', array('inlin
                     <div class="container ">
                         <div class="row">
                             <?php
+                            echo $this->Form->input('id');
                             echo $this->Form->input('primeralinea', array(
                                 'label' => array(
                                     'text'=>'Dirección :',
@@ -29,7 +30,7 @@ echo $this->Html->script('/plugins/bootstrap/js/bootstrap4.min.js', array('inlin
                                 'label' => array(
                                     'text'=>'Referencia  :',
                                     'class'=>'font-weight-bolder col-form-label col-sm-3',
-                                    'style'=>'margin-bottom: 10px',
+                                    'style'=>'margin-bottom: 10px'
                                 ),
                                 'class' => 'form-control col-sm-9',
                                 'div'=>false,
@@ -42,7 +43,7 @@ echo $this->Html->script('/plugins/bootstrap/js/bootstrap4.min.js', array('inlin
                                     'style'=>'margin-bottom: 10px',
                                 ),
                                 'class' => 'form-control col-sm-9',
-                                'div'=>false,
+                                'div'=>false
                             ));
                             echo $this->Form->input('codigopostal', array(
                                 'label' => array(
