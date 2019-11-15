@@ -11,12 +11,12 @@
     ) ?>
     <?php echo $this->Html->link(
         'Direcciones',
-        array('controller' => 'users', 'action' => 'cuenta'),
+        array('controller' => 'direccions'),
         array('class' => 'list-group-item list-group-item-action list-group-item-warning')
     ) ?>
     <?php echo $this->Html->link(
         'Tarjetas',
-        array('controller' => 'users', 'action' => 'cuenta'),
+        array('controller' => 'tarjetas'),
         array('class' => 'list-group-item list-group-item-action list-group-item-warning')
     ) ?>
 </div>
