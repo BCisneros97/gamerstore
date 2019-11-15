@@ -1,0 +1,23 @@
+.contenedorT{
+	padding-top: 150px;
+    width: 100%;
+}
+
+.contenedorT h3{
+	font-size: 25px;
+	text-align: left;
+	color: #F39C12  ;
+}
+
+.col-sm-6{
+	margin-left: 25%;
+}
+
+.col-sm-2 {
+	width: 50%;
+}
+
+.card-footer {
+	text-align: center;
+	  
+}
