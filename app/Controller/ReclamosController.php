@@ -75,7 +75,9 @@ class ReclamosController extends AppController
 		}
 		if ($this->request->is('post')) {
 			$this->Reclamo->create();
-			$this->request->data['Reclamo']['prueba'] = file_get_contents($_FILES['prueba']['tmp_name']);
+			if (!empty($_FILES['prueba']['tmp_name'])) {
+				$this->request->data['Reclamo']['prueba'] = file_get_contents($_FILES['prueba']['tmp_name']);
+			}
 			$this->request->data['Reclamo']['fecha'] = date("Y-m-d");
 			$this->request->data['Reclamo']['estado'] = 'Pendiente';
 			if ($this->Reclamo->save($this->request->data)) {
