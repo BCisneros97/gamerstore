@@ -207,7 +207,7 @@
   <!-- ./wrapper -->
 
   <?php
-  echo $this->element('sql_dump');
+  // echo $this->element('sql_dump');
   echo $this->Html->script('/plugins/jquery/jquery.min.js');
   echo $this->Html->script('/plugins/bootstrap/js/bootstrap.bundle.min.js');
   echo $this->Html->script('/plugins/datatables/jquery.dataTables.js');

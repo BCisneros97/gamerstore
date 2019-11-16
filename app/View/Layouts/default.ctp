@@ -83,7 +83,7 @@
 
 	<?php echo $this->element('redes_sociales'); ?>
 
-	<?php echo $this->element('sql_dump'); ?>
+	<?php //echo $this->element('sql_dump'); ?>
 
 	<?php echo $this->fetch('script'); ?>
 
