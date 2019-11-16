@@ -91,7 +91,6 @@ class Cliente extends AppModel {
 		'Venta' => array(
 			'className' => 'Venta',
 			'foreignKey' => 'cliente_id',
-			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
 			'order' => '',
@@ -103,6 +102,6 @@ class Cliente extends AppModel {
 		)
 	);
 
-	public $actAs = array('Containable');
+	public $actsAs = array('Containable');
 
 }

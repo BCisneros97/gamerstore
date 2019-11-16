@@ -80,7 +80,7 @@ class CategoriasController extends AppController
 			$this->Categoria->create();
 			if ($this->Categoria->save($this->request->data)) {
 				$this->Session->setFlash(__('La categoría ha sido guardada.'));
-				return $this->redirect(array('action' => 'index'));
+				return $this->redirect(array('action' => 'adminIndex'));
 			} else {
 				$this->Session->setFlash(__('La categoría no se pudo guardar. Intente otra vez.'));
 			}
@@ -104,7 +104,7 @@ class CategoriasController extends AppController
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Categoria->save($this->request->data)) {
 				$this->Session->setFlash(__('La categoría ha sido guardada.'));
-				return $this->redirect(array('action' => 'index'));
+				return $this->redirect(array('action' => 'adminIndex'));
 			} else {
 				$this->Session->setFlash(__('La categoría no se pudo guardar. Intente otra vez.'));
 			}
@@ -135,6 +135,6 @@ class CategoriasController extends AppController
 		} else {
 			$this->Session->setFlash(__('No se pudo eliminar la categoría. Intente otra vez.'));
 		}
-		return $this->redirect(array('action' => 'index'));
+		return $this->redirect(array('action' => 'adminIndex'));
 	}
 }

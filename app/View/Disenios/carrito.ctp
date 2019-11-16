@@ -27,30 +27,30 @@ echo $this->Html->script('/plugins/bootstrap/js/bootstrap4.min.js', array('inlin
                                 <h4><?php echo $disenio['disenio']['Producto']['nombre'] ?></h4>
 
                                 <p class="precio">S/.&nbsp;<?php echo $disenio['disenio']['Producto']['preciounitario'] ?>.00</p>
-                                <input type="hidden" name="data[DiseniosVenta][<?php echo $index; ?>][preciounitario]" value="<?php echo $disenio['disenio']['Producto']['preciounitario'] ?>">
+                                <input type="hidden" class="preciounitario" name="data[DiseniosVenta][<?php echo $index; ?>][preciounitario]" value="<?php echo $disenio['disenio']['Producto']['preciounitario'] ?>">
 
                                 <?php if ($disenio['envio'] == 'local') : ?>
                                     <?php $total += $disenio['disenio']['Producto']['precioenviolocal'] ?>
                                     <p class="envio">Envío: S/.&nbsp;<?php echo $disenio['disenio']['Producto']['precioenviolocal'] ?>.00</p>
-                                    <input type="hidden" name="data[DiseniosVenta][<?php echo $index; ?>][precioenvio]" value="<?php echo $disenio['disenio']['Producto']['precioenviolocal'] ?>">
+                                    <input type="hidden" class="p_envio" name="data[DiseniosVenta][<?php echo $index; ?>][precioenvio]" value="<?php echo $disenio['disenio']['Producto']['precioenviolocal'] ?>">
                                 <?php elseif ($disenio['envio'] == 'provincia') : ?>
                                     <?php $total += $disenio['disenio']['Producto']['precioenvioprovincia'] ?>
                                     <p class="envio">Envío: S/.&nbsp;<?php echo $disenio['disenio']['Producto']['precioenvioprovincia'] ?>.00</p>
-                                    <input type="hidden" name="data[DiseniosVenta][<?php echo $index; ?>][precioenvio]" value="<?php echo $disenio['disenio']['Producto']['precioenvioprovincia'] ?>">
+                                    <input type="hidden" class="p_envio" name="data[DiseniosVenta][<?php echo $index; ?>][precioenvio]" value="<?php echo $disenio['disenio']['Producto']['precioenvioprovincia'] ?>">
                                 <?php else : ?>
                                     <p class="envio">Envío: S/.&nbsp;0.00</p>
-                                    <input type="hidden" name="data[DiseniosVenta][<?php echo $index; ?>][precioenvio]" value="0">
+                                    <input type="hidden" class="p_envio" name="data[DiseniosVenta][<?php echo $index; ?>][precioenvio]" value="0">
                                 <?php endif; ?>
 
                                 <div class="cantidad">
                                     <button type="button" class="menos">-</button>
-                                    <input type="text" name="data[DiseniosVenta][<?php echo $index; ?>][cantidad]" value="<?php echo $disenio['cantidad'] ?>">
+                                    <input type="text" class="p_cantidad" name="data[DiseniosVenta][<?php echo $index; ?>][cantidad]" value="<?php echo $disenio['cantidad'] ?>">
                                     <button type="button" class="mas">+</button>
                                 </div>
                             </div>
                         </div>
                         <div class="col-1 eliminar">
-                            <?php echo $this->Form->postLink(
+                            <?php echo $this->Html->link(
                                         '<label class="icon-eliminar"></label>',
                                         array('controller' => 'disenios', 'action' => 'removeCarrito', $id),
                                         array('escape' => false),
@@ -71,7 +71,7 @@ echo $this->Html->script('/plugins/bootstrap/js/bootstrap4.min.js', array('inlin
                                 <?php else : ?>
                                     <?php foreach ($cliente['Direccion'] as $direccion) : ?>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="data[Venta][direccion_id]" id="direccion<?php echo $direccion['id'] ?>" value="<?php echo $direccion['id'] ?>" required>
+                                            <input class="form-check-input" type="radio" name="data[Venta][direccion_id]" id="direccion<?php echo $direccion['id'] ?>" value="<?php echo $direccion['id'] ?>" required checked>
                                             <label class="form-check-label" for="direccion<?php echo $direccion['id'] ?>">
                                                 <div class="item-direccion">
                                                     <p class="card-text"><?php echo $direccion['primeralinea'] ?></p>
@@ -100,7 +100,7 @@ echo $this->Html->script('/plugins/bootstrap/js/bootstrap4.min.js', array('inlin
                                 <?php else : ?>
                                     <?php foreach ($cliente['Tarjeta'] as $tarjeta) : ?>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="data[Venta][numerotarjeta]" id="tarjeta<?php echo $tarjeta['id'] ?>" value="<?php echo $tarjeta['numero'] ?>" required>
+                                            <input class="form-check-input" type="radio" name="data[Venta][numerotarjeta]" id="tarjeta<?php echo $tarjeta['id'] ?>" value="<?php echo $tarjeta['numero'] ?>" required checked>
                                             <label class="form-check-label" for="tarjeta<?php echo $tarjeta['id'] ?>">
                                                 <div class="item-direccion">
                                                     <p class="card-text"><?php echo '**** **** ****' . substr($tarjeta['numero'], -4, 4) ?></p>

@@ -79,8 +79,11 @@ class ReclamosController extends AppController
 			$this->request->data['Reclamo']['fecha'] = date("Y-m-d");
 			$this->request->data['Reclamo']['estado'] = 'Pendiente';
 			if ($this->Reclamo->save($this->request->data)) {
+				$this->Reclamo->DiseniosVenta->id = $disenioventa_id;
+				$this->Reclamo->DiseniosVenta->set('reclamo_id', $this->Reclamo->id);
+				$this->Reclamo->DiseniosVenta->save();
 				$this->Session->setFlash(__('Se envió el reclamo.'));
-				return $this->redirect(array('action' => 'index'));
+				return $this->redirect(array('controller' => 'diseniosVentas', 'action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The reclamo could not be saved. Please, try again.'));
 			}

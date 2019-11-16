@@ -53,18 +53,18 @@ class VentasController extends AppController
 	{
 		if ($this->request->is('post')) {
 			$this->Venta->create();
-			
+
 			$fcompra = date_create('now');
 			$this->request->data['Venta']['fechacompra'] = date_format($fcompra, 'Y-m-d');
 			date_add($fcompra, date_interval_create_from_date_string('10 days'));
 			$this->request->data['Venta']['fechaentrega'] = date_format($fcompra, 'Y-m-d');
-			
+
 			if ($this->Venta->saveAssociated($this->request->data, array('deep' => true))) {
 				CakeSession::delete('Carrito');
-				return $this->redirect(array('controller'=>'disenios','action' => 'carrito'));
+				return $this->redirect(array('controller' => 'diseniosVentas', 'action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('La Venta no se pudo guardar. Intente otra vez.'));
-				return $this->redirect(array('controller'=>'disenios','action' => 'carrito'));
+				return $this->redirect(array('controller' => 'disenios', 'action' => 'carrito'));
 			}
 		}
 	}

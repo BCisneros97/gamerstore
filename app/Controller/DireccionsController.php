@@ -55,7 +55,7 @@ class DireccionsController extends AppController {
 				$this->Session->setFlash(__('The direccion could not be saved. Please, try again.'));
 			}
 		}
-		$ciudads = $this->Direccion->Ciudad->find('list');
+		$ciudads = $this->Direccion->Ciudad->find('list', array('fields' => array('id', 'nombre')));
 		$clientes = $this->Direccion->Cliente->find('list');
 		$this->set(compact('ciudads', 'clientes'));
 	}
@@ -82,7 +82,7 @@ class DireccionsController extends AppController {
 			$options = array('conditions' => array('Direccion.' . $this->Direccion->primaryKey => $id));
 			$this->request->data = $this->Direccion->find('first', $options);
 		}
-		$ciudads = $this->Direccion->Ciudad->find('list');
+		$ciudads = $this->Direccion->Ciudad->find('list', array('fields' => array('id', 'nombre')));
 		$clientes = $this->Direccion->Cliente->find('list');
 		$this->set(compact('ciudads', 'clientes'));
 	}

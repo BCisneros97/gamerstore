@@ -101,4 +101,6 @@ class User extends AppModel {
 		}
 		return true;
 	}
+
+	public $actsAs = array('Containable');
 }

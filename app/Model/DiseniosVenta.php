@@ -40,4 +40,6 @@ class DiseniosVenta extends AppModel {
 			'order' => ''
 		)
 	);
+
+	public $actsAs = array('Containable');
 }

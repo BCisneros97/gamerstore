@@ -5,7 +5,7 @@ echo $this->Html->script('/plugins/jquery/jquery.min.js', array('inline' => fals
 echo $this->Html->script('/plugins/bootstrap/js/bootstrap4.min.js', array('inline' => false));
 ?>
 
-<section class="container" style="padding-top:120px">
+<section class="container" style="padding-top:120px;min-height:500px">
     <div class="row">
         <div class="col-sm-3">
             <?php echo $this->element('menu_usuario'); ?>

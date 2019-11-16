@@ -95,8 +95,10 @@ class ProductosController extends AppController
 			throw new NotFoundException(__('Invalid producto'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
-			if (isset($_FILES['imagen'])) {
+			if (!empty($_FILES['imagen']['tmp_name'])) {
 				$this->request->data['Producto']['imagen'] = file_get_contents($_FILES['imagen']['tmp_name']);
+			} else {
+				unset($this->request->data['Producto']['imagen']);
 			}
 			if ($this->Producto->save($this->request->data)) {
 				$this->Session->setFlash(__('El Producto ha sido Guardado.'));

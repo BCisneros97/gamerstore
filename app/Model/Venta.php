@@ -36,8 +36,13 @@ class Venta extends AppModel {
 	public $hasMany = array(
 		'DiseniosVenta' => array(
 			'className' => 'DiseniosVenta',
-			'foreignKey' => 'venta_id'
+			'foreignKey' => 'venta_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
 		)
 	);
+
+	public $actsAs = array('Containable');
 
 }

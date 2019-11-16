@@ -53,30 +53,30 @@ class Disenio extends AppModel {
 			'exclusive' => '',
 			'finderQuery' => '',
 			'counterQuery' => ''
-		)
-	);
-
-
-/**
- * hasAndBelongsToMany associations
- *
- * @var array
- */
-	public $hasAndBelongsToMany = array(
-		'Venta' => array(
-			'className' => 'Venta',
-			'joinTable' => 'disenios_ventas',
+		),
+		'DiseniosVenta' => array(
+			'className' => 'DiseniosVenta',
 			'foreignKey' => 'disenio_id',
-			'associationForeignKey' => 'venta_id',
-			'unique' => 'keepExisting',
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'finderQuery' => '',
 		)
 	);
+
+
+
+	// public $hasAndBelongsToMany = array(
+	// 	'Venta' => array(
+	// 		'className' => 'Venta',
+	// 		'joinTable' => 'disenios_ventas',
+	// 		'foreignKey' => 'disenio_id',
+	// 		'associationForeignKey' => 'venta_id',
+	// 		'unique' => 'keepExisting',
+	// 		'conditions' => '',
+	// 		'fields' => '',
+	// 		'order' => '',
+	// 		'limit' => '',
+	// 		'offset' => '',
+	// 		'finderQuery' => '',
+	// 	)
+	// );
 
 	public $actsAs = array('Containable');
 

@@ -37,9 +37,10 @@
       <ul class="navbar-nav ml-auto">
         <!-- Messages Dropdown Menu -->
         <li class="nav-item">
-          <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
-            <i class="fas fa-th-large"></i>
-          </a>
+          <?php echo $this->Html->link(
+            'Cerrar sesión',
+            array('controller' => 'users', 'action' => 'logout')
+          ); ?>
         </li>
       </ul>
     </nav>
@@ -62,7 +63,11 @@
         <!-- Sidebar user (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
-            <img class="img-circle elevation-2" src="data:image/jpg;base64,<?= base64_encode(AuthComponent::user('foto')) ?>">
+            <?php if (AuthComponent::user('foto') != null) : ?>
+              <img class="img-circle elevation-2" src="data:image/jpg;base64,<?= base64_encode(AuthComponent::user('foto')) ?>">
+            <?php else : ?>
+              <?php echo $this->Html->image('avatar5.png', array('class' => "img-circle elevation-2")) ?>
+            <?php endif; ?>
           </div>
           <div class="info">
             <a href="#" class="d-block"><?= AuthComponent::user('username') ?></a>

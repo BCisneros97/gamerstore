@@ -6,33 +6,48 @@ App::uses('AppController', 'Controller');
  * @property DiseniosVenta $DiseniosVenta
  * @property PaginatorComponent $Paginator
  */
-class DiseniosVentasController extends AppController {
+class DiseniosVentasController extends AppController
+{
 
-/**
- * Components
- *
- * @var array
- */
+	/**
+	 * Components
+	 *
+	 * @var array
+	 */
 	public $components = array('Paginator');
 
-/**
- * index method
- *
- * @return void
- */
-	public function index() {
-		$this->DiseniosVenta->recursive = 0;
-		$this->set('diseniosVentas', $this->Paginator->paginate());
+	/**
+	 * index method
+	 *
+	 * @return void
+	 */
+	public function index()
+	{
+		$this->DiseniosVenta->Behaviors->load('Containable');
+		$this->DiseniosVenta->recursive = 1;
+		$options = array(
+			'contain' => array(
+				'Disenio' => array('Producto'),
+				'Venta' => array('Cliente' => array(
+					'User' => array(
+						'conditions' => array('User.id' => AuthComponent::user('id'))
+					)
+				)),
+				'Reclamo'
+			)
+		);
+		$this->set('diseniosVentas', $this->DiseniosVenta->find('all', $options));
 	}
 
-/**
- * view method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function view($id = null) {
+	/**
+	 * view method
+	 *
+	 * @throws NotFoundException
+	 * @param string $id
+	 * @return void
+	 */
+	public function view($id = null)
+	{
 		if (!$this->DiseniosVenta->exists($id)) {
 			throw new NotFoundException(__('Invalid disenios venta'));
 		}
@@ -40,12 +55,13 @@ class DiseniosVentasController extends AppController {
 		$this->set('diseniosVenta', $this->DiseniosVenta->find('first', $options));
 	}
 
-/**
- * add method
- *
- * @return void
- */
-	public function add() {
+	/**
+	 * add method
+	 *
+	 * @return void
+	 */
+	public function add()
+	{
 		if ($this->request->is('post')) {
 			$this->DiseniosVenta->create();
 			if ($this->DiseniosVenta->save($this->request->data)) {
@@ -61,14 +77,15 @@ class DiseniosVentasController extends AppController {
 		$this->set(compact('disenios', 'ventas', 'reclamos'));
 	}
 
-/**
- * edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function edit($id = null) {
+	/**
+	 * edit method
+	 *
+	 * @throws NotFoundException
+	 * @param string $id
+	 * @return void
+	 */
+	public function edit($id = null)
+	{
 		if (!$this->DiseniosVenta->exists($id)) {
 			throw new NotFoundException(__('Invalid disenios venta'));
 		}
@@ -89,14 +106,15 @@ class DiseniosVentasController extends AppController {
 		$this->set(compact('disenios', 'ventas', 'reclamos'));
 	}
 
-/**
- * delete method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function delete($id = null) {
+	/**
+	 * delete method
+	 *
+	 * @throws NotFoundException
+	 * @param string $id
+	 * @return void
+	 */
+	public function delete($id = null)
+	{
 		$this->DiseniosVenta->id = $id;
 		if (!$this->DiseniosVenta->exists()) {
 			throw new NotFoundException(__('Invalid disenios venta'));
