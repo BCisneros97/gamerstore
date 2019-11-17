@@ -28,10 +28,12 @@
 				array('escape' => false)
 			);
 			?>
-			<div id="busqueda">
-				<input type="text" placeholder="Buscar producto">
-				<a class="icon-buscar" href="#"></a>
-			</div>
+			<form action="<?php echo $this->Html->url(array('controller' => 'disenios', 'action' => 'search')) ?>" method="post">
+				<div id="busqueda">
+					<input type="text" placeholder="Buscar producto" name="data[query]" required>
+					<button class="icon-buscar" type="submit"></button>
+				</div>
+			</form>
 			<input type="checkbox" id="menu-bar">
 			<label class="icon-menu" for="menu-bar"></label>
 
@@ -63,7 +65,7 @@
 					);
 					?>
 			<?php endif; ?>
-			
+
 			<?php echo $this->Html->link(
 				$this->Html->tag('span', '', array('class' => 'icon-carrito')),
 				array('controller' => 'disenios', 'action' => 'carrito'),

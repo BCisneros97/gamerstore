@@ -1,6 +1,8 @@
+#destacados {
+    padding-top: 120px;
+}
 
 #destacados h3 {
-    padding-top: 150px;
     margin-left: 30px;
     width: 100%;
 }

@@ -17,6 +17,11 @@ class DiseniosController extends AppController
 	public $components = array('Paginator', 'Session');
 	public $layout = 'admin';
 
+	public function beforeFilter()
+	{
+		$this->Auth->allow('show', 'carrito', 'search');
+	}
+
 	/**
 	 * index method
 	 *
@@ -215,5 +220,39 @@ class DiseniosController extends AppController
 			$this->Session->setFlash(__('The disenio could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
+	}
+
+	public function search()
+	{
+		$query = strtolower(trim($this->request->data['query'], ' '));
+		$disenios = $this->Disenio->find('all', array(
+			'joins' => array(
+				array(
+					'table' => 'categorias',
+					'alias' => 'Categoria',
+					'type' => 'LEFT',
+					'conditions' => array(
+						'Producto.categoria_id = Categoria.id'
+					)
+				),
+				array(
+					'table' => 'users',
+					'alias' => 'User',
+					'type' => 'LEFT',
+					'conditions' => array(
+						'Cliente.user_id = User.id'
+					)
+				)
+			),
+			'conditions' => array('OR' => array(
+				array('Producto.nombre LIKE' => '%' . $query . '%'),
+				array('Disenio.descripcion LIKE' => '%' . $query . '%'),
+				array('Categoria.nombre LIKE' => '%' . $query . '%')
+			)),
+			'fields' => array('User.username', 'Disenio.imagen', 'Disenio.descripcion', )
+		));
+		$this->set('disenios', $disenios);
+		$this->set('query', $this->request->data['query']);
+		$this->layout = 'default';
 	}
 }
