@@ -22,8 +22,16 @@ class TarjetasController extends AppController {
  * @return void
  */
 	public function index() {
-		$this->Tarjeta->recursive = 0;
-		$this->set('tarjetas', $this->Paginator->paginate());
+
+		$this->Tarjeta->Behaviors->load('Containable');
+		$this->Tarjeta->recursive = 1;
+
+		$options = array(
+            'conditions' => array('Cliente.id' => AuthComponent::user('id'))
+
+        );
+        $this->set('tarjetas', $this->Tarjeta->find('all', $options));
+		
 	}
 
 /**
@@ -35,7 +43,7 @@ class TarjetasController extends AppController {
  */
 	public function view($id = null) {
 		if (!$this->Tarjeta->exists($id)) {
-			throw new NotFoundException(__('Invalid tarjeta'));
+			throw new NotFoundException(__('La Tarjeta no Existe'));
 		}
 		$options = array('conditions' => array('Tarjeta.' . $this->Tarjeta->primaryKey => $id));
 		$this->set('tarjeta', $this->Tarjeta->find('first', $options));
