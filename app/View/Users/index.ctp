@@ -53,25 +53,17 @@
                                                     array('action' => 'view', $user['User']['id']),
                                                     array('escape' => false)
                                                 ); ?>
-                                            <?php echo $this->Html->link(
-                                                    $this->Html->tag(
-                                                        'button',
-                                                        $this->Html->tag('i', '', array('class' => "fas fa-edit")),
-                                                        array('class' => "btn btn-default")
-                                                    ),
-                                                    array('action' => 'edit', $user['User']['id']),
-                                                    array('escape' => false)
-                                                ); ?>
-                                            <?php echo $this->Form->postLink(
-                                                    $this->Html->tag(
-                                                        'button',
-                                                        $this->Html->tag('i', '', array('class' => "fas fa-trash")),
-                                                        array('class' => "btn btn-default")
-                                                    ),
-                                                    array('action' => 'delete', $user['User']['id']),
-                                                    array('escape' => false),
-                                                    __('¿Está seguro de que quiere dar de baja al usuario "%s"?', $user['User']['username'])
-                                                ); ?>
+                                            <?php if ($user['User']['tipo'] != 'Cliente') {
+                                                    echo $this->Html->link(
+                                                        $this->Html->tag(
+                                                            'button',
+                                                            $this->Html->tag('i', '', array('class' => "fas fa-edit")),
+                                                            array('class' => "btn btn-default")
+                                                        ),
+                                                        array('action' => 'edit', $user['User']['id']),
+                                                        array('escape' => false)
+                                                    );
+                                                } ?>
                                         </div>
                                     </td>
                                 </tr>

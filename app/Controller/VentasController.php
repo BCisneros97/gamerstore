@@ -24,8 +24,13 @@ class VentasController extends AppController
 	 */
 	public function index()
 	{
-		$this->Venta->recursive = 0;
-		$this->set('ventas', $this->Paginator->paginate());
+		$ventas = $this->Venta->find('all', array(
+			'contain' => array(
+				'Cliente' => array('User'),
+				'DiseniosVenta'
+			)
+		));
+		$this->set('ventas', $ventas);
 	}
 
 	/**
@@ -40,7 +45,16 @@ class VentasController extends AppController
 		if (!$this->Venta->exists($id)) {
 			throw new NotFoundException(__('La Venta no Existe'));
 		}
-		$options = array('conditions' => array('Venta.' . $this->Venta->primaryKey => $id));
+		$options = array(
+			'conditions' => array('Venta.id' => $id),
+			'contain' => array(
+				'Cliente' => array('User'),
+				'DiseniosVenta' => array('Disenio', 'Reclamo'),
+				'Direccion' => array(
+					'Ciudad' => array('Region')
+				)
+			)
+		);
 		$this->set('venta', $this->Venta->find('first', $options));
 	}
 

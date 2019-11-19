@@ -23,20 +23,16 @@ class DiseniosVentasController extends AppController
 	 */
 	public function index()
 	{
-		$this->DiseniosVenta->Behaviors->load('Containable');
-		$this->DiseniosVenta->recursive = 1;
+		$this->loadModel('Cliente');
 		$options = array(
 			'contain' => array(
-				'Disenio' => array('Producto'),
-				'Venta' => array('Cliente' => array(
-					'User' => array(
-						'conditions' => array('User.id' => AuthComponent::user('id'))
-					)
-				)),
-				'Reclamo'
-			)
+				'Venta' => array(
+					'DiseniosVenta' => array('Disenio', 'Reclamo')
+				)
+			),
+			'conditions' => array('Cliente.user_id' => AuthComponent::user('id'))
 		);
-		$this->set('diseniosVentas', $this->DiseniosVenta->find('all', $options));
+		$this->set('cliente', $this->Cliente->find('first', $options));
 	}
 
 	/**
@@ -113,18 +109,22 @@ class DiseniosVentasController extends AppController
 	 * @param string $id
 	 * @return void
 	 */
-	public function delete($id = null)
+	public function finalizar($id = null)
 	{
 		$this->DiseniosVenta->id = $id;
 		if (!$this->DiseniosVenta->exists()) {
 			throw new NotFoundException(__('Invalid disenios venta'));
 		}
-		$this->request->allowMethod('post', 'delete');
-		if ($this->DiseniosVenta->delete()) {
-			$this->Session->setFlash(__('The disenios venta has been deleted.'));
+		$this->request->allowMethod('post');
+		$disenioVenta = $this->DiseniosVenta->find('first', array(
+			'conditions' => array('DiseniosVenta.id' => $id)
+		));
+		$disenioVenta['DiseniosVenta']['estado'] = 'Finalizado';
+		if ($this->DiseniosVenta->save($disenioVenta)) {
+			$this->Session->setFlash(__('El pedido se marcó como finalizado.'));
 		} else {
-			$this->Session->setFlash(__('The disenios venta could not be deleted. Please, try again.'));
+			$this->Session->setFlash(__('No se pudo guardar los cambios'));
 		}
-		return $this->redirect(array('action' => 'index'));
+		return $this->redirect(array('controller' => 'ventas', 'action' => 'view', $disenioVenta['DiseniosVenta']['id']));
 	}
 }

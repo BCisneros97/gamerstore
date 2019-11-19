@@ -63,6 +63,26 @@ class ReclamosController extends AppController
 		$this->set('reclamo', $this->Reclamo->find('first', $options));
 	}
 
+	public function show($id = null)
+	{
+		if (!$this->Reclamo->exists($id)) {
+			throw new NotFoundException(__('No existe el reclamo'));
+		}
+		$options = array(
+			'conditions' => array('Reclamo.' . $this->Reclamo->primaryKey => $id),
+			'contain' => array(
+				'Tiporeclamo',
+				'DiseniosVenta' => array(
+					'Venta' => array(
+						'Cliente' => array('User')
+					)
+				)
+			)
+		);
+		$this->set('reclamo', $this->Reclamo->find('first', $options));
+		$this->layout = 'default';
+	}
+
 	/**
 	 * add method
 	 *

@@ -21,7 +21,7 @@
                 <div class="card-body">
                     <?php echo $this->Form->input('id'); ?>
                     <div class="form-group row">
-                        <label for="CategoriaNombre" class="col-sm-2 col-form-label">Tipo</label>
+                        <label for="ClienteTipo" class="col-sm-2 col-form-label">Tipo</label>
                         <div class="col-sm-10">
                             <?php echo $this->Form->input('tipo', array('div' => false, 'label' => false, 'class' => 'form-control')); ?>
                         </div>
@@ -42,11 +42,11 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="RegionNombre" class="col-sm-2 col-form-label">Nombre:</label>
+                        <label for="UserUsername" class="col-sm-2 col-form-label">Nombre:</label>
                         <div class="col-sm-10">
-                            <select name="data[Ciudad][region_id]" class="form-control" id="CiudadRegionId">
+                            <select name="data[User][user_id]" class="form-control" id="UserUsername">
                                 <?php foreach ($users as $user) : ?>
-                                    <option value="<?php echo $user['User']['id'] ?>"><?php echo $user['User']['nombre'] ?></option>
+                                    <option value="<?php echo $user['User']['id'] ?>"><?php echo $user['User']['username'] ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
