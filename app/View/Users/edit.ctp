@@ -62,10 +62,10 @@
                         <label for="UserTipo" class="col-sm-2 col-form-label">Tipo</label>
                         <div class="col-sm-10">
                             <select name="data[User][tipo]" class="form-control" id="UserTipo">
-                                <option value="Admin" <?= $this->request->data['User']['tipo'] == 'Admin' ? 'selected' : '' ?>>Administrador</option>
-                                <option value="Vendedor" <?= $this->request->data['User']['tipo'] == 'Vendedor' ? 'selected' : '' ?>>Atención al cliente</option>
-                                <option value="Repartidor" <?= $this->request->data['User']['tipo'] == 'Repartidor' ? 'selected' : '' ?>>Repartidor</option>
-                                <option value="Cliente" <?= $this->request->data['User']['tipo'] == 'Cliente' ? 'selected' : '' ?>>Cliente</option>
+                                <option value="Admin" <?php echo $this->request->data['User']['tipo'] == 'Admin' ? 'selected' : '' ?>>Administrador</option>
+                                <option value="Vendedor" <?php echo $this->request->data['User']['tipo'] == 'Vendedor' ? 'selected' : '' ?>>Atención al cliente</option>
+                                <option value="Repartidor" <?php echo $this->request->data['User']['tipo'] == 'Repartidor' ? 'selected' : '' ?>>Repartidor</option>
+                                <option value="Cliente" <?php echo $this->request->data['User']['tipo'] == 'Cliente' ? 'selected' : '' ?>>Cliente</option>
                             </select>
                         </div>
                     </div>

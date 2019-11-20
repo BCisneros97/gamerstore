@@ -51,7 +51,7 @@
                         'value'=>$cliente['Cliente']['sexo'],
 
                     ));
-                    echo $this->Form->input('nombre',array(
+                    echo $this->Form->input('username',array(
                         'class'=>'form-control-plaintext col-sm-10',
                         'div'=>array( 'class'=>'form-group row'),
                         'readonly',
@@ -59,7 +59,7 @@
                             'text'=>'Nombre:',
                             'class'=>'col-sm-2 col-form-label'
                         ),
-                        'value'=>$cliente['User']['nombre'],
+                        'value'=>$cliente['User']['username'],
 
                     ));
 
